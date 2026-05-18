@@ -1,12 +1,12 @@
-# 🔐 Cryptographia — Cyberpunk Edition
+# 🔐 Cryptographia — Web Edition
 
 > **Un voyage interactif à travers 2500 ans d'histoire de la cryptographie.**
 
-Cryptographia est un jeu web éducatif composé de **8 énigmes cryptographiques** progressives, allant de l'Antiquité à l'ère numérique. Chaque challenge plonge le joueur dans une époque et un système de chiffrement réel, avec un design cyberpunk immersif.
+Cryptographia est un jeu web éducatif composé de **8 énigmes cryptographiques** progressives, allant de l'Antiquité à l'ère numérique. Chaque challenge plonge le joueur dans une époque et un système de chiffrement réel, avec un design immersif.
 
 ## 🎮 Comment jouer
 
-1. Ouvrez le site : **[votre-username.github.io/cryptographia](https://votre-username.github.io/cryptographia)**
+1. Ouvrez le site : **[anadema.github.io/cryptographia](https://anadema.github.io//cryptographia)**
 2. Choisissez un challenge parmi les 8 disponibles
 3. Lisez l'**📜 Histoire** du code (des indices sont cachés dans le texte !)
 4. Résolvez l'énigme pour obtenir un **flag** secret
@@ -31,7 +31,6 @@ Conçu pour des **stagiaires non-techniques** dans un contexte de sensibilisatio
 
 ## ✨ Fonctionnalités
 
-- **🌃 Design cyberpunk** : néons, glassmorphism, symboles flottants, scanlines
 - **📜 Popups historiques** avec miniatures d'époque et indices subtils
 - **🏆 Système de flags** : chaque challenge résolu révèle un trésor historique
 - **🔗 Session encodée dans l'URL** : progression sauvegardée et partageable (base64 + XOR)
@@ -83,7 +82,7 @@ cryptographia/
 
 ## 📜 Licence
 
-MIT — Libre d'utilisation, modification et distribution.
+Apache 2.0 — Libre d'utilisation, modification et distribution.
 
 ---
 
