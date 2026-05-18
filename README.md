@@ -9,7 +9,7 @@ Cryptographia est un jeu web éducatif composé de **8 énigmes cryptographiques
 
 ## 🎮 Comment jouer
 
-1. Ouvrez le site : **[anadema.github.io/cryptographia](https://anadema.github.io//cryptographia)**
+1. Ouvrez le site : **[anadema.github.io/cryptographia](https://anadema.github.io/Cryptographia/)**
 2. Choisissez un challenge parmi les 8 disponibles
 3. Lisez l'**📜 Histoire** du code (des indices sont cachés dans le texte !)
 4. Résolvez l'énigme pour obtenir un **flag** secret
