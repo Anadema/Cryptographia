@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <meta name="theme-color" content="#050510">
+  <meta name="theme-color" content="#1e1535">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <title>Cryptographia ▸ Cyberpunk Edition</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,7 +16,7 @@
   <style>
     *{-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none;box-sizing:border-box}
     input{-webkit-user-select:text;user-select:text;font-size:16px}
-    body{font-family:'Rajdhani',sans-serif;-webkit-font-smoothing:antialiased;overscroll-behavior:none;background:#050510;color:#e0e0f0;margin:0;min-height:100vh}
+    body{font-family:'Rajdhani',sans-serif;-webkit-font-smoothing:antialiased;overscroll-behavior:none;background:#1e1535;color:#e0e0f0;margin:0;min-height:100vh}
     .ft{font-family:'Orbitron',sans-serif;letter-spacing:.08em}
     .fm{font-family:'Share Tech Mono',monospace}
     .ns{user-select:none;-webkit-user-select:none}
@@ -32,17 +32,17 @@
     .border-glow-gold{box-shadow:0 0 12px #ffd70060,inset 0 0 8px #ffd70015}
 
     /* === GLASSMORPHISM CARDS === */
-    .glass{background:rgba(10,10,30,.7);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(0,240,255,.15)}
-    .glass2{background:rgba(15,15,40,.8);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,45,149,.15)}
+    .glass{background:rgba(8,10,25,.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(100,140,255,.12)}
+    .glass2{background:rgba(10,12,30,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(236,72,153,.12)}
 
     /* === BACKGROUND WALLPAPER === */
     .bg-cyber{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
-    .bg-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,240,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,240,255,.03) 1px,transparent 1px);background-size:40px 40px}
-    .bg-radial{position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(0,240,255,.06) 0%,transparent 50%),radial-gradient(ellipse at 80% 20%,rgba(255,45,149,.04) 0%,transparent 50%),radial-gradient(ellipse at 50% 80%,rgba(0,255,65,.03) 0%,transparent 50%)}
+    .bg-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(180,140,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(180,140,255,.05) 1px,transparent 1px);background-size:40px 40px}
+    .bg-radial{position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(140,80,220,.10) 0%,transparent 50%),radial-gradient(ellipse at 80% 20%,rgba(180,80,220,.06) 0%,transparent 50%),radial-gradient(ellipse at 50% 90%,rgba(100,60,200,.05) 0%,transparent 40%)}
 
     /* === FLOATING SYMBOLS === */
-    @keyframes float{0%{transform:translateY(100vh) rotate(0deg);opacity:0}10%{opacity:.06}90%{opacity:.06}100%{transform:translateY(-100px) rotate(360deg);opacity:0}}
-    .sym{position:absolute;font-size:1.8rem;color:#00f0ff;opacity:0;animation:float linear infinite;pointer-events:none}
+    @keyframes float{0%{transform:translateY(100vh) rotate(0deg);opacity:0}10%{opacity:.25}90%{opacity:.25}100%{transform:translateY(-100px) rotate(360deg);opacity:0}}
+    .sym{position:absolute;font-size:1.8rem;color:#00f0ff;opacity:0;animation:float linear infinite;pointer-events:none;filter:drop-shadow(0 0 8px rgba(255,255,255,.6))}
 
     /* === SCANLINES === */
     .scanlines::after{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.08) 2px,rgba(0,0,0,.08) 4px);pointer-events:none;z-index:9999}
@@ -89,8 +89,8 @@ for(let i=0;i<25;i++){
   s.style.left=Math.random()*100+'%';
   s.style.animationDuration=(15+Math.random()*25)+'s';
   s.style.animationDelay=(Math.random()*20)+'s';
-  s.style.fontSize=(1+Math.random()*2)+'rem';
-  s.style.color=['#00f0ff','#ff2d95','#00ff41','#ffd700'][Math.floor(Math.random()*4)];
+  s.style.fontSize=(1.5+Math.random()*2.5)+'rem';
+  s.style.color=['#ffffff','#e0d0ff','#ffffff','#d0c0ff'][Math.floor(Math.random()*4)];
   bg.appendChild(s);
 }
 </script>
@@ -112,30 +112,45 @@ const ROM=['I','II','III','IV','V','VI','VII','VIII'];
 
 const CH=[
   {id:1,ep:'−500',nm:'La Scytale',cv:'Sparte',ic:'𓂀',ans:'LEONIDAS',fl:'LACEDEMONE',fm:"L'antique nom de Sparte.",hi:"Les généraux spartiates enroulaient une bande de cuir autour d'un bâton appelé scytale.",clr:'#00f0ff',
-    mini:'🛡️',
+    mini:'🛡️',wiki:'Scytale',
     lore:"Au Ve siècle avant J.-C., Sparte dominait le Péloponnèse par la force de ses guerriers. Les éphores — magistrats suprêmes — devaient communiquer secrètement avec leurs généraux déployés au loin.\n\nIls inventèrent la scytale : une bande de cuir étroite enroulée en spirale autour d'un bâton cylindrique à section carrée parfaite. Le message s'écrivait horizontalement, puis la bande était déroulée pour être confiée au messager. Sans le bon bâton, impossible de lire quoi que ce soit.\n\nLe plus célèbre utilisateur de la scytale fut sans doute un roi spartiate légendaire, héros des Thermopyles, qui mena 300 guerriers face à l'Empire perse en 480 av. J.-C. Les messages chiffrés par scytale jouèrent un rôle crucial dans la coordination des forces grecques.\n\nLe nombre de faces visibles du bâton déterminait le chiffrement. Pour reconstituer le message, il fallait enrouler la bande sur un bâton identique et lire horizontalement."},
   {id:2,ep:'−50',nm:'Le Chiffre de César',cv:'Rome',ic:'♜',ans:'VENIVIDIVICI',fl:'RUBICON',fm:"Le fleuve franchi par César.",hi:"César décalait chaque lettre selon une clé secrète.",clr:'#ff2d95',
-    mini:'🏛️',
+    mini:'🏛️',wiki:'Caesar_cipher',
     lore:"Jules César, consul puis dictateur de Rome, utilisait un système de chiffrement d'une simplicité trompeuse. Chaque lettre de l'alphabet était remplacée par celle située quelques positions plus loin — un décalage si modeste qu'on pouvait le compter sur les doigts d'une main.\n\nSuétone rapporte que César l'utilisait pour sa correspondance privée. À une époque où la majorité de la population était illettrée, ce simple décalage suffisait à protéger les messages les plus sensibles.\n\nLes Romains notaient leurs nombres avec des lettres : I, V, X, L, C, D, M. Le décalage de César est souvent exprimé dans cette notation ancestrale.\n\nAprès sa conquête de la Gaule, César envoya au Sénat un message devenu légendaire — une phrase de victoire en trois mots latins, si concise et percutante qu'elle traversa les siècles. Quelques années plus tôt, il avait franchi un fleuve fameux, déclenchant la guerre civile qui transforma la République en Empire."},
   {id:3,ep:'−150',nm:'Le Carré de Polybe',cv:'Grèce',ic:'⊞',ans:'SECRET',fl:'TORCHES',fm:"Deux groupes de torches transmettaient les coordonnées.",hi:"Polybe inventa une grille 5×5 où chaque lettre est repérée par deux chiffres.",clr:'#00ff41',
-    mini:'🔥',
+    mini:'🔥',wiki:'Polybius_square',
     lore:"Polybe, historien grec du IIe siècle av. J.-C., inventa un système de communication à distance remarquable. Il disposa les 25 lettres de l'alphabet dans une grille carrée, où chaque lettre est identifiée par sa position : un premier chiffre pour la ligne, un second pour la colonne.\n\nPour transmettre à distance, Polybe utilisait des torches allumées sur les collines : un premier groupe indiquait la rangée, un second la colonne. Ce système permettait de communiquer la nuit sur de grandes distances, à une vitesse surprenante pour l'époque.\n\nDes siècles plus tard, les prisonniers de guerre adaptèrent cette méthode en tapant sur les murs de leurs cellules — le fameux « code des prisonniers ». Un prisonnier tapait d'abord le numéro de ligne, puis celui de colonne, pour chaque lettre du message.\n\nLa grille de Polybe est aussi à la base de nombreux chiffrements modernes. Sa simplicité est sa force : il suffit de connaître les coordonnées pour déchiffrer n'importe quel message."},
   {id:4,ep:'1586',nm:'Le Chiffre de Vigenère',cv:'France',ic:'⚜',ans:'TROIS',fl:'INDECHIFFRABLE',fm:"Son surnom pendant trois siècles.",hi:"Une clé secrète décale différemment chaque lettre.",clr:'#ffd700',
-    mini:'📜',
+    mini:'📜',wiki:'Vigen%C3%A8re_cipher',
     lore:"Blaise de Vigenère, diplomate français à la cour d'Henri III, perfectionna en 1586 un système polyalphabétique. Contrairement au chiffre de César (décalage fixe), Vigenère utilise une clé secrète qui modifie chaque lettre différemment.\n\nLa clé est un mot court et mémorable — souvent un mot de quatre lettres évoquant la puissance ou la noblesse. On raconte que les diplomates français choisissaient des noms d'animaux majestueux, emblèmes du pouvoir royal. Cette clé se répète cycliquement sur toute la longueur du message.\n\nPour chiffrer, on additionne chaque lettre du texte avec la lettre correspondante de la clé (A=0, B=1...). Pour déchiffrer, on soustrait.\n\nPendant 300 ans, ce chiffre fut surnommé « le chiffre indéchiffrable ». Il fallut attendre le XIXe siècle pour que Charles Babbage et Friedrich Kasiski découvrent comment le briser en analysant les répétitions."},
   {id:5,ep:'1844',nm:'Le Rail Fence',cv:'États-Unis',ic:'⚡',ans:'TELEGRAPH',fl:'MORSE',fm:"Morse révolutionna la communication.",hi:"Le Rail Fence dispose les lettres en zigzag sur plusieurs rails.",clr:'#ff6b00',
-    mini:'⚡',
+    mini:'⚡',wiki:'Morse_code',
     lore:"Au milieu du XIXe siècle, la révolution industrielle transformait les communications. Le chiffre Rail Fence disposait les lettres en zigzag sur plusieurs lignes horizontales — les « rails ». Le nombre de rails, toujours petit, constituait la clé secrète.\n\nPour chiffrer, on écrit le message en zigzag descendant puis remontant. On transmet ensuite en lisant chaque rail de gauche à droite. Pour décoder, il faut reconnaître le nombre de rails utilisé et reconstituer le zigzag.\n\nEn 1844, Samuel Morse envoya le premier message télégraphique. Son code — des points et des traits attribués à chaque lettre de l'alphabet — révolutionna la communication mondiale. Ce système permettait de transmettre un message en quelques minutes là où un cavalier mettait des jours.\n\nLe télégraphe rendit possible la transmission instantanée de messages chiffrés. Un nombre pouvait être transmis en épelant son nom lettre par lettre dans le code de Morse, ajoutant une couche supplémentaire de complexité."},
   {id:6,ep:'1854',nm:'Le Chiffre de Playfair',cv:'Royaume-Uni',ic:'♛',ans:'CODE',fl:'WHEATSTONE',fm:"Charles Wheatstone inventa le chiffre.",hi:"Utilisé par l'armée britannique pendant les guerres coloniales.",clr:'#a855f7',
-    mini:'👑',
+    mini:'👑',wiki:'Playfair_cipher',
     lore:"En 1854, Charles Wheatstone inventa un système utilisant une grille de 5×5 cases remplie selon un mot-clé. Bien que Wheatstone en soit l'inventeur, c'est Lord Playfair qui en fit la promotion — d'où le nom.\n\nL'armée britannique l'adopta pendant la Guerre des Boers et la Première Guerre mondiale. Les officiers victoriens, férus de culture classique, appréciaient les langues anciennes pour ajouter de l'obscurité à leurs messages.\n\nIl n'était pas rare que les positions dans la grille soient notées non pas en chiffres arabes ordinaires, mais dans un système de numération hérité de l'Antiquité méditerranéenne. Les premières lettres d'un alphabet très ancien — celui qui donna naissance au nôtre — servaient alors de coordonnées, chacune représentant un chiffre en partant de zéro.\n\nCette pratique ajoutait une étape de déchiffrement supplémentaire : il fallait d'abord traduire ces symboles anciens en nombres avant de pouvoir consulter la grille."},
   {id:7,ep:'1940',nm:'Enigma',cv:'Bletchley Park',ic:'⚙',ans:'WAR',fl:'TURING',fm:"Turing brisa Enigma et écourta la guerre.",hi:"La machine Enigma chiffrait avec 158 millions de millions de combinaisons.",clr:'#ef4444',
-    mini:'⚙',
+    mini:'⚙',wiki:'Enigma_machine',
     lore:"La machine Enigma, utilisée par l'Allemagne nazie, possédait trois rotors mécaniques. Chaque rotor appliquait un décalage distinct à la lettre qu'il traitait. Les positions étaient changées quotidiennement selon un carnet de codes.\n\nÀ Bletchley Park, Alan Turing et son équipe analysèrent les habitudes de l'ennemi. Les opérateurs allemands ne choisissaient pas leurs positions au hasard : ils privilégiaient certaines catégories de nombres — une préférence mathématique qui fut leur perte.\n\nLa méthode de Turing reposait sur les « cribs » — des fragments de texte en clair qu'on devinait présents dans le message. Les transmissions interceptées contenaient presque toujours des mots courts et prévisibles liés au contexte du conflit mondial.\n\nGrâce à la « Bombe » — machine électromécanique de son invention — Turing réduisit l'espace des possibles. En combinant les contraintes connues sur chaque rotor, le nombre de combinaisons à tester devenait humainement gérable. On estime qu'il écourta la guerre de 2 à 4 ans."},
   {id:8,ep:'2026',nm:'Stéganographie',cv:'Internet',ic:'◉',ans:'INVISIBLE',fl:'PIXEL',fm:"Des messages cachés dans les pixels.",hi:"Un message caché dans les données brutes d'une image.",clr:'#06b6d4',
-    mini:'💻',
+    mini:'💻',wiki:'Steganography',
     lore:"Du grec stéganos (« couvert ») et graphein (« écrire »), la stéganographie cache l'existence même du message. Contrairement au chiffrement qui rend illisible, la stéganographie dissimule le secret dans un support anodin — une image, un fichier audio, une vidéo.\n\nDans le monde numérique, chaque fichier image est composé de millions d'octets. Un éditeur hexadécimal révèle ces données brutes : des valeurs de 00 à FF qui encodent les pixels, les métadonnées, la structure du fichier.\n\nLa technique la plus élémentaire consiste à glisser du texte là où personne ne regarde : après que toutes les données légitimes du fichier se terminent. L'image s'affiche parfaitement — mais un observateur attentif, armé du bon outil, découvrira que le fichier contient plus qu'il n'y paraît.\n\nDes techniques plus sophistiquées modifient les bits les moins significatifs des pixels (LSB). L'œil humain ne perçoit pas la différence, mais les données sont bien là, dissimulées dans le bruit numérique."}
 ];
+
+// Wikipedia image component — uses MediaWiki API with CORS
+const WikiImg=({title,alt,clr})=>{
+  const[src,setSrc]=useState(null);
+  useEffect(()=>{
+    fetch('https://en.wikipedia.org/w/api.php?action=query&titles='+title+'&prop=pageimages&format=json&pithumbsize=600&origin=*')
+      .then(r=>r.json())
+      .then(d=>{const p=Object.values(d.query.pages)[0];if(p&&p.thumbnail)setSrc(p.thumbnail.source)})
+      .catch(()=>{});
+  },[title]);
+  if(!src)return null;
+  return(<div className="rounded-lg overflow-hidden border" style={{borderColor:clr+'30'}}>
+    <img src={src} alt={alt} className="w-full object-contain" style={{maxHeight:'220px',filter:'brightness(0.85) contrast(1.1) saturate(0.85)',background:'rgba(0,0,0,.3)'}} onError={e=>{e.target.parentElement.style.display='none'}}/>
+  </div>);
+};
 
 // Answer input component
 const AI=({v,ch,sub,ph,er,ml=20})=>(
@@ -286,13 +301,24 @@ const C5=({onS})=>{
   return(<div className="space-y-5">
     <div className="glass rounded-lg p-4"><p className="text-orange-100 leading-relaxed"><strong className="text-orange-300">Rail Fence :</strong> Les lettres sont écrites en zigzag sur plusieurs rails, puis transmises ligne par ligne.</p></div>
     <div className="glass rounded-lg p-4">
-      <p className="ft text-xs uppercase tracking-[0.2em] text-orange-400 mb-3">Exemple : BONJOUR sur 3 rails</p>
-      <div className="bg-black/40 rounded p-3 border border-orange-500/30 fm text-sm text-center leading-relaxed">
-        <div className="mb-1"><span className="text-cyan-400 font-bold">B</span><span className="text-gray-700"> · · · </span><span className="text-cyan-400 font-bold">O</span></div>
-        <div className="mb-1"><span className="text-gray-700"> · </span><span className="text-pink-400 font-bold">O</span><span className="text-gray-700"> · </span><span className="text-pink-400 font-bold">J</span><span className="text-gray-700"> · </span><span className="text-pink-400 font-bold">U</span></div>
-        <div className="mb-1"><span className="text-gray-700"> · · </span><span className="text-green-400 font-bold">N</span><span className="text-gray-700"> · · · </span><span className="text-green-400 font-bold">R</span></div>
-        <div className="mt-2 text-xs text-orange-300">Transmis : <span className="text-cyan-400">BO</span>+<span className="text-pink-400">OJU</span>+<span className="text-green-400">NR</span> = BOOJUNR</div>
+      <p className="ft text-xs uppercase tracking-[0.2em] text-orange-400 mb-3">Principe : on écrit en zigzag ↘ puis ↗</p>
+      <p className="text-sm text-orange-100/80 mb-3">Prenons <strong className="text-orange-300">BONJOUR</strong> sur 3 rails. On place chaque lettre en <strong className="text-orange-300">descendant</strong> puis en <strong className="text-orange-300">remontant</strong> :</p>
+      <div className="bg-black/40 rounded p-4 border border-orange-500/30 fm text-center overflow-x-auto">
+        <div className="inline-block text-left text-sm">
+          <p className="text-xs text-gray-500 mb-2">Lettre : &nbsp;B &nbsp; O &nbsp; N &nbsp; J &nbsp; O &nbsp; U &nbsp; R</p>
+          <p className="text-xs text-gray-500 mb-2">Mouvement: ↘ &nbsp;↘ &nbsp;↗ &nbsp;↗ &nbsp;↘ &nbsp;↘ &nbsp;↗</p>
+          <div className="space-y-0.5">
+            <p><span className="text-cyan-400">Rail 1:</span> <span className="text-cyan-300 font-bold">B</span><span className="text-gray-700"> · · · </span><span className="text-cyan-300 font-bold">O</span><span className="text-gray-700"> · ·</span></p>
+            <p><span className="text-pink-400">Rail 2:</span><span className="text-gray-700"> · </span><span className="text-pink-300 font-bold">O</span><span className="text-gray-700"> · </span><span className="text-pink-300 font-bold">J</span><span className="text-gray-700"> · </span><span className="text-pink-300 font-bold">U</span><span className="text-gray-700"> ·</span></p>
+            <p><span className="text-green-400">Rail 3:</span><span className="text-gray-700"> · · </span><span className="text-green-300 font-bold">N</span><span className="text-gray-700"> · · · </span><span className="text-green-300 font-bold">R</span></p>
+          </div>
+          <div className="mt-3 pt-3 border-t border-orange-500/20 text-xs">
+            <p className="text-orange-200">On lit chaque rail → <span className="text-cyan-300">BO</span> + <span className="text-pink-300">OJU</span> + <span className="text-green-300">NR</span> = <strong>BOOJUNR</strong></p>
+          </div>
+        </div>
       </div>
+      <p className="text-xs text-center text-orange-400/60 mt-3">Le rail du milieu a plus de lettres car le zigzag y passe plus souvent !</p>
+      <p className="text-xs text-center text-orange-200/80 mt-1">Pour <strong>décoder</strong> : trouvez le nombre de rails, calculez combien de lettres par rail, remplissez les rails, puis lisez en zigzag.</p>
     </div>
     <div className="glass2 rounded-lg p-5" style={{boxShadow:'0 0 15px rgba(255,107,0,.3)'}}>
       <p className="ft text-xs uppercase tracking-[0.3em] text-orange-400 mb-2 text-center">Indice Morse : nombre de rails</p>
@@ -385,7 +411,7 @@ const C8=({onS})=>{
   return(<div className="space-y-5">
     <div className="glass rounded-lg p-4"><p className="text-cyan-100 leading-relaxed"><strong className="text-cyan-300">Stéganographie :</strong> Un secret est caché dans les données brutes de cette image. Téléchargez-la, inspectez ses octets avec un <strong className="text-cyan-200">éditeur hexadécimal</strong>.</p></div>
     <div className="glass rounded-lg p-4 border-glow-cyan">
-      <p className="ft text-xs uppercase tracking-[0.2em] text-cyan-400 mb-3 text-center glow-cyan">Image suspecte</p>
+      <p className="ft text-xs uppercase tracking-[0.2em] text-cyan-400 mb-3 text-center glow-cyan">Fichier à analyser</p>
       <div className="flex justify-center"><canvas ref={cRef} className="rounded-lg border-2 border-cyan-500/40" style={{maxWidth:'100%',height:'auto'}}/></div>
     </div>
     <button onClick={download} className="w-full py-3.5 bg-gradient-to-r from-cyan-600 to-teal-700 text-white rounded-lg ft tracking-widest text-sm uppercase active:scale-[0.98] shadow-lg shadow-cyan-500/20 border border-cyan-400/30">📥 TÉLÉCHARGER L'IMAGE</button>
@@ -421,7 +447,7 @@ const App=()=>{
   const cnt=done.filter(Boolean).length;
 
   if(v==='home')return(
-    <div className="min-h-screen px-4 py-8 sm:py-12"><div className="max-w-md mx-auto fi">
+    <div className="min-h-screen px-4 py-8 sm:py-12"><div className="max-w-md lg:max-w-2xl mx-auto fi">
       <div className="text-center mb-10">
         <div className="text-6xl sm:text-7xl mb-4 ns pulse">𓂀</div>
         <h1 className="ft text-2xl sm:text-3xl font-bold text-white mb-1 tracking-[0.2em] uppercase neon-shimmer">CRYPTOGRAPHIA</h1>
@@ -437,7 +463,7 @@ const App=()=>{
       <div className="space-y-3">{CH.map((c,i)=>{const d=done[i];return(
         <button key={c.id} onClick={()=>go(i)} className="w-full text-left p-4 rounded-xl border transition-all glass active:scale-[0.98]" style={{borderColor:d?c.clr+'60':c.clr+'20',boxShadow:d?`0 0 12px ${c.clr}30`:'none'}}>
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-full flex items-center justify-center text-2xl flex-shrink-0 ft border-2" style={{borderColor:c.clr+'60',backgroundColor:d?c.clr+'20':'transparent',color:d?c.clr:'#666'}}>{d?<Ic n="ck" s={24}/>:ROM[i]}</div>
+            <div className="w-12 h-12 rounded-full flex items-center justify-center text-2xl flex-shrink-0 ft border-2" style={{borderColor:d?c.clr+'60':'rgba(255,255,255,.3)',backgroundColor:d?c.clr+'20':'rgba(255,255,255,.08)',color:d?c.clr:'#ffffff'}}>{d?<Ic n="ck" s={24}/>:ROM[i]}</div>
             <div className="flex-1 min-w-0"><div className="flex items-center gap-2 mb-0.5"><span className="text-xs ft font-bold tracking-widest" style={{color:c.clr}}>{c.ep}</span><span className="text-xs text-gray-600">·</span><span className="text-xs text-gray-500 truncate">{c.cv}</span></div><div className="ft font-bold text-gray-200 truncate tracking-wide text-sm sm:text-base">{c.nm}</div></div>
             <div>{d?<span className="text-2xl ns">{c.ic}</span>:<Ic n="cr" s={20} c="text-gray-600"/>}</div>
           </div>
@@ -452,7 +478,7 @@ const App=()=>{
   );
 
   if(v==='ch'){const c=CH[ci];const Comp=CC[ci];return(
-    <div className="min-h-screen px-4 py-6"><div className="max-w-md mx-auto fi">
+    <div className="min-h-screen px-4 py-6"><div className="max-w-md lg:max-w-2xl mx-auto fi">
       <div className="flex items-center justify-between mb-4">
         <button onClick={()=>setV('home')} className="text-cyan-500 flex items-center gap-1 text-sm ft uppercase tracking-widest active:text-cyan-300"><Ic n="cl" s={16}/> Retour</button>
         <button onClick={()=>setLore(true)} className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs ft uppercase tracking-widest active:scale-95 border" style={{color:c.clr,borderColor:c.clr+'50',background:c.clr+'10'}}>📜 Histoire</button>
@@ -462,6 +488,7 @@ const App=()=>{
           <div className="absolute top-0 right-0 text-9xl opacity-10 ns" style={{transform:'translate(20%,-20%)',color:c.clr}}>{c.ic}</div>
           <div className="relative"><div className="flex items-center justify-between mb-3"><span className="text-xs uppercase tracking-[0.3em] ft" style={{color:c.clr}}>Chapitre {ROM[ci]}</span><span className="text-xs ft text-gray-500 tracking-widest">{c.ep}</span></div><div className="text-5xl mb-3 ns">{c.ic}</div><h2 className="ft text-2xl sm:text-3xl font-bold mb-1 tracking-wide text-white">{c.nm}</h2><p className="text-gray-400">{c.cv}</p></div>
         </div>
+        <div className="px-4 pt-4"><WikiImg title={c.wiki} alt={c.nm} clr={c.clr}/></div>
         <div className="p-4 sm:p-5"><Comp onS={solve}/></div>
       </div>
       {showLore&&<Modal ch={c} onClose={()=>setLore(false)}/>}
@@ -469,7 +496,7 @@ const App=()=>{
   );}
 
   if(v==='hist'){const c=CH[ci];return(
-    <div className="min-h-screen px-4 py-8"><div className="max-w-md mx-auto fi">
+    <div className="min-h-screen px-4 py-8"><div className="max-w-md lg:max-w-2xl mx-auto fi">
       <div className="text-center mb-6"><div className="inline-flex items-center justify-center w-24 h-24 rounded-full mb-4 sr border-4" style={{borderColor:c.clr,backgroundColor:c.clr+'20',boxShadow:`0 0 30px ${c.clr}60`}}><Ic n="ul" s={40} c="text-white"/></div><p className="ft text-xs uppercase tracking-[0.3em] glow-green text-green-400">Énigme résolue</p></div>
       <div className="glass rounded-xl p-6 mb-5" style={{borderColor:c.clr+'40'}}>
         <div className="text-center mb-4"><div className="text-5xl mb-3 ns">{c.ic}</div><h2 className="ft text-2xl font-bold text-white tracking-wide">{c.nm}</h2><p className="text-sm ft tracking-widest mt-1" style={{color:c.clr}}>{c.ep} · {c.cv.toUpperCase()}</p></div>
@@ -490,7 +517,7 @@ const App=()=>{
   );}
 
   if(v==='win')return(
-    <div className="min-h-screen px-4 py-10 flex items-center"><div className="max-w-md mx-auto text-center fi">
+    <div className="min-h-screen px-4 py-10 flex items-center"><div className="max-w-md lg:max-w-2xl mx-auto text-center fi">
       <div className="text-7xl mb-6 ns pulse">🏆</div>
       <h1 className="ft text-3xl sm:text-4xl font-bold mb-3 tracking-[0.1em] neon-shimmer">{cnt===8?'MAÎTRE DES CODES':'PROGRESSION'}</h1>
       <div className="h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent w-32 mx-auto mb-4"></div>
