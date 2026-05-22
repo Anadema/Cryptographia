@@ -65,6 +65,8 @@
     @keyframes borderPulse{0%,100%{border-color:rgba(0,240,255,.3)}50%{border-color:rgba(0,240,255,.8)}}
     .border-pulse{animation:borderPulse 2s ease-in-out infinite}
 
+    @keyframes btnGlow{0%,100%{box-shadow:0 0 5px var(--gclr),0 0 10px var(--gclr)}50%{box-shadow:0 0 10px var(--gclr),0 0 25px var(--gclr),0 0 40px var(--gclr)}}
+    .btn-glow{animation:btnGlow 2s ease-in-out infinite}
     .hex{font-family:'Share Tech Mono',monospace;font-size:.7em;line-height:1.5;background:#0a0a0a;color:#33ff33;padding:12px;border-radius:6px;overflow-x:auto;max-height:240px;overflow-y:auto;white-space:pre;word-break:break-all}
   </style>
 </head>
@@ -108,7 +110,7 @@ const Ic=({n,s=20,c=''})=>{const p={
   ul:<g stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></g>,
 };return <svg width={s} height={s} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className={c}>{p[n]}</svg>};
 
-const ROM=['I','II','III','IV','V','VI','VII','VIII'];
+const ROM=['I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII','XIII','XIV','XV','XVI'];
 
 const CH=[
   {id:1,ep:'−500',nm:'La Scytale',cv:'Sparte',ic:'𓂀',ans:'LEONIDAS',fl:'LACEDEMONE',fm:"L'antique nom de Sparte.",hi:"Les généraux spartiates enroulaient une bande de cuir autour d'un bâton appelé scytale.",clr:'#00f0ff',
@@ -134,21 +136,54 @@ const CH=[
     lore:"La machine Enigma, utilisée par l'Allemagne nazie, possédait trois rotors mécaniques. Chaque rotor appliquait un décalage distinct à la lettre qu'il traitait. Les positions étaient changées quotidiennement selon un carnet de codes.\n\nÀ Bletchley Park, Alan Turing et son équipe analysèrent les habitudes de l'ennemi. Les opérateurs allemands ne choisissaient pas leurs positions au hasard : ils privilégiaient certaines catégories de nombres — une préférence mathématique qui fut leur perte.\n\nLa méthode de Turing reposait sur les « cribs » — des fragments de texte en clair qu'on devinait présents dans le message. Les transmissions interceptées contenaient presque toujours des mots courts et prévisibles liés au contexte du conflit mondial.\n\nGrâce à la « Bombe » — machine électromécanique de son invention — Turing réduisit l'espace des possibles. En combinant les contraintes connues sur chaque rotor, le nombre de combinaisons à tester devenait humainement gérable. On estime qu'il écourta la guerre de 2 à 4 ans."},
   {id:8,ep:'2026',nm:'Stéganographie',cv:'Internet',ic:'◉',ans:'INVISIBLE',fl:'PIXEL',fm:"Des messages cachés dans les pixels.",hi:"Un message caché dans les données brutes d'une image.",clr:'#06b6d4',
     mini:'💻',wiki:'Steganography',
-    lore:"Du grec stéganos (« couvert ») et graphein (« écrire »), la stéganographie cache l'existence même du message. Contrairement au chiffrement qui rend illisible, la stéganographie dissimule le secret dans un support anodin — une image, un fichier audio, une vidéo.\n\nDans le monde numérique, chaque fichier image est composé de millions d'octets. Un éditeur hexadécimal révèle ces données brutes : des valeurs de 00 à FF qui encodent les pixels, les métadonnées, la structure du fichier.\n\nLa technique la plus élémentaire consiste à glisser du texte là où personne ne regarde : après que toutes les données légitimes du fichier se terminent. L'image s'affiche parfaitement — mais un observateur attentif, armé du bon outil, découvrira que le fichier contient plus qu'il n'y paraît.\n\nDes techniques plus sophistiquées modifient les bits les moins significatifs des pixels (LSB). L'œil humain ne perçoit pas la différence, mais les données sont bien là, dissimulées dans le bruit numérique."}
+    lore:"Du grec stéganos (« couvert ») et graphein (« écrire »), la stéganographie cache l'existence même du message. Contrairement au chiffrement qui rend illisible, la stéganographie dissimule le secret dans un support anodin — une image, un fichier audio, une vidéo.\n\nDans le monde numérique, chaque fichier image est composé de millions d'octets. Un éditeur hexadécimal révèle ces données brutes : des valeurs de 00 à FF qui encodent les pixels, les métadonnées, la structure du fichier.\n\nLa technique la plus élémentaire consiste à glisser du texte là où personne ne regarde : après que toutes les données légitimes du fichier se terminent. L'image s'affiche parfaitement — mais un observateur attentif, armé du bon outil, découvrira que le fichier contient plus qu'il n'y paraît.\n\nDes techniques plus sophistiquées modifient les bits les moins significatifs des pixels (LSB). L'œil humain ne perçoit pas la différence, mais les données sont bien là, dissimulées dans le bruit numérique."},
+  {id:9,ep:'1500 av.J-C',nm:'Le Chiffre Atbash',cv:'Hébreux',ic:'✡',ans:'CRYPTO',fl:'HEBREUX',fm:"L'un des plus anciens chiffrements connus.",hi:"Inversez l'alphabet : A↔Z, B↔Y, C↔X...",clr:'#6366f1',mini:'📖',wiki:'Dead_Sea_Scrolls',imgUrl:'https://josephkimiri.github.io/assets/img/blog/atbash.jpg',
+    lore:"L'Atbash est l'un des plus anciens chiffrements connus, originaire de la tradition hébraïque. Son principe est d'une simplicité radicale : on inverse l'alphabet. La première lettre devient la dernière, la deuxième l'avant-dernière, et ainsi de suite.\n\nA devient Z, B devient Y, C devient X... Ce système est mentionné dans la Bible, notamment dans le Livre de Jérémie, où le mot « Sheshakh » (ששך) est un Atbash pour « Babel » (בבל).\n\nMalgré sa simplicité, l'Atbash a traversé les millénaires. Les kabbalistes l'utilisaient pour cacher des significations mystiques dans les textes sacrés. Certains groupes ésotériques l'emploient encore aujourd'hui."},
+  {id:10,ep:'1963',nm:'Le Code Binaire',cv:'Informatique',ic:'💾',ans:'HACK',fl:'OCTET',fm:"8 bits forment un octet, un octet forme un caractère.",hi:"Chaque lettre est encodée en 8 bits (0 et 1).",clr:'#10b981',mini:'🖥️',wiki:'ASCII',imgUrl:'https://nicolaskaplan.fr/blog/wp-content/uploads/2017/04/binary-computer-code-repeating-vector-background-illustration-continuous-pattern-left-right-up-and-down_135022250.jpeg',
+    lore:"En 1963, le standard ASCII (American Standard Code for Information Interchange) fut adopté. Chaque caractère — lettre, chiffre, symbole — reçut un numéro unique de 0 à 127, encodé en 7 puis 8 bits (un octet).\n\nLa lettre A vaut 65, B vaut 66... En binaire, chaque lettre devient une suite de 8 chiffres : des 0 et des 1. Par exemple, A = 01000001.\n\nCe système est le fondement de toute l'informatique moderne. Chaque fichier, chaque message, chaque image que vous voyez sur un écran est au fond une immense suite de 0 et de 1, organisée en paquets de huit."},
+  {id:11,ep:'1980',nm:'Le ROT13',cv:'Internet',ic:'🔄',ans:'INTERNET',fl:'USENET',fm:"Le réseau Usenet popularisa ce chiffrement trivial.",hi:"Décalez chaque lettre de 13 positions dans l'alphabet.",clr:'#f59e0b',mini:'🌐',wiki:'ROT13',imgUrl:'https://miro.medium.com/v2/resize:fit:594/format:webp/0*m3VShx1oxynBnACy.jpeg',
+    lore:"Au début des années 1980, le réseau Usenet — ancêtre des forums — avait un problème : comment partager des spoilers ou des blagues offensantes sans choquer ceux qui ne veulent pas les lire ?\n\nLa solution : ROT13, un chiffre de César avec un décalage de 13. Sa particularité unique : appliquer ROT13 deux fois redonne le texte original, car l'alphabet a 26 lettres et 13 est exactement la moitié.\n\nROT13 n'est pas un vrai chiffrement — c'est un « rideau » volontaire. Quiconque connaît ROT13 peut le décoder instantanément. Mais c'est devenu une tradition sur Internet et un terme de la culture hacker."},
+  {id:12,ep:'1987',nm:'Le Base64',cv:'Web',ic:'📧',ans:'ENCODE',fl:'MIME',fm:"Le format MIME utilise Base64 pour les pièces jointes email.",hi:"Un encodage qui transforme des données binaires en texte lisible.",clr:'#ec4899',mini:'📨',wiki:'Base64',wikiLang:'fr',
+    lore:"Base64 n'est pas un chiffrement — c'est un encodage. Il transforme n'importe quelles données binaires en une suite de 64 caractères « sûrs » : A-Z, a-z, 0-9, + et /.\n\nInventé pour les emails (norme MIME, 1987), il permet d'envoyer des fichiers binaires (images, PDF) à travers des protocoles qui n'acceptent que du texte. Chaque groupe de 3 octets est converti en 4 caractères Base64.\n\nOn reconnaît facilement du Base64 : des chaînes de lettres et chiffres mélangés, souvent terminées par un ou deux signes =. Pour le décoder, un simple outil en ligne suffit."},
+  {id:13,ep:'1991',nm:'Le Hash MD5',cv:'Sécurité',ic:'🔒',ans:'CYBER',fl:'HASH',fm:"Une empreinte unique et irréversible.",hi:"Un hash transforme un texte en empreinte fixe. Impossible à inverser... sauf avec une liste de mots.",clr:'#ef4444',mini:'🔐',wiki:'MD5',imgUrl:'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Cryptographic_Hash_Function.svg/500px-Cryptographic_Hash_Function.svg.png',
+    lore:"MD5 (Message-Digest Algorithm 5), créé par Ronald Rivest en 1991, produit une empreinte de 128 bits (32 caractères hexadécimaux) à partir de n'importe quelle donnée. C'est une fonction à sens unique : on ne peut pas retrouver le message original à partir du hash.\n\nMais il existe une faille : les « rainbow tables ». Ce sont d'immenses dictionnaires précalculés qui associent des millions de mots à leur hash MD5. Si votre mot de passe est un mot courant, son hash est probablement dans une rainbow table.\n\nC'est pourquoi MD5 est considéré comme cassé pour la sécurité. Les systèmes modernes utilisent SHA-256 ou bcrypt. Mais pour ce défi, votre mission est de jouer le rôle d'un attaquant : retrouver le mot original à partir de son hash."},
+  {id:14,ep:'1917',nm:'Le Chiffre XOR',cv:'Cryptographie',ic:'⊕',ans:'KEY',fl:'BIT',fm:"L'opération fondamentale de la cryptographie moderne.",hi:"XOR : si les bits sont identiques → 0, s'ils sont différents → 1.",clr:'#3b82f6',mini:'🔢',wiki:'XOR_cipher',imgUrl:'https://fabricenativel.github.io/Terminale/images/C15/xor1.png',
+    lore:"L'opération XOR (OU exclusif) est le cœur de la cryptographie moderne. Son principe : comparer deux bits. S'ils sont identiques (0⊕0 ou 1⊕1), le résultat est 0. S'ils sont différents (0⊕1 ou 1⊕0), le résultat est 1.\n\nPour chiffrer, on XOR chaque octet du message avec un octet de la clé. Pour déchiffrer, on applique exactement la même opération — XOR est sa propre inverse.\n\nAvec des caractères ASCII : on convertit chaque lettre en nombre, on XOR avec la clé numérique, et on reconvertit en lettre. Une opération simple mais qui, combinée à des clés aléatoires suffisamment longues, produit un chiffrement incassable (le « one-time pad »)."},
+  {id:15,ep:'1960',nm:'L\'Hexadécimal',cv:'Informatique',ic:'#️⃣',ans:'SECURE',fl:'BYTE',fm:"Base 16 : le langage des machines.",hi:"Chaque paire de caractères hex représente un octet ASCII.",clr:'#8b5cf6',mini:'💻',wiki:'Hexadecimal',imgUrl:'https://www.datanovia.com/en/wp-content/uploads/dn-tutorials/ggplot2/images/hextable-hexadecimal-color-chart.png',
+    lore:"L'hexadécimal (base 16) utilise les chiffres 0-9 et les lettres A-F pour représenter les valeurs de 0 à 15. Deux chiffres hexadécimaux forment un octet (0 à 255), suffisant pour encoder un caractère ASCII.\n\nLes informaticiens préfèrent l'hexadécimal au binaire car il est plus compact : 8 chiffres binaires = 2 chiffres hex. Les adresses mémoire, les couleurs web (#FF0000 = rouge), les analyses forensiques — tout utilise l'hexadécimal.\n\nPour convertir de l'hex en texte : prenez chaque paire de caractères, trouvez sa valeur décimale, puis le caractère ASCII correspondant. Par exemple, 41 hex = 65 décimal = lettre A."},
+  {id:16,ep:'1994',nm:'Le QR Code',cv:'Japon',ic:'📱',ans:'MATRIX',fl:'DENSO',fm:"Denso Wave inventa le QR Code pour l'industrie automobile.",hi:"Un code 2D qui stocke des données dans un motif de carrés noirs et blancs.",clr:'#14b8a6',mini:'📲',wiki:'Denso',
+    lore:"En 1994, Masahiro Hara, ingénieur chez Denso Wave (filiale de Toyota), créa le QR Code (Quick Response Code) pour suivre les pièces automobiles dans les usines japonaises.\n\nContrairement au code-barres classique (1D), le QR Code stocke des données en deux dimensions — horizontalement et verticalement. Il peut contenir jusqu'à 7 089 chiffres ou 4 296 caractères.\n\nLes trois grands carrés dans les coins permettent au scanner de déterminer l'orientation. Le reste du motif encode les données avec correction d'erreur : même endommagé à 30%, un QR Code reste lisible.\n\nAujourd'hui omniprésent (menus, billets, paiements), le QR Code est aussi utilisé en stéganographie : on peut y cacher des messages que seul un scanner révèlera."}
 ];
 
-// Wikipedia image component — uses MediaWiki API with CORS
-const WikiImg=({title,alt,clr})=>{
-  const[src,setSrc]=useState(null);
+// Wikipedia image component — tries 2 APIs for best coverage
+const WikiImg=({title,alt,clr,icon,lang='en',directUrl})=>{
+  const[src,setSrc]=useState(directUrl||null);
+  const[done,setDone]=useState(!!directUrl);
   useEffect(()=>{
-    fetch('https://en.wikipedia.org/w/api.php?action=query&titles='+title+'&prop=pageimages&format=json&pithumbsize=600&origin=*')
+    if(directUrl){setSrc(directUrl);setDone(true);return}
+    setDone(false);setSrc(null);
+    // Try MediaWiki API first
+    fetch('https://'+lang+'.wikipedia.org/w/api.php?action=query&titles='+title+'&prop=pageimages&format=json&pithumbsize=600&origin=*')
       .then(r=>r.json())
-      .then(d=>{const p=Object.values(d.query.pages)[0];if(p&&p.thumbnail)setSrc(p.thumbnail.source)})
-      .catch(()=>{});
+      .then(d=>{
+        const p=Object.values(d.query.pages)[0];
+        if(p&&p.thumbnail){setSrc(p.thumbnail.source);setDone(true)}
+        else{
+          // Fallback: try REST API
+          fetch('https://'+lang+'.wikipedia.org/api/rest_v1/page/summary/'+title)
+            .then(r=>r.json())
+            .then(d2=>{if(d2.thumbnail)setSrc(d2.thumbnail.source);setDone(true)})
+            .catch(()=>setDone(true))
+        }
+      })
+      .catch(()=>setDone(true));
   },[title]);
-  if(!src)return null;
-  return(<div className="rounded-lg overflow-hidden border" style={{borderColor:clr+'30'}}>
+  if(!done)return null;
+  if(src)return(<div className="rounded-lg overflow-hidden border" style={{borderColor:clr+'30'}}>
     <img src={src} alt={alt} className="w-full object-contain" style={{maxHeight:'220px',filter:'brightness(0.85) contrast(1.1) saturate(0.85)',background:'rgba(0,0,0,.3)'}} onError={e=>{e.target.parentElement.style.display='none'}}/>
+  </div>);
+  return(<div className="rounded-lg overflow-hidden border h-32 flex items-center justify-center" style={{borderColor:clr+'30',background:'linear-gradient(135deg, '+clr+'15, rgba(0,0,0,.4), '+clr+'10)'}}>
+    <div className="text-center"><div className="text-6xl mb-1 ns" style={{filter:'drop-shadow(0 0 12px '+clr+')'}}>{icon}</div><p className="ft text-xs uppercase tracking-widest" style={{color:clr+'90'}}>{alt}</p></div>
   </div>);
 };
 
@@ -165,7 +200,7 @@ const Modal=({ch,onClose})=>{
   if(!ch)return null;
   return(
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={onClose}>
-      <div className="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
+      <div className="absolute inset-0 bg-black/160 backdrop-blur-sm"></div>
       <div className="relative max-w-lg w-full max-h-[85vh] rounded-2xl overflow-hidden fi" onClick={e=>e.stopPropagation()} style={{background:'linear-gradient(135deg, rgba(10,10,30,.95), rgba(20,20,50,.95))',border:`2px solid ${ch.clr}50`,boxShadow:`0 0 40px ${ch.clr}20`}}>
         {/* Close button */}
         <button onClick={onClose} className="absolute top-3 right-3 w-10 h-10 rounded-full bg-white/10 text-white flex items-center justify-center text-xl font-bold z-10 active:scale-95 hover:bg-white/20 border border-white/20">✕</button>
@@ -204,7 +239,7 @@ const C1=({onS})=>{
     <div className="glass rounded-lg p-4"><p className="text-cyan-100 leading-relaxed">Trouvez le bon <strong className="text-cyan-300">nombre de colonnes</strong>. La grille se réorganise : lisez <strong className="text-cyan-300">ligne par ligne</strong> pour trouver le mot.</p></div>
     <div className="glass2 rounded-lg p-5 border-glow-cyan">
       <p className="ft text-xs uppercase tracking-[0.3em] text-cyan-400 mb-3 text-center glow-cyan">Données interceptées</p>
-      <div className="flex justify-center gap-1 flex-wrap">{enc.split('').map((c,i)=>(<div key={i} className="w-9 h-11 flex items-center justify-center bg-cyan-950/80 text-cyan-300 fm font-bold text-xl border border-cyan-500/30 rounded">{c}</div>))}</div>
+      <div className="flex justify-center gap-1 flex-wrap">{enc.split('').map((c,i)=>(<div key={i} className="w-9 h-11 flex items-center justify-center bg-cyan-950/160 text-cyan-300 fm font-bold text-xl border border-cyan-500/30 rounded">{c}</div>))}</div>
     </div>
     <div className="glass rounded-lg p-5">
       <p className="ft text-xs uppercase tracking-[0.2em] text-cyan-400 mb-4 text-center">Paramètre : colonnes</p>
@@ -271,7 +306,7 @@ const C4=({onS})=>{
     </div>
     <div className="glass rounded-lg p-4">
       <p className="ft text-xs uppercase tracking-[0.2em] text-yellow-400 mb-3 text-center">Comment déchiffrer ?</p>
-      <div className="space-y-3 text-sm text-yellow-100/80">
+      <div className="space-y-3 text-sm text-yellow-100/160">
         <p>① Chaque lettre a une <strong className="text-yellow-300">valeur</strong> : A=0, B=1, C=2, D=3 ... L=11 ... Z=25</p>
         <p>② La clé n'a que 4 lettres, le message en a 5. On <strong className="text-yellow-300">recommence la clé</strong> depuis le début :</p>
         <div className="flex justify-center gap-1 fm text-xs my-2">
@@ -302,7 +337,7 @@ const C5=({onS})=>{
     <div className="glass rounded-lg p-4"><p className="text-orange-100 leading-relaxed"><strong className="text-orange-300">Rail Fence :</strong> Les lettres sont écrites en zigzag sur plusieurs rails, puis transmises ligne par ligne.</p></div>
     <div className="glass rounded-lg p-4">
       <p className="ft text-xs uppercase tracking-[0.2em] text-orange-400 mb-3">Principe : on écrit en zigzag ↘ puis ↗</p>
-      <p className="text-sm text-orange-100/80 mb-3">Prenons <strong className="text-orange-300">BONJOUR</strong> sur 3 rails. On place chaque lettre en <strong className="text-orange-300">descendant</strong> puis en <strong className="text-orange-300">remontant</strong> :</p>
+      <p className="text-sm text-orange-100/160 mb-3">Prenons <strong className="text-orange-300">BONJOUR</strong> sur 3 rails. On place chaque lettre en <strong className="text-orange-300">descendant</strong> puis en <strong className="text-orange-300">remontant</strong> :</p>
       <div className="bg-black/40 rounded p-4 border border-orange-500/30 fm text-center overflow-x-auto">
         <div className="inline-block text-left text-sm">
           <p className="text-xs text-gray-500 mb-2">Lettre : &nbsp;B &nbsp; O &nbsp; N &nbsp; J &nbsp; O &nbsp; U &nbsp; R</p>
@@ -318,7 +353,7 @@ const C5=({onS})=>{
         </div>
       </div>
       <p className="text-xs text-center text-orange-400/60 mt-3">Le rail du milieu a plus de lettres car le zigzag y passe plus souvent !</p>
-      <p className="text-xs text-center text-orange-200/80 mt-1">Pour <strong>décoder</strong> : trouvez le nombre de rails, calculez combien de lettres par rail, remplissez les rails, puis lisez en zigzag.</p>
+      <p className="text-xs text-center text-orange-200/160 mt-1">Pour <strong>décoder</strong> : trouvez le nombre de rails, calculez combien de lettres par rail, remplissez les rails, puis lisez en zigzag.</p>
     </div>
     <div className="glass2 rounded-lg p-5" style={{boxShadow:'0 0 15px rgba(255,107,0,.3)'}}>
       <p className="ft text-xs uppercase tracking-[0.3em] text-orange-400 mb-2 text-center">Indice Morse : nombre de rails</p>
@@ -424,14 +459,175 @@ const C8=({onS})=>{
   </div>);
 };
 
-const CC=[C1,C2,C3,C4,C5,C6,C7,C8];
+// ===== C9: ATBASH =====
+const C9=({onS})=>{
+  const[a,setA]=useState('');const[e,setE]=useState(false);
+  const alpha='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const rev='ZYXWVUTSRQPONMLKJIHGFEDCBA';
+  const sub=()=>{if(norm(a)===CH[8].ans)onS();else{setE(true);setTimeout(()=>setE(false),500)}};
+  return(<div className="space-y-5">
+    <div className="glass rounded-lg p-4"><p className="text-indigo-100 leading-relaxed"><strong className="text-indigo-300">Atbash :</strong> L'alphabet est <em>inversé</em>. A↔Z, B↔Y, C↔X... Décodez le message ci-dessous.</p></div>
+    <div className="glass2 rounded-lg p-6" style={{boxShadow:'0 0 15px rgba(99,102,241,.3)'}}>
+      <p className="ft text-xs uppercase tracking-[0.3em] text-indigo-400 mb-3 text-center">Message chiffré</p>
+      <p className="text-3xl fm font-bold text-center tracking-[0.3em] text-indigo-200">XIBKGL</p>
+    </div>
+    <div className="glass rounded-lg p-4">
+      <p className="ft text-xs uppercase tracking-[0.2em] text-indigo-400 mb-3 text-center">Table Atbash</p>
+      <div className="overflow-x-auto"><div className="flex gap-px mb-1 min-w-fit">{alpha.split('').map((l,i)=>(<div key={i} className="w-6 h-7 flex items-center justify-center bg-indigo-950/60 text-indigo-300 fm text-xs font-bold border border-indigo-500/20">{l}</div>))}</div>
+      <div className="flex gap-px min-w-fit">{rev.split('').map((l,i)=>(<div key={i} className="w-6 h-7 flex items-center justify-center bg-indigo-900/40 text-indigo-200 fm text-xs border border-indigo-500/20">{l}</div>))}</div></div>
+      <p className="text-xs text-center text-indigo-400/60 mt-2">↑ clair · ↓ chiffré</p>
+    </div>
+    <AI v={a} ch={setA} sub={sub} ph="Le mot déchiffré..." er={e}/>
+  </div>);
+};
+
+// ===== C10: BINAIRE =====
+const C10=({onS})=>{
+  const[a,setA]=useState('');const[e,setE]=useState(false);
+  const bins=['01001000','01000001','01000011','01001011'];
+  const sub=()=>{if(norm(a)===CH[9].ans)onS();else{setE(true);setTimeout(()=>setE(false),500)}};
+  return(<div className="space-y-5">
+    <div className="glass rounded-lg p-4"><p className="text-emerald-100 leading-relaxed"><strong className="text-emerald-300">Binaire :</strong> Chaque groupe de 8 bits représente un caractère ASCII. Convertissez pour trouver le mot.</p></div>
+    <div className="glass2 rounded-lg p-6" style={{boxShadow:'0 0 15px rgba(16,185,129,.3)'}}>
+      <p className="ft text-xs uppercase tracking-[0.3em] text-emerald-400 mb-3 text-center">Séquence binaire</p>
+      <div className="flex flex-wrap justify-center gap-2">{bins.map((b,i)=>(<div key={i} className="bg-emerald-950/60 rounded px-3 py-2 fm text-emerald-300 text-sm border border-emerald-500/30">{b}</div>))}</div>
+    </div>
+    <div className="glass rounded-lg p-4">
+      <p className="ft text-xs uppercase tracking-[0.2em] text-emerald-400 mb-2 text-center">Table ASCII (extrait)</p>
+      <div className="grid grid-cols-4 sm:grid-cols-7 gap-1 text-xs text-center">{[['A','65'],['B','66'],['C','67'],['D','68'],['E','69'],['F','70'],['G','71'],['H','72'],['I','73'],['J','74'],['K','75'],['L','76'],['M','77'],['N','78'],['O','79'],['P','80']].map(([l,v])=>(<div key={l} className="bg-emerald-950/40 rounded px-1 py-1 border border-emerald-500/20"><span className="text-emerald-300 font-bold">{l}</span><span className="text-emerald-500 ml-1">{v}</span></div>))}</div>
+      <p className="text-xs text-center text-emerald-400/60 mt-2">Convertissez le binaire en décimal, puis trouvez la lettre</p>
+    </div>
+    <AI v={a} ch={setA} sub={sub} ph="Le mot déchiffré..." er={e}/>
+    <a href="https://www.rapidtables.com/convert/number/binary-to-ascii.html" target="_blank" rel="noopener" className="block text-center text-xs text-emerald-500 underline">🔗 Convertisseur Binaire → ASCII</a>
+  </div>);
+};
+
+// ===== C11: ROT13 =====
+const C11=({onS})=>{
+  const[a,setA]=useState('');const[e,setE]=useState(false);
+  const sub=()=>{if(norm(a)===CH[10].ans)onS();else{setE(true);setTimeout(()=>setE(false),500)}};
+  return(<div className="space-y-5">
+    <div className="glass rounded-lg p-4"><p className="text-amber-100 leading-relaxed"><strong className="text-amber-300">ROT13 :</strong> Comme le chiffre de César, mais avec un décalage fixe de <strong className="text-amber-200">13</strong>. Chaque lettre avance de 13 positions. Sa particularité : appliquer ROT13 <em>deux fois</em> redonne le texte original !</p></div>
+    <div className="glass2 rounded-lg p-6" style={{boxShadow:'0 0 15px rgba(245,158,11,.3)'}}>
+      <p className="ft text-xs uppercase tracking-[0.3em] text-amber-400 mb-3 text-center">Message chiffré</p>
+      <p className="text-3xl fm font-bold text-center tracking-[0.2em] text-amber-200">VAGREARG</p>
+    </div>
+    <div className="glass rounded-lg p-4"><p className="text-sm text-amber-200/70 text-center fm">Indice : c'est le réseau mondial que vous utilisez en ce moment.</p></div>
+    <AI v={a} ch={setA} sub={sub} ph="Le mot déchiffré..." er={e}/>
+    <a href="https://rot13.com/" target="_blank" rel="noopener" className="block text-center text-xs text-amber-500 underline">🔗 Décodeur ROT13 en ligne</a>
+  </div>);
+};
+
+// ===== C12: BASE64 =====
+const C12=({onS})=>{
+  const[a,setA]=useState('');const[e,setE]=useState(false);
+  const sub=()=>{if(norm(a)===CH[11].ans)onS();else{setE(true);setTimeout(()=>setE(false),500)}};
+  return(<div className="space-y-5">
+    <div className="glass rounded-lg p-4"><p className="text-pink-100 leading-relaxed"><strong className="text-pink-300">Base64 :</strong> Un encodage qui transforme des données binaires en texte lisible (A-Z, a-z, 0-9, +, /). Utilisez un décodeur en ligne pour retrouver le mot original.</p></div>
+    <div className="glass2 rounded-lg p-6" style={{boxShadow:'0 0 15px rgba(236,72,153,.3)'}}>
+      <p className="ft text-xs uppercase tracking-[0.3em] text-pink-400 mb-3 text-center">Chaîne Base64</p>
+      <p className="text-3xl fm font-bold text-center tracking-wider text-pink-200">RU5DT0RF</p>
+    </div>
+    <div className="glass rounded-lg p-4"><p className="text-sm text-pink-200/70 text-center fm">On reconnaît le Base64 : mélange de lettres majuscules/minuscules et de chiffres, parfois terminé par des =</p></div>
+    <AI v={a} ch={setA} sub={sub} ph="Le mot décodé..." er={e}/>
+    <a href="https://www.base64decode.org/" target="_blank" rel="noopener" className="block text-center text-xs text-pink-500 underline">🔗 Décodeur Base64 en ligne</a>
+  </div>);
+};
+
+// ===== C13: MD5 =====
+const C13=({onS})=>{
+  const[a,setA]=useState('');const[e,setE]=useState(false);
+  const hash='3bd4df00b166e32e17d47f4ed5bf83d3';
+  const words=['ADMIN','CYBER','FIREWALL','HACKER','LOGIN','MALWARE','PHISHING','TROJAN'];
+  const sub=()=>{if(norm(a)===CH[12].ans)onS();else{setE(true);setTimeout(()=>setE(false),500)}};
+  return(<div className="space-y-5">
+    <div className="glass rounded-lg p-4"><p className="text-red-100 leading-relaxed"><strong className="text-red-300">MD5 :</strong> Un hash est une empreinte irréversible. Mais avec une <em>liste de mots candidats</em>, vous pouvez tester chacun et trouver lequel produit ce hash.</p></div>
+    <div className="glass2 rounded-lg p-6" style={{boxShadow:'0 0 15px rgba(239,68,68,.3)'}}>
+      <p className="ft text-xs uppercase tracking-[0.3em] text-red-400 mb-3 text-center">Hash MD5 à cracker</p>
+      <p className="fm text-sm text-red-200 text-center break-all">{hash}</p>
+    </div>
+    <div className="glass rounded-lg p-4">
+      <p className="ft text-xs uppercase tracking-[0.2em] text-red-400 mb-3 text-center">Mots candidats</p>
+      <div className="flex flex-wrap justify-center gap-2">{words.map(w=>(<span key={w} className="bg-red-950/50 rounded px-3 py-1.5 fm text-red-300 text-sm border border-red-500/30">{w}</span>))}</div>
+      <p className="text-xs text-center text-red-400/60 mt-3">Testez chaque mot sur un générateur MD5 en ligne. Un seul correspond !</p>
+    </div>
+    <AI v={a} ch={setA} sub={sub} ph="Le mot original..." er={e}/>
+    <a href="https://www.md5hashgenerator.com/" target="_blank" rel="noopener" className="block text-center text-xs text-red-500 underline">🔗 Générateur MD5 en ligne</a>
+  </div>);
+};
+
+// ===== C14: XOR =====
+const C14=({onS})=>{
+  const[a,setA]=useState('');const[e,setE]=useState(false);
+  // K(75)⊕3=72=H, E(69)⊕3=70=F, Y(89)⊕3=90=Z → HFZ
+  const sub=()=>{if(norm(a)===CH[13].ans)onS();else{setE(true);setTimeout(()=>setE(false),500)}};
+  return(<div className="space-y-5">
+    <div className="glass rounded-lg p-4"><p className="text-blue-100 leading-relaxed"><strong className="text-blue-300">XOR :</strong> Chaque lettre est transformée par une opération ⊕ (XOR) avec une clé numérique. Pour déchiffrer, appliquez la même opération.</p></div>
+    <div className="glass2 rounded-lg p-6" style={{boxShadow:'0 0 15px rgba(59,130,246,.3)'}}>
+      <p className="ft text-xs uppercase tracking-[0.3em] text-blue-400 mb-2 text-center">Message chiffré</p>
+      <p className="text-4xl fm font-bold text-center tracking-[0.3em] text-blue-200">HFZ</p>
+      <p className="ft text-xs text-blue-400 mt-2 text-center">Clé XOR : <span className="text-blue-200 text-lg">3</span></p>
+    </div>
+    <div className="glass rounded-lg p-4">
+      <p className="ft text-xs uppercase tracking-[0.2em] text-blue-400 mb-2 text-center">Méthode</p>
+      <div className="text-sm text-blue-200/160 text-center fm space-y-1">
+        <p>1. Convertir la lettre en ASCII : H = 72</p>
+        <p>2. XOR avec la clé : 72 ⊕ 3 = ?</p>
+        <p>3. Reconvertir en lettre</p>
+      </div>
+      <div className="bg-black/30 rounded p-3 mt-3 fm text-xs text-center">
+        <p className="text-gray-400 mb-1">Exemple fictif : M(77) ⊕ 3 = 78 = N</p>
+        <p className="text-blue-400/60">XOR bit à bit : si même → 0, si différent → 1</p>
+      </div>
+    </div>
+    <AI v={a} ch={setA} sub={sub} ph="Le mot déchiffré..." er={e}/>
+    <a href="https://xor.pw/" target="_blank" rel="noopener" className="block text-center text-xs text-blue-500 underline">🔗 Calculateur XOR en ligne</a>
+  </div>);
+};
+
+// ===== C15: HEXADÉCIMAL =====
+const C15=({onS})=>{
+  const[a,setA]=useState('');const[e,setE]=useState(false);
+  const hexVals=['53','45','43','55','52','45'];
+  const sub=()=>{if(norm(a)===CH[14].ans)onS();else{setE(true);setTimeout(()=>setE(false),500)}};
+  return(<div className="space-y-5">
+    <div className="glass rounded-lg p-4"><p className="text-violet-100 leading-relaxed"><strong className="text-violet-300">Hexadécimal :</strong> Chaque paire de caractères hex représente un caractère ASCII. Convertissez pour trouver le mot.</p></div>
+    <div className="glass2 rounded-lg p-6" style={{boxShadow:'0 0 15px rgba(139,92,246,.3)'}}>
+      <p className="ft text-xs uppercase tracking-[0.3em] text-violet-400 mb-3 text-center">Valeurs hexadécimales</p>
+      <div className="flex flex-wrap justify-center gap-2">{hexVals.map((h,i)=>(<div key={i} className="bg-violet-950/60 rounded px-4 py-2 fm text-violet-200 text-xl font-bold border border-violet-500/30">{h}</div>))}</div>
+    </div>
+    <div className="glass rounded-lg p-4">
+      <p className="ft text-xs uppercase tracking-[0.2em] text-violet-400 mb-2 text-center">Table de conversion</p>
+      <div className="grid grid-cols-4 sm:grid-cols-7 gap-1 text-xs text-center">{[['A','41'],['B','42'],['C','43'],['D','44'],['E','45'],['F','46'],['G','47'],['H','48'],['I','49'],['J','4A'],['K','4B'],['L','4C'],['M','4D'],['N','4E'],['O','4F'],['P','50'],['Q','51'],['R','52'],['S','53'],['T','54'],['U','55'],['V','56'],['W','57'],['X','58'],['Y','59'],['Z','5A']].map(([l,v])=>(<div key={l} className="bg-violet-950/40 rounded px-1 py-1 border border-violet-500/20"><span className="text-violet-300 font-bold">{l}</span><span className="text-violet-500 ml-1">{v}</span></div>))}</div>
+    </div>
+    <AI v={a} ch={setA} sub={sub} ph="Le mot déchiffré..." er={e}/>
+    <a href="https://www.rapidtables.com/convert/number/hex-to-ascii.html" target="_blank" rel="noopener" className="block text-center text-xs text-violet-500 underline">🔗 Convertisseur Hex → ASCII</a>
+  </div>);
+};
+
+// ===== C16: QR CODE =====
+const C16=({onS})=>{
+  const[a,setA]=useState('');const[e,setE]=useState(false);
+  const sub=()=>{if(norm(a)===CH[15].ans)onS();else{setE(true);setTimeout(()=>setE(false),500)}};
+  return(<div className="space-y-5">
+    <div className="glass rounded-lg p-4"><p className="text-teal-100 leading-relaxed"><strong className="text-teal-300">QR Code :</strong> Ce code 2D contient un message caché. Scannez-le avec l'appareil photo de votre téléphone ou un lecteur QR en ligne.</p></div>
+    <div className="glass rounded-lg p-4 flex justify-center" style={{boxShadow:'0 0 15px rgba(20,184,166,.3)'}}>
+      <div className="bg-white p-4 rounded-xl border-2 border-teal-400/50" style={{boxShadow:'0 0 20px rgba(20,184,166,.3)'}}><img src={'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=flag%3DMATRIX&color=0f766e&bgcolor=ffffff'} alt="QR Code" className="w-48 h-48 rounded" onError={e=>{e.target.alt='QR Code - utilisez le lien ci-dessous'}}/></div>
+    </div>
+    <div className="glass rounded-lg p-4"><p className="text-sm text-teal-200/70 text-center fm">Scannez avec votre téléphone ou uploadez l'image sur un lecteur QR en ligne. Le message contient un flag=...</p></div>
+    <AI v={a} ch={setA} sub={sub} ph="Le mot après flag=..." er={e}/>
+    <a href="https://webqr.com/" target="_blank" rel="noopener" className="block text-center text-xs text-teal-500 underline">🔗 Lecteur QR Code en ligne</a>
+  </div>);
+};
+
+const CC=[C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16];
 
 // ===== SESSION URL =====
 const KEY=173;
 const encS=d=>{const bm=d.reduce((a,v,i)=>a|(v?1<<i:0),0);return btoa(String(bm^KEY))};
-const decS=s=>{try{const bm=parseInt(atob(s))^KEY;return Array.from({length:8},(_,i)=>Boolean(bm&(1<<i)))}catch(e){return Array(8).fill(false)}};
+const decS=s=>{try{const bm=parseInt(atob(s))^KEY;return Array.from({length:16},(_,i)=>Boolean(bm&(1<<i)))}catch(e){return Array(16).fill(false)}};
 const updURL=d=>{const s=encS(d);const u=new URL(window.location);u.searchParams.set('s',s);window.history.replaceState({},'',u)};
-const readURL=()=>{const p=new URLSearchParams(window.location.search);const s=p.get('s');return s?decS(s):Array(8).fill(false)};
+const readURL=()=>{const p=new URLSearchParams(window.location.search);const s=p.get('s');return s?decS(s):Array(16).fill(false)};
 
 // ===== APP =====
 const App=()=>{
@@ -443,7 +639,7 @@ const App=()=>{
   useEffect(()=>{window.scrollTo(0,0);setLore(false)},[v,ci]);
   const solve=()=>{const n=[...done];n[ci]=true;setD(n);updURL(n);if(!flags.includes(ci))setF([...flags,ci]);setV('hist')};
   const go=i=>{setCI(i);setV('ch')};
-  const next=()=>{if(ci<7){setCI(ci+1);setV('ch')}else setV('win')};
+  const next=()=>{if(ci<15){setCI(ci+1);setV('ch')}else setV('win')};
   const cnt=done.filter(Boolean).length;
 
   if(v==='home')return(
@@ -455,8 +651,8 @@ const App=()=>{
       </div>
 
       <div className="glass rounded-xl p-5 mb-6 border-glow-cyan">
-        <div className="flex items-center justify-between mb-3"><span className="text-xs uppercase tracking-[0.2em] text-cyan-400 ft">Progression</span><span className="ft font-bold text-cyan-300 text-lg">{cnt}<span className="text-cyan-600">/8</span></span></div>
-        <div className="h-2 bg-cyan-950 rounded-full overflow-hidden border border-cyan-800"><div className="h-full bg-gradient-to-r from-cyan-500 to-blue-500 transition-all duration-700" style={{width:`${cnt/8*100}%`}}/></div>
+        <div className="flex items-center justify-between mb-3"><span className="text-xs uppercase tracking-[0.2em] text-cyan-400 ft">Progression</span><span className="ft font-bold text-cyan-300 text-lg">{cnt}<span className="text-cyan-600">/16</span></span></div>
+        <div className="h-2 bg-cyan-950 rounded-full overflow-hidden border border-cyan-800"><div className="h-full bg-gradient-to-r from-cyan-500 to-blue-500 transition-all duration-700" style={{width:`${cnt/16*100}%`}}/></div>
         {flags.length>0&&(<div className="mt-4 pt-4 border-t border-cyan-800/40"><p className="text-xs uppercase tracking-widest text-cyan-500 ft mb-2">Flags collectés</p><div className="flex flex-wrap gap-1.5">{flags.map(i=>(<span key={i} className="text-xs px-2 py-0.5 bg-cyan-950 text-cyan-300 rounded border border-cyan-500/30 fm tracking-wider">{CH[i].fl}</span>))}</div></div>)}
       </div>
 
@@ -470,8 +666,8 @@ const App=()=>{
         </button>
       )})}</div>
 
-      {cnt===8&&(<button onClick={()=>setV('win')} className="mt-6 w-full py-4 bg-gradient-to-r from-cyan-600 to-blue-700 text-white rounded-xl ft font-bold tracking-widest uppercase active:scale-[0.98] flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/30 border border-cyan-400/30"><Ic n="tp" s={22}/> Épilogue</button>)}
-      {cnt>0&&cnt<8&&(<button onClick={()=>setV('win')} className="mt-6 w-full py-3 glass text-cyan-400 rounded-xl border-2 border-cyan-500/30 ft text-xs uppercase tracking-widest active:scale-[0.98] flex items-center justify-center gap-2">🏆 Voir mes trésors ({cnt}/8)</button>)}
+      {cnt===16&&(<button onClick={()=>setV('win')} className="mt-6 w-full py-4 bg-gradient-to-r from-cyan-600 to-blue-700 text-white rounded-xl ft font-bold tracking-widest uppercase active:scale-[0.98] flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/30 border border-cyan-400/30"><Ic n="tp" s={22}/> Épilogue</button>)}
+      {cnt>0&&cnt<16&&(<button onClick={()=>setV('win')} className="mt-6 w-full py-3 glass text-cyan-400 rounded-xl border-2 border-cyan-500/30 ft text-xs uppercase tracking-widest active:scale-[0.98] flex items-center justify-center gap-2">🏆 Voir mes trésors ({cnt}/16)</button>)}
 
       <p className="text-center text-xs text-gray-700 mt-10 fm">CRYPTOGRAPHIA.v2 // MMXXVI</p>
     </div></div>
@@ -481,14 +677,14 @@ const App=()=>{
     <div className="min-h-screen px-4 py-6"><div className="max-w-md lg:max-w-2xl mx-auto fi">
       <div className="flex items-center justify-between mb-4">
         <button onClick={()=>setV('home')} className="text-cyan-500 flex items-center gap-1 text-sm ft uppercase tracking-widest active:text-cyan-300"><Ic n="cl" s={16}/> Retour</button>
-        <button onClick={()=>setLore(true)} className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs ft uppercase tracking-widest active:scale-95 border" style={{color:c.clr,borderColor:c.clr+'50',background:c.clr+'10'}}>📜 Histoire</button>
+        <button onClick={()=>setLore(true)} className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs ft uppercase tracking-widest active:scale-95 border btn-glow" style={{color:c.clr,borderColor:c.clr,background:c.clr+'15','--gclr':c.clr+'80'}}>📜 Histoire</button>
       </div>
       <div className="glass rounded-xl border overflow-hidden mb-6" style={{borderColor:c.clr+'40',boxShadow:`0 0 30px ${c.clr}15`}}>
         <div className="relative p-6 overflow-hidden" style={{background:`linear-gradient(135deg, ${c.clr}15, transparent, ${c.clr}08)`}}>
           <div className="absolute top-0 right-0 text-9xl opacity-10 ns" style={{transform:'translate(20%,-20%)',color:c.clr}}>{c.ic}</div>
           <div className="relative"><div className="flex items-center justify-between mb-3"><span className="text-xs uppercase tracking-[0.3em] ft" style={{color:c.clr}}>Chapitre {ROM[ci]}</span><span className="text-xs ft text-gray-500 tracking-widest">{c.ep}</span></div><div className="text-5xl mb-3 ns">{c.ic}</div><h2 className="ft text-2xl sm:text-3xl font-bold mb-1 tracking-wide text-white">{c.nm}</h2><p className="text-gray-400">{c.cv}</p></div>
         </div>
-        <div className="px-4 pt-4"><WikiImg title={c.wiki} alt={c.nm} clr={c.clr}/></div>
+        <div className="px-4 pt-4"><WikiImg title={c.wiki} alt={c.nm} clr={c.clr} icon={c.ic} lang={c.wikiLang||'en'} directUrl={c.imgUrl}/></div>
         <div className="p-4 sm:p-5"><Comp onS={solve}/></div>
       </div>
       {showLore&&<Modal ch={c} onClose={()=>setLore(false)}/>}
@@ -509,8 +705,8 @@ const App=()=>{
         </div>
       </div>
       <div className="space-y-3">
-        <button onClick={next} className="w-full py-4 bg-gradient-to-r from-cyan-600 to-blue-700 text-white rounded-xl ft tracking-widest uppercase text-sm active:scale-[0.98] flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/20 border border-cyan-400/30">{ci<7?<>Énigme suivante <Ic n="cr" s={18}/></>:<>Épilogue <Ic n="tp" s={18}/></>}</button>
-        <button onClick={()=>setV('win')} className="w-full py-3 bg-gradient-to-r from-yellow-600/80 to-amber-700/80 text-yellow-100 rounded-xl ft text-xs uppercase tracking-widest active:scale-[0.98] flex items-center justify-center gap-2 border border-yellow-500/30">🏆 Voir mes trésors ({cnt}/8)</button>
+        <button onClick={next} className="w-full py-4 bg-gradient-to-r from-cyan-600 to-blue-700 text-white rounded-xl ft tracking-widest uppercase text-sm active:scale-[0.98] flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/20 border border-cyan-400/30">{ci<15?<>Énigme suivante <Ic n="cr" s={18}/></>:<>Épilogue <Ic n="tp" s={18}/></>}</button>
+        <button onClick={()=>setV('win')} className="w-full py-3 bg-gradient-to-r from-yellow-600/160 to-amber-700/160 text-yellow-100 rounded-xl ft text-xs uppercase tracking-widest active:scale-[0.98] flex items-center justify-center gap-2 border border-yellow-500/30">🏆 Voir mes trésors ({cnt}/16)</button>
         <button onClick={()=>setV('home')} className="w-full py-3 glass text-gray-400 rounded-xl ft text-xs uppercase tracking-widest">Retour au sommaire</button>
       </div>
     </div></div>
@@ -519,11 +715,11 @@ const App=()=>{
   if(v==='win')return(
     <div className="min-h-screen px-4 py-10 flex items-center"><div className="max-w-md lg:max-w-2xl mx-auto text-center fi">
       <div className="text-7xl mb-6 ns pulse">🏆</div>
-      <h1 className="ft text-3xl sm:text-4xl font-bold mb-3 tracking-[0.1em] neon-shimmer">{cnt===8?'MAÎTRE DES CODES':'PROGRESSION'}</h1>
+      <h1 className="ft text-3xl sm:text-4xl font-bold mb-3 tracking-[0.1em] neon-shimmer">{cnt===16?'MAÎTRE DES CODES':'PROGRESSION'}</h1>
       <div className="h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent w-32 mx-auto mb-4"></div>
-      <p className="italic text-gray-400 mb-8">{cnt===8?'Tous les secrets ont été percés.':cnt+' flag'+(cnt>1?'s':'')+' sur 8 collecté'+(cnt>1?'s':'')+'.'}</p>
-      <div className="glass rounded-xl border border-cyan-500/30 p-5 mb-6 text-left"><p className="ft text-xs uppercase tracking-[0.3em] text-cyan-400 mb-4 text-center">Trésors ({cnt}/8)</p><div className="space-y-2">{flags.map(i=>{const c=CH[i];return(<div key={c.id} className="flex items-center gap-3 bg-black/30 rounded-md p-2 border" style={{borderColor:c.clr+'30'}}><div className="w-10 h-10 rounded-full border flex items-center justify-center text-xl flex-shrink-0" style={{borderColor:c.clr+'60',color:c.clr}}>{c.ic}</div><div className="flex-1 min-w-0"><p className="text-xs ft tracking-wider" style={{color:c.clr}}>{c.ep}</p><p className="fm font-bold text-gray-200 tracking-wider truncate">{c.fl}</p></div></div>)})}{cnt<8&&<p className="text-center text-gray-600 italic text-sm mt-3">{8-cnt} énigme{8-cnt>1?'s':''} restante{8-cnt>1?'s':''}</p>}</div></div>
-      <button onClick={()=>setV('home')} className="w-full py-4 bg-gradient-to-r from-cyan-600 to-blue-700 text-white rounded-xl ft font-bold uppercase tracking-widest active:scale-[0.98] shadow-lg shadow-cyan-500/30 border border-cyan-400/30">{cnt===8?'Recommencer':'Continuer'}</button>
+      <p className="italic text-gray-400 mb-8">{cnt===16?'Tous les secrets ont été percés.':cnt+' flag'+(cnt>1?'s':'')+' sur 8 collecté'+(cnt>1?'s':'')+'.'}</p>
+      <div className="glass rounded-xl border border-cyan-500/30 p-5 mb-6 text-left"><p className="ft text-xs uppercase tracking-[0.3em] text-cyan-400 mb-4 text-center">Trésors ({cnt}/16)</p><div className="space-y-2">{flags.map(i=>{const c=CH[i];return(<div key={c.id} className="flex items-center gap-3 bg-black/30 rounded-md p-2 border" style={{borderColor:c.clr+'30'}}><div className="w-10 h-10 rounded-full border flex items-center justify-center text-xl flex-shrink-0" style={{borderColor:c.clr+'60',color:c.clr}}>{c.ic}</div><div className="flex-1 min-w-0"><p className="text-xs ft tracking-wider" style={{color:c.clr}}>{c.ep}</p><p className="fm font-bold text-gray-200 tracking-wider truncate">{c.fl}</p></div></div>)})}{cnt<16&&<p className="text-center text-gray-600 italic text-sm mt-3">{16-cnt} énigme{16-cnt>1?'s':''} restante{16-cnt>1?'s':''}</p>}</div></div>
+      <button onClick={()=>setV('home')} className="w-full py-4 bg-gradient-to-r from-cyan-600 to-blue-700 text-white rounded-xl ft font-bold uppercase tracking-widest active:scale-[0.98] shadow-lg shadow-cyan-500/30 border border-cyan-400/30">{cnt===16?'Recommencer':'Continuer'}</button>
     </div></div>
   );
   return null;
