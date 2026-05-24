@@ -687,7 +687,7 @@ const readURL=()=>{const p=new URLSearchParams(window.location.search);const s=p
 
 // ===== APP =====
 const App=()=>{
-  const[lang,setLang]=useState('fr');
+  const[lang,setLang]=useState(navigator.language.startsWith('fr')?'fr':'en');
   const[v,setV]=useState('home');
   const[ci,setCI]=useState(0);
   const[done,setD]=useState(()=>readURL());
