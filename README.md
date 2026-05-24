@@ -17,8 +17,8 @@ Cryptographia is an educational web game featuring **16 progressive cryptographi
 
 ## 🏛️ The 16 Challenges
 
-| # | Era | Cipher | Concept | Flag |
-|---|-----|--------|---------|------|
+| # | Era | Cipher | Concept 
+|---|-----|--------|---------|
 | I | 1500 BC | **Atbash** ↔ | Alphabet inversion (A↔Z, B↔Y...) 
 | II | 500 BC | **Scytale** 𓂀 | Column transposition (Sparta) 
 | III | 150 BC | **Polybius Square** ⊞ | Coordinates in a 5×5 grid (Greece) 
