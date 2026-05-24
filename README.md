@@ -19,22 +19,22 @@ Cryptographia is an educational web game featuring **16 progressive cryptographi
 
 | # | Era | Cipher | Concept | Flag |
 |---|-----|--------|---------|------|
-| I | 1500 BC | **Atbash** ↔ | Alphabet inversion (A↔Z, B↔Y...) — Hebrew tradition | INVERSION |
-| II | 500 BC | **Scytale** 𓂀 | Column transposition (Sparta) | LACEDEMONE |
-| III | 150 BC | **Polybius Square** ⊞ | Coordinates in a 5×5 grid (Greece) | TORCHES |
-| IV | 50 BC | **Caesar Cipher** ♜ | Letter shift substitution (Rome) | RUBICON |
-| V | 1586 | **Vigenère Cipher** ⚜ | Polyalphabetic encryption (France) | INDECHIFFRABLE |
-| VI | 1844 | **Rail Fence** ⚡ | Zigzag transposition + Morse code (USA) | MORSE |
-| VII | 1854 | **Playfair Cipher** ♛ | 5×5 grid + Greek alphabet coordinates (UK) | WHEATSTONE |
-| VIII | 1917 | **XOR Cipher** ⊕ | Bitwise XOR operation (Cryptography) | BIT |
-| IX | 1940 | **Enigma** ⚙ | Rotor-based code breaking (Bletchley Park) | TURING |
-| X | 1960 | **Hexadecimal** #️⃣ | Base 16 encoding (Computing) | BYTE |
-| XI | 1963 | **Binary Code** 💾 | ASCII / 8-bit encoding (Computing) | OCTET |
-| XII | 1980 | **ROT13** 🔄 | Caesar cipher with 13-position shift (Internet/Usenet) | USENET |
-| XIII | 1985 | **Steganography** ◉ | Message hidden in image bytes (Digital era) | PIXEL |
-| XIV | 1987 | **Base64** 📧 | Binary-to-text encoding (Web/MIME) | MIME |
-| XV | 1991 | **MD5 Hash** 🔒 | One-way fingerprint cracking with rainbow tables | HASH |
-| XVI | 1994 | **QR Code** 📱 | 2D barcode invented by Denso Wave (Japan) | DENSO |
+| I | 1500 BC | **Atbash** ↔ | Alphabet inversion (A↔Z, B↔Y...) 
+| II | 500 BC | **Scytale** 𓂀 | Column transposition (Sparta) 
+| III | 150 BC | **Polybius Square** ⊞ | Coordinates in a 5×5 grid (Greece) 
+| IV | 50 BC | **Caesar Cipher** ♜ | Letter shift substitution (Rome) 
+| V | 1586 | **Vigenère Cipher** ⚜ | Polyalphabetic encryption (France) 
+| VI | 1844 | **Rail Fence** ⚡ | Zigzag transposition + Morse code (USA) 
+| VII | 1854 | **Playfair Cipher** ♛ | 5×5 grid + Greek alphabet coordinates (UK) 
+| VIII | 1917 | **XOR Cipher** ⊕ | Bitwise XOR operation (Cryptography)
+| IX | 1940 | **Enigma** ⚙ | Rotor-based code breaking (Bletchley Park) 
+| X | 1960 | **Hexadecimal** #️⃣ | Base 16 encoding (Computing) 
+| XI | 1963 | **Binary Code** 💾 | ASCII / 8-bit encoding (Computing) 
+| XII | 1980 | **ROT13** 🔄 | Caesar cipher with 13-position shift (Internet/Usenet) 
+| XIII | 1985 | **Steganography** ◉ | Message hidden in image bytes (Digital era)
+| XIV | 1987 | **Base64** 📧 | Binary-to-text encoding (Web/MIME)
+| XV | 1991 | **MD5 Hash** 🔒 | One-way fingerprint cracking with rainbow tables
+| XVI | 1994 | **QR Code** 📱 | 2D barcode invented by Denso Wave (Japan)
 
 ### 📚 Challenge Details
 
