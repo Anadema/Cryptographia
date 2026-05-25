@@ -6,6 +6,9 @@ So you want to crack the SHA-256 protection? **Good!** That's exactly the spirit
 
 This guide will teach you **3 different methods** to bypass the protection, from beginner to advanced.
 
+<img width="602" height="550" alt="image" src="https://github.com/user-attachments/assets/d9d7c55a-a893-48d4-b0ab-2dd333c43cef" />
+
+
 ---
 
 ## 📊 Understanding the Protection
