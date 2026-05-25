@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <meta name="theme-color" content="#1e1535">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <title>Cryptographia ▸ Cyberpunk Edition</title>
+  <title>Cryptographia ▸ Cyberpunk Edition [Secured]</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
@@ -102,6 +102,25 @@ for(let i=0;i<25;i++){
 
 <script type="text/babel" data-presets="react">
 const{useState,useMemo,useEffect}=React;
+
+// ===== 🔐 SECURITY: SHA-256 HASHING SYSTEM =====
+// Les réponses ne sont JAMAIS stockées en clair dans ce code.
+// Elles sont protégées par des empreintes cryptographiques SHA-256.
+// Pour valider une réponse, on compare son hash avec le hash attendu.
+
+const sha256 = async (message) => {
+  const msgBuffer = new TextEncoder().encode(message);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+};
+
+const validateAnswer = async (input, expectedHash) => {
+  const normalized = norm(input);
+  const inputHash = await sha256(normalized);
+  return inputHash === expectedHash;
+};
+
 // ===== LANGUAGE CONTEXT =====
 const LangContext=React.createContext('fr');
 const useLang=()=>React.useContext(LangContext);
@@ -135,79 +154,77 @@ const Ic=({n,s=20,c=''})=>{const p={
 const ROM=['I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII','XIII','XIV','XV','XVI'];
 
 const CH=[
-  {id:9,ep:'1500 av.J-C',nm:'Le Chiffre Atbash',cv:'Hébreux',ic:'↔',ans:'CRYPTO',fl:'INVERSION',fm:"Le principe fondamental de l'Atbash : inverser l'alphabet.",hi:"Inversez l'alphabet : A↔Z, B↔Y, C↔X...",clr:'#6366f1',mini:'🔄',wiki:'Dead_Sea_Scrolls',imgUrl:'https://josephkimiri.github.io/assets/img/blog/atbash.jpg',
+  {id:9,ep:'1500 av.J-C',nm:'Le Chiffre Atbash',cv:'Hébreux',ic:'↔',ansHash:'487857bcc3181258953065f5d4c556061f639a8dc4e5987d655dca7754252ddf',fl:'INVERSION',fm:"Le principe fondamental de l'Atbash : inverser l'alphabet.",hi:"Inversez l'alphabet : A↔Z, B↔Y, C↔X...",clr:'#6366f1',mini:'🔄',wiki:'Dead_Sea_Scrolls',imgUrl:'https://josephkimiri.github.io/assets/img/blog/atbash.jpg',
     lore:"L'Atbash est l'un des plus anciens chiffrements connus, originaire de la tradition hébraïque. Son principe est d'une simplicité radicale : on inverse l'alphabet. La première lettre devient la dernière, la deuxième l'avant-dernière, et ainsi de suite.\n\nA devient Z, B devient Y, C devient X... Ce système est mentionné dans la Bible, notamment dans le Livre de Jérémie, où le mot « Sheshakh » (ששך) est un Atbash pour « Babel » (בבל).\n\nMalgré sa simplicité, l'Atbash a traversé les millénaires. Les kabbalistes l'utilisaient pour cacher des significations mystiques dans les textes sacrés. Certains groupes ésotériques l'emploient encore aujourd'hui.",
     en:{"nm": "Atbash Cipher", "cv": "Hebrews", "fm": "The fundamental principle of Atbash: reversing the alphabet.", "hi": "Reverse the alphabet: A<->Z, B<->Y, C<->X...", "lore": "Atbash is one of the oldest known ciphers, originating from the Hebrew tradition. Its principle is radically simple: reverse the alphabet. The first letter becomes the last, the second becomes the second-to-last, and so on.\n\nA becomes Z, B becomes Y, C becomes X... This system is mentioned in the Bible, notably in the Book of Jeremiah, where the word Sheshakh is an Atbash for Babel.\n\nDespite its simplicity, Atbash has crossed millennia. Kabbalists used it to hide mystical meanings in sacred texts. Some esoteric groups still use it today."}},
-  {id:1,ep:'−500',nm:'La Scytale',cv:'Sparte',ic:'𓂀',ans:'LEONIDAS',fl:'LACEDEMONE',fm:"L'antique nom de Sparte.",hi:"Les généraux spartiates enroulaient une bande de cuir autour d'un bâton appelé scytale.",clr:'#00f0ff',
+  {id:1,ep:'−500',nm:'La Scytale',cv:'Sparte',ic:'𓂀',ansHash:'6047bac3424269b9379a03258f3c57b1fa103daa9640819d41fa48e4034c23ed',fl:'LACEDEMONE',fm:"L'antique nom de Sparte.",hi:"Les généraux spartiates enroulaient une bande de cuir autour d'un bâton appelé scytale.",clr:'#00f0ff',
     mini:'🛡️',wiki:'Scytale',
     lore:"Au Ve siècle avant J.-C., Sparte dominait le Péloponnèse par la force de ses guerriers. Les éphores — magistrats suprêmes — devaient communiquer secrètement avec leurs généraux déployés au loin.\n\nIls inventèrent la scytale : une bande de cuir étroite enroulée en spirale autour d'un bâton cylindrique à section carrée parfaite. Le message s'écrivait horizontalement, puis la bande était déroulée pour être confiée au messager. Sans le bon bâton, impossible de lire quoi que ce soit.\n\nLe plus célèbre utilisateur de la scytale fut sans doute un roi spartiate légendaire, héros des Thermopyles, qui mena 300 guerriers face à l'Empire perse en 480 av. J.-C. Les messages chiffrés par scytale jouèrent un rôle crucial dans la coordination des forces grecques.\n\nLe nombre de faces visibles du bâton déterminait le chiffrement. Pour reconstituer le message, il fallait enrouler la bande sur un bâton identique et lire horizontalement.",
     en:{"nm": "The Scytale", "cv": "Sparta", "fm": "The ancient name of Sparta.", "hi": "Spartan generals wrapped a leather strip around a rod called a scytale.", "lore": "In the 5th century BC, Sparta dominated the Peloponnese through the strength of its warriors. The ephors — supreme magistrates — had to communicate secretly with their generals deployed afar.\n\nThey invented the scytale: a narrow leather strip wound in a spiral around a cylindrical rod with a perfect square section. The message was written horizontally, then the strip was unwound to be entrusted to the messenger. Without the right rod, it was impossible to read anything.\n\nThe most famous user of the scytale was undoubtedly a legendary Spartan king, hero of Thermopylae, who led 300 warriors against the Persian Empire in 480 BC. Messages encrypted by scytale played a crucial role in coordinating Greek forces.\n\nThe number of visible faces of the rod determined the encryption. To reconstruct the message, one had to wrap the strip around an identical rod and read horizontally."}},
-  {id:3,ep:'−150',nm:'Le Carré de Polybe',cv:'Grèce',ic:'⊞',ans:'SECRET',fl:'TORCHES',fm:"Deux groupes de torches transmettaient les coordonnées.",hi:"Polybe inventa une grille 5×5 où chaque lettre est repérée par deux chiffres.",clr:'#00ff41',
+  {id:3,ep:'−150',nm:'Le Carré de Polybe',cv:'Grèce',ic:'⊞',ansHash:'0917b13a9091915d54b6336f45909539cce452b3661b21f386418a257883b30a',fl:'TORCHES',fm:"Deux groupes de torches transmettaient les coordonnées.",hi:"Polybe inventa une grille 5×5 où chaque lettre est repérée par deux chiffres.",clr:'#00ff41',
     mini:'🔥',wiki:'Polybius_square',
     lore:"Polybe, historien grec du IIe siècle av. J.-C., inventa un système de communication à distance remarquable. Il disposa les 25 lettres de l'alphabet dans une grille carrée, où chaque lettre est identifiée par sa position : un premier chiffre pour la ligne, un second pour la colonne.\n\nPour transmettre à distance, Polybe utilisait des torches allumées sur les collines : un premier groupe indiquait la rangée, un second la colonne. Ce système permettait de communiquer la nuit sur de grandes distances, à une vitesse surprenante pour l'époque.\n\nDes siècles plus tard, les prisonniers de guerre adaptèrent cette méthode en tapant sur les murs de leurs cellules — le fameux « code des prisonniers ». Un prisonnier tapait d'abord le numéro de ligne, puis celui de colonne, pour chaque lettre du message.\n\nLa grille de Polybe est aussi à la base de nombreux chiffrements modernes. Sa simplicité est sa force : il suffit de connaître les coordonnées pour déchiffrer n'importe quel message.",
     en:{"nm": "Polybius Square", "cv": "Greece", "fm": "Two groups of torches transmitted the coordinates.", "hi": "Polybius invented a 5x5 grid where each letter is identified by two numbers.", "lore": "Polybius, a Greek historian of the 2nd century BC, invented a remarkable long-distance communication system. He arranged the 25 letters of the alphabet in a square grid, where each letter is identified by its position: a first number for the row, a second for the column.\n\nTo transmit at a distance, Polybius used lit torches on the hills: a first group indicated the row, a second the column. This system allowed communication at night over long distances, at a surprising speed for the time.\n\nCenturies later, prisoners of war adapted this method by tapping on their cell walls — the famous prisoners' code. A prisoner would first tap the row number, then the column number, for each letter of the message.\n\nThe Polybius grid is also the basis of many modern ciphers. Its simplicity is its strength: you only need to know the coordinates to decipher any message."}},
-  {id:2,ep:'−50',nm:'Le Chiffre de César',cv:'Rome',ic:'♜',ans:'VENIVIDIVICI',fl:'RUBICON',fm:"Le fleuve franchi par César.",hi:"César décalait chaque lettre selon une clé secrète.",clr:'#ff2d95',
+  {id:2,ep:'−50',nm:'Le Chiffre de César',cv:'Rome',ic:'♜',ansHash:'3be4c886bf4becab0baf4b5da40b2743f492424360bedf568cdcee37c58aa918',fl:'RUBICON',fm:"Le fleuve franchi par César.",hi:"César décalait chaque lettre selon une clé secrète.",clr:'#ff2d95',
     mini:'🏛️',wiki:'Caesar_cipher',
     lore:"Jules César, consul puis dictateur de Rome, utilisait un système de chiffrement d'une simplicité trompeuse. Chaque lettre de l'alphabet était remplacée par celle située quelques positions plus loin — un décalage si modeste qu'on pouvait le compter sur les doigts d'une main.\n\nSuétone rapporte que César l'utilisait pour sa correspondance privée. À une époque où la majorité de la population était illettrée, ce simple décalage suffisait à protéger les messages les plus sensibles.\n\nLes Romains notaient leurs nombres avec des lettres : I, V, X, L, C, D, M. Le décalage de César est souvent exprimé dans cette notation ancestrale.\n\nAprès sa conquête de la Gaule, César envoya au Sénat un message devenu légendaire — une phrase de victoire en trois mots latins, si concise et percutante qu'elle traversa les siècles. Quelques années plus tôt, il avait franchi un fleuve fameux, déclenchant la guerre civile qui transforma la République en Empire.",
     en:{"nm": "Caesar Cipher", "cv": "Rome", "fm": "The river crossed by Caesar.", "hi": "Caesar shifted each letter according to a secret key.", "lore": "Julius Caesar, consul then dictator of Rome, used a deceptively simple encryption system. Each letter of the alphabet was replaced by one located a few positions further — a shift so modest it could be counted on the fingers of one hand.\n\nSuetonius reports that Caesar used it for his private correspondence. At a time when most of the population was illiterate, this simple shift was enough to protect the most sensitive messages.\n\nThe Romans noted their numbers with letters: I, V, X, L, C, D, M. Caesar's shift is often expressed in this ancestral notation.\n\nAfter his conquest of Gaul, Caesar sent the Senate a message that became legendary — a victory phrase in three Latin words, so concise and striking that it crossed the centuries. A few years earlier, he had crossed a famous river, triggering the civil war that transformed the Republic into an Empire."}},
-  {id:4,ep:'1586',nm:'Le Chiffre de Vigenère',cv:'France',ic:'⚜',ans:'TROIS',fl:'INDECHIFFRABLE',fm:"Son surnom pendant trois siècles.",hi:"Une clé secrète décale différemment chaque lettre.",clr:'#ffd700',
+  {id:4,ep:'1586',nm:'Le Chiffre de Vigenère',cv:'France',ic:'⚜',ansHash:'87d9a5c0919de95ed19a65256700d031b25d37a048682a1fb3421a5818b7956f',fl:'INDECHIFFRABLE',fm:"Son surnom pendant trois siècles.",hi:"Une clé secrète décale différemment chaque lettre.",clr:'#ffd700',
     mini:'📜',wiki:'Vigen%C3%A8re_cipher',
     lore:"Blaise de Vigenère, diplomate français à la cour d'Henri III, perfectionna en 1586 un système polyalphabétique. Contrairement au chiffre de César (décalage fixe), Vigenère utilise une clé secrète qui modifie chaque lettre différemment.\n\nLa clé est un mot court et mémorable — souvent un mot de quatre lettres évoquant la puissance ou la noblesse. On raconte que les diplomates français choisissaient des noms d'animaux majestueux, emblèmes du pouvoir royal. Cette clé se répète cycliquement sur toute la longueur du message.\n\nPour chiffrer, on additionne chaque lettre du texte avec la lettre correspondante de la clé (A=0, B=1...). Pour déchiffrer, on soustrait.\n\nPendant 300 ans, ce chiffre fut surnommé « le chiffre indéchiffrable ». Il fallut attendre le XIXe siècle pour que Charles Babbage et Friedrich Kasiski découvrent comment le briser en analysant les répétitions.",
     en:{"nm": "Vigenère Cipher", "cv": "France", "fm": "Its nickname for three centuries.", "hi": "A secret key shifts each letter differently.", "lore": "Blaise de Vigenère, French diplomat at the court of Henri III, perfected a polyalphabetic system in 1586. Unlike Caesar's cipher (fixed shift), Vigenère uses a secret key that modifies each letter differently.\n\nThe key is a short, memorable word — often a four-letter word evoking power or nobility. It is said that French diplomats chose names of majestic animals, emblems of royal power. This key repeats cyclically over the entire length of the message.\n\nTo encrypt, each letter of the text is added to the corresponding letter of the key (A=0, B=1...). To decrypt, subtract.\n\nFor 300 years, this cipher was nicknamed the indecipherable cipher. It took until the 19th century for Charles Babbage and Friedrich Kasiski to discover how to break it by analyzing repetitions."}},
-  {id:5,ep:'1844',nm:'Le Rail Fence',cv:'États-Unis',ic:'⚡',ans:'TELEGRAPH',fl:'MORSE',fm:"Morse révolutionna la communication.",hi:"Le Rail Fence dispose les lettres en zigzag sur plusieurs rails.",clr:'#ff6b00',
+  {id:5,ep:'1844',nm:'Le Rail Fence',cv:'États-Unis',ic:'⚡',ansHash:'80b3036900d5ba63ee8860dc78176a34e80bdb0849000c83d1d2aace256a3918',fl:'MORSE',fm:"Morse révolutionna la communication.",hi:"Le Rail Fence dispose les lettres en zigzag sur plusieurs rails.",clr:'#ff6b00',
     mini:'⚡',wiki:'Morse_code',
     lore:"Au milieu du XIXe siècle, la révolution industrielle transformait les communications. Le chiffre Rail Fence disposait les lettres en zigzag sur plusieurs lignes horizontales — les « rails ». Le nombre de rails, toujours petit, constituait la clé secrète.\n\nPour chiffrer, on écrit le message en zigzag descendant puis remontant. On transmet ensuite en lisant chaque rail de gauche à droite. Pour décoder, il faut reconnaître le nombre de rails utilisé et reconstituer le zigzag.\n\nEn 1844, Samuel Morse envoya le premier message télégraphique. Son code — des points et des traits attribués à chaque lettre de l'alphabet — révolutionna la communication mondiale. Ce système permettait de transmettre un message en quelques minutes là où un cavalier mettait des jours.\n\nLe télégraphe rendit possible la transmission instantanée de messages chiffrés. Un nombre pouvait être transmis en épelant son nom lettre par lettre dans le code de Morse, ajoutant une couche supplémentaire de complexité.",
     en:{"nm": "Rail Fence", "cv": "United States", "fm": "Morse revolutionized communication.", "hi": "Rail Fence arranges letters in a zigzag on several rails.", "lore": "In the mid-19th century, the industrial revolution was transforming communications. The Rail Fence cipher arranged letters in a zigzag on several horizontal lines — the rails. The number of rails, always small, constituted the secret key.\n\nTo encrypt, the message is written in a descending then ascending zigzag. It is then transmitted by reading each rail from left to right. To decode, one must recognize the number of rails used and reconstruct the zigzag.\n\nIn 1844, Samuel Morse sent the first telegraphic message. His code — dots and dashes assigned to each letter of the alphabet — revolutionized global communication. This system allowed a message to be transmitted in minutes where a rider would take days.\n\nThe telegraph made possible the instant transmission of encrypted messages. A number could be transmitted by spelling its name letter by letter in Morse code, adding an additional layer of complexity."}},
-  {id:6,ep:'1854',nm:'Le Chiffre de Playfair',cv:'Royaume-Uni',ic:'♛',ans:'CODE',fl:'WHEATSTONE',fm:"Charles Wheatstone inventa le chiffre.",hi:"Utilisé par l'armée britannique pendant les guerres coloniales.",clr:'#a855f7',
+  {id:6,ep:'1854',nm:'Le Chiffre de Playfair',cv:'Royaume-Uni',ic:'♛',ansHash:'07a9d7b4a9a23915a61bc89bb0357bf47b348cf4174eb965bb1df8fbfa18b0b5',fl:'WHEATSTONE',fm:"Charles Wheatstone inventa le chiffre.",hi:"Utilisé par l'armée britannique pendant les guerres coloniales.",clr:'#a855f7',
     mini:'👑',wiki:'Playfair_cipher',
     lore:"En 1854, Charles Wheatstone inventa un système utilisant une grille de 5×5 cases remplie selon un mot-clé. Bien que Wheatstone en soit l'inventeur, c'est Lord Playfair qui en fit la promotion — d'où le nom.\n\nL'armée britannique l'adopta pendant la Guerre des Boers et la Première Guerre mondiale. Les officiers victoriens, férus de culture classique, appréciaient les langues anciennes pour ajouter de l'obscurité à leurs messages.\n\nIl n'était pas rare que les positions dans la grille soient notées non pas en chiffres arabes ordinaires, mais dans un système de numération hérité de l'Antiquité méditerranéenne. Les premières lettres d'un alphabet très ancien — celui qui donna naissance au nôtre — servaient alors de coordonnées, chacune représentant un chiffre en partant de zéro.\n\nCette pratique ajoutait une étape de déchiffrement supplémentaire : il fallait d'abord traduire ces symboles anciens en nombres avant de pouvoir consulter la grille.",
     en:{"nm": "Playfair Cipher", "cv": "United Kingdom", "fm": "Charles Wheatstone invented the cipher.", "hi": "Used by the British army during colonial wars.", "lore": "In 1854, Charles Wheatstone invented a system using a 5x5 grid filled according to a keyword. Although Wheatstone was the inventor, it was Lord Playfair who promoted it — hence the name.\n\nThe British army adopted it during the Boer War and World War I. Victorian officers, steeped in classical culture, appreciated ancient languages to add obscurity to their messages.\n\nIt was not uncommon for positions in the grid to be noted not in ordinary Arabic numerals, but in a numbering system inherited from Mediterranean antiquity. The first letters of a very ancient alphabet — the one that gave birth to ours — then served as coordinates, each representing a number starting from zero.\n\nThis practice added an additional decryption step: one first had to translate these ancient symbols into numbers before being able to consult the grid."}},
-  {id:14,ep:'1917',nm:'Le Chiffre XOR',cv:'Cryptographie',ic:'⊕',ans:'KEY',fl:'BIT',fm:"L'opération fondamentale de la cryptographie moderne.",hi:"XOR : si les bits sont identiques → 0, s'ils sont différents → 1.",clr:'#3b82f6',mini:'🔢',wiki:'XOR_cipher',imgUrl:'https://fabricenativel.github.io/Terminale/images/C15/xor1.png',
+  {id:14,ep:'1917',nm:'Le Chiffre XOR',cv:'Cryptographie',ic:'⊕',ansHash:'5ca24005b740717ba4f3f6bc48a230700e68c2a4b11ecedb96f169f4efaf1f21',fl:'BIT',fm:"L'opération fondamentale de la cryptographie moderne.",hi:"XOR : si les bits sont identiques → 0, s'ils sont différents → 1.",clr:'#3b82f6',mini:'🔢',wiki:'XOR_cipher',imgUrl:'https://fabricenativel.github.io/Terminale/images/C15/xor1.png',
     lore:"L'opération XOR (OU exclusif) est le cœur de la cryptographie moderne. Son principe : comparer deux bits. S'ils sont identiques (0⊕0 ou 1⊕1), le résultat est 0. S'ils sont différents (0⊕1 ou 1⊕0), le résultat est 1.\n\nPour chiffrer, on XOR chaque octet du message avec un octet de la clé. Pour déchiffrer, on applique exactement la même opération — XOR est sa propre inverse.\n\nAvec des caractères ASCII : on convertit chaque lettre en nombre, on XOR avec la clé numérique, et on reconvertit en lettre. Une opération simple mais qui, combinée à des clés aléatoires suffisamment longues, produit un chiffrement incassable (le « one-time pad »).",
     en:{"nm": "XOR Cipher", "cv": "Cryptography", "fm": "The fundamental operation of modern cryptography.", "hi": "XOR: if bits are identical -> 0, if different -> 1.", "lore": "The XOR (exclusive OR) operation is the heart of modern cryptography. Its principle: compare two bits. If they are identical (0 XOR 0 or 1 XOR 1), the result is 0. If they are different (0 XOR 1 or 1 XOR 0), the result is 1.\n\nTo encrypt, XOR each byte of the message with a byte of the key. To decrypt, apply exactly the same operation — XOR is its own inverse.\n\nWith ASCII characters: convert each letter to a number, XOR with the numeric key, and convert back to a letter. A simple operation but which, combined with sufficiently long random keys, produces unbreakable encryption (the one-time pad)."}},
-  {id:7,ep:'1940',nm:'Enigma',cv:'Bletchley Park',ic:'⚙',ans:'WAR',fl:'TURING',fm:"Turing brisa Enigma et écourta la guerre.",hi:"La machine Enigma chiffrait avec 158 millions de millions de combinaisons.",clr:'#ef4444',
+  {id:7,ep:'1940',nm:'Enigma',cv:'Bletchley Park',ic:'⚙',ansHash:'b6b8d78626a4478839759e467ff1f579bf06739c1637fdd83705fe071a610a0e',fl:'TURING',fm:"Turing brisa Enigma et écourta la guerre.",hi:"La machine Enigma chiffrait avec 158 millions de millions de combinaisons.",clr:'#ef4444',
     mini:'⚙',wiki:'Enigma_machine',
     lore:"La machine Enigma, utilisée par l'Allemagne nazie, possédait trois rotors mécaniques. Chaque rotor appliquait un décalage distinct à la lettre qu'il traitait. Les positions étaient changées quotidiennement selon un carnet de codes.\n\nÀ Bletchley Park, Alan Turing et son équipe analysèrent les habitudes de l'ennemi. Les opérateurs allemands ne choisissaient pas leurs positions au hasard : ils privilégiaient certaines catégories de nombres — une préférence mathématique qui fut leur perte.\n\nLa méthode de Turing reposait sur les « cribs » — des fragments de texte en clair qu'on devinait présents dans le message. Les transmissions interceptées contenaient presque toujours des mots courts et prévisibles liés au contexte du conflit mondial.\n\nGrâce à la « Bombe » — machine électromécanique de son invention — Turing réduisit l'espace des possibles. En combinant les contraintes connues sur chaque rotor, le nombre de combinaisons à tester devenait humainement gérable. On estime qu'il écourta la guerre de 2 à 4 ans.",
     en:{"nm": "Enigma", "cv": "Bletchley Park", "fm": "Turing broke Enigma and shortened the war.", "hi": "The Enigma machine encrypted with 158 quintillion combinations.", "lore": "The Enigma machine, used by Nazi Germany, had three mechanical rotors. Each rotor applied a distinct shift to the letter it processed. Positions were changed daily according to a code book.\n\nAt Bletchley Park, Alan Turing and his team analyzed enemy habits. German operators did not choose their positions at random: they favored certain categories of numbers — a mathematical preference that was their downfall.\n\nTuring's method relied on cribs — fragments of plaintext guessed to be present in the message. Intercepted transmissions almost always contained short, predictable words related to the context of the global conflict.\n\nThanks to the Bombe — an electromechanical machine of his invention — Turing reduced the space of possibilities. By combining known constraints on each rotor, the number of combinations to test became humanly manageable. It is estimated that he shortened the war by 2 to 4 years."}},
-  {id:15,ep:'1960',nm:'L\'Hexadécimal',cv:'Informatique',ic:'#️⃣',ans:'SECURE',fl:'BYTE',fm:"Base 16 : le langage des machines.",hi:"Chaque paire de caractères hex représente un octet ASCII.",clr:'#8b5cf6',mini:'💻',wiki:'Hexadecimal',imgUrl:'https://www.datanovia.com/en/wp-content/uploads/dn-tutorials/ggplot2/images/hextable-hexadecimal-color-chart.png',
+  {id:15,ep:'1960',nm:'L\'Hexadécimal',cv:'Informatique',ic:'#️⃣',ansHash:'ab968dba0c8f21c3d3c8ffe44b4a4576119edc7fd98d84aaf0f520c326bba394',fl:'BYTE',fm:"Base 16 : le langage des machines.",hi:"Chaque paire de caractères hex représente un octet ASCII.",clr:'#8b5cf6',mini:'💻',wiki:'Hexadecimal',imgUrl:'https://www.datanovia.com/en/wp-content/uploads/dn-tutorials/ggplot2/images/hextable-hexadecimal-color-chart.png',
     lore:"L'hexadécimal (base 16) utilise les chiffres 0-9 et les lettres A-F pour représenter les valeurs de 0 à 15. Deux chiffres hexadécimaux forment un octet (0 à 255), suffisant pour encoder un caractère ASCII.\n\nLes informaticiens préfèrent l'hexadécimal au binaire car il est plus compact : 8 chiffres binaires = 2 chiffres hex. Les adresses mémoire, les couleurs web (#FF0000 = rouge), les analyses forensiques — tout utilise l'hexadécimal.\n\nPour convertir de l'hex en texte : prenez chaque paire de caractères, trouvez sa valeur décimale, puis le caractère ASCII correspondant. Par exemple, 41 hex = 65 décimal = lettre A.",
     en:{"nm": "Hexadecimal", "cv": "Computing", "fm": "Base 16: the language of machines.", "hi": "Each pair of hex characters represents an ASCII byte.", "lore": "Hexadecimal (base 16) uses digits 0-9 and letters A-F to represent values from 0 to 15. Two hexadecimal digits form a byte (0 to 255), sufficient to encode an ASCII character.\n\nComputer scientists prefer hexadecimal to binary because it is more compact: 8 binary digits = 2 hex digits. Memory addresses, web colors (#FF0000 = red), forensic analyses — everything uses hexadecimal.\n\nTo convert from hex to text: take each pair of characters, find its decimal value, then the corresponding ASCII character. For example, 41 hex = 65 decimal = letter A."}},
-  {id:10,ep:'1963',nm:'Le Code Binaire',cv:'Informatique',ic:'💾',ans:'HACK',fl:'OCTET',fm:"8 bits forment un octet, un octet forme un caractère.",hi:"Chaque lettre est encodée en 8 bits (0 et 1).",clr:'#10b981',mini:'🖥️',wiki:'ASCII',imgUrl:'https://nicolaskaplan.fr/blog/wp-content/uploads/2017/04/binary-computer-code-repeating-vector-background-illustration-continuous-pattern-left-right-up-and-down_135022250.jpeg',
+  {id:10,ep:'1963',nm:'Le Code Binaire',cv:'Informatique',ic:'💾',ansHash:'064866d6167ab12bacb2637bfe8c809372f3069fd075e1ccb3dd5425d364d137',fl:'OCTET',fm:"8 bits forment un octet, un octet forme un caractère.",hi:"Chaque lettre est encodée en 8 bits (0 et 1).",clr:'#10b981',mini:'🖥️',wiki:'ASCII',imgUrl:'https://nicolaskaplan.fr/blog/wp-content/uploads/2017/04/binary-computer-code-repeating-vector-background-illustration-continuous-pattern-left-right-up-and-down_135022250.jpeg',
     lore:"En 1963, le standard ASCII (American Standard Code for Information Interchange) fut adopté. Chaque caractère — lettre, chiffre, symbole — reçut un numéro unique de 0 à 127, encodé en 7 puis 8 bits (un octet).\n\nLa lettre A vaut 65, B vaut 66... En binaire, chaque lettre devient une suite de 8 chiffres : des 0 et des 1. Par exemple, A = 01000001.\n\nCe système est le fondement de toute l'informatique moderne. Chaque fichier, chaque message, chaque image que vous voyez sur un écran est au fond une immense suite de 0 et de 1, organisée en paquets de huit.",
     en:{"nm": "Binary Code", "cv": "Computing", "fm": "8 bits form a byte, a byte forms a character.", "hi": "Each letter is encoded in 8 bits (0 and 1).", "lore": "In 1963, the ASCII (American Standard Code for Information Interchange) standard was adopted. Each character — letter, number, symbol — received a unique number from 0 to 127, encoded in 7 then 8 bits (one byte).\n\nThe letter A is 65, B is 66... In binary, each letter becomes a sequence of 8 digits: 0s and 1s. For example, A = 01000001.\n\nThis system is the foundation of all modern computing. Every file, every message, every image you see on a screen is fundamentally a huge sequence of 0s and 1s, organized in packets of eight."}},
-  {id:11,ep:'1980',nm:'Le ROT13',cv:'Internet',ic:'🔄',ans:'INTERNET',fl:'USENET',fm:"Le réseau Usenet popularisa ce chiffrement trivial.",hi:"Décalez chaque lettre de 13 positions dans l'alphabet.",clr:'#f59e0b',mini:'🌐',wiki:'ROT13',imgUrl:'https://miro.medium.com/v2/resize:fit:594/format:webp/0*m3VShx1oxynBnACy.jpeg',
+  {id:11,ep:'1980',nm:'Le ROT13',cv:'Internet',ic:'🔄',ansHash:'0c21e780658ddc0e487c61fb424244db69d7b8fc23bd0ee9f4e1c5f8a7a8c4b5',fl:'USENET',fm:"Le réseau Usenet popularisa ce chiffrement trivial.",hi:"Décalez chaque lettre de 13 positions dans l'alphabet.",clr:'#f59e0b',mini:'🌐',wiki:'ROT13',imgUrl:'https://miro.medium.com/v2/resize:fit:594/format:webp/0*m3VShx1oxynBnACy.jpeg',
     lore:"Au début des années 1980, le réseau Usenet — ancêtre des forums — avait un problème : comment partager des spoilers ou des blagues offensantes sans choquer ceux qui ne veulent pas les lire ?\n\nLa solution : ROT13, un chiffre de César avec un décalage de 13. Sa particularité unique : appliquer ROT13 deux fois redonne le texte original, car l'alphabet a 26 lettres et 13 est exactement la moitié.\n\nROT13 n'est pas un vrai chiffrement — c'est un « rideau » volontaire. Quiconque connaît ROT13 peut le décoder instantanément. Mais c'est devenu une tradition sur Internet et un terme de la culture hacker.",
     en:{"nm": "ROT13", "cv": "Internet", "fm": "The Usenet network popularized this trivial cipher.", "hi": "Shift each letter 13 positions in the alphabet.", "lore": "In the early 1980s, the Usenet network — ancestor of forums — had a problem: how to share spoilers or offensive jokes without shocking those who don't want to read them?\n\nThe solution: ROT13, a Caesar cipher with a shift of 13. Its unique feature: applying ROT13 twice gives back the original text, because the alphabet has 26 letters and 13 is exactly half.\n\nROT13 is not a real encryption — it's a voluntary curtain. Anyone who knows ROT13 can decode it instantly. But it has become an Internet tradition and a term of hacker culture."}},
-  {id:8,ep:'1985',nm:'Stéganographie',cv:'Internet',ic:'◉',ans:'INVISIBLE',fl:'PIXEL',fm:"Des messages cachés dans les pixels.",hi:"Un message caché dans les données brutes d'une image.",clr:'#06b6d4',
+  {id:8,ep:'1985',nm:'Stéganographie',cv:'Internet',ic:'◉',ansHash:'03f65a90b780528da96b69e5a344589bbb6a0066671052fcc8ec491041768538',fl:'PIXEL',fm:"Des messages cachés dans les pixels.",hi:"Un message caché dans les données brutes d'une image.",clr:'#06b6d4',
     mini:'💻',wiki:'Steganography',
     lore:"Bien que l'idée remonte à l'Antiquité (Hérodote rapporte des messages tatoués sur le crâne d'esclaves), la stéganographie moderne naît en 1985 avec les travaux de Gustavus Simmons. Du grec stéganos (« couvert ») et graphein (« écrire »), elle cache l'existence même du message. Contrairement au chiffrement qui rend illisible, la stéganographie dissimule le secret dans un support anodin — une image, un fichier audio, une vidéo.\n\nDans le monde numérique, chaque fichier image est composé de millions d'octets. Un éditeur hexadécimal révèle ces données brutes : des valeurs de 00 à FF qui encodent les pixels, les métadonnées, la structure du fichier.\n\nLa technique la plus élémentaire consiste à glisser du texte là où personne ne regarde : après que toutes les données légitimes du fichier se terminent. L'image s'affiche parfaitement — mais un observateur attentif, armé du bon outil, découvrira que le fichier contient plus qu'il n'y paraît.\n\nDes techniques plus sophistiquées modifient les bits les moins significatifs des pixels (LSB). L'œil humain ne perçoit pas la différence, mais les données sont bien là, dissimulées dans le bruit numérique.",
     en:{"nm": "Steganography", "cv": "Internet", "fm": "Messages hidden in pixels.", "hi": "A message hidden in the raw data of an image.", "lore": "Although the idea dates back to Antiquity (Herodotus reports messages tattooed on slaves' scalps), modern steganography was born in 1985 with the work of Gustavus Simmons. From the Greek steganos (covered) and graphein (to write), it hides the very existence of the message. Unlike encryption which makes it unreadable, steganography conceals the secret in an innocuous medium — an image, an audio file, a video.\n\nIn the digital world, each image file is composed of millions of bytes. A hex editor reveals this raw data: values from 00 to FF that encode pixels, metadata, file structure.\n\nThe most basic technique is to slip text where no one looks: after all legitimate file data ends. The image displays perfectly — but an attentive observer, armed with the right tool, will discover that the file contains more than it seems.\n\nMore sophisticated techniques modify the least significant bits of pixels (LSB). The human eye does not perceive the difference, but the data is there, hidden in the digital noise."}},
-  {id:12,ep:'1987',nm:'Le Base64',cv:'Web',ic:'📧',ans:'ENCODE',fl:'MIME',fm:"Le format MIME utilise Base64 pour les pièces jointes email.",hi:"Un encodage qui transforme des données binaires en texte lisible.",clr:'#ec4899',mini:'📨',wiki:'Base64',wikiLang:'fr',
+  {id:12,ep:'1987',nm:'Le Base64',cv:'Web',ic:'📧',ansHash:'8b325792e51e8dd4fda4558fdc763c49893a19ffd1fc0610138ff666df2c6609',fl:'MIME',fm:"Le format MIME utilise Base64 pour les pièces jointes email.",hi:"Un encodage qui transforme des données binaires en texte lisible.",clr:'#ec4899',mini:'📨',wiki:'Base64',wikiLang:'fr',
     lore:"Base64 n'est pas un chiffrement — c'est un encodage. Il transforme n'importe quelles données binaires en une suite de 64 caractères « sûrs » : A-Z, a-z, 0-9, + et /.\n\nInventé pour les emails (norme MIME, 1987), il permet d'envoyer des fichiers binaires (images, PDF) à travers des protocoles qui n'acceptent que du texte. Chaque groupe de 3 octets est converti en 4 caractères Base64.\n\nOn reconnaît facilement du Base64 : des chaînes de lettres et chiffres mélangés, souvent terminées par un ou deux signes =. Pour le décoder, un simple outil en ligne suffit.",
     en:{"nm": "Base64", "cv": "Web", "fm": "The MIME format uses Base64 for email attachments.", "hi": "An encoding that transforms binary data into readable text.", "lore": "Base64 is not encryption — it's an encoding. It transforms any binary data into a sequence of 64 safe characters: A-Z, a-z, 0-9, + and /.\n\nInvented for emails (MIME standard, 1987), it allows sending binary files (images, PDFs) through protocols that only accept text. Each group of 3 bytes is converted to 4 Base64 characters.\n\nBase64 is easy to recognize: strings of mixed letters and numbers, often ending with one or two = signs. To decode it, a simple online tool is enough."}},
-  {id:13,ep:'1991',nm:'Le Hash MD5',cv:'Sécurité',ic:'🔒',ans:'CYBER',fl:'HASH',fm:"Une empreinte unique et irréversible.",hi:"Un hash transforme un texte en empreinte fixe. Impossible à inverser... sauf avec une liste de mots.",clr:'#dc2626',mini:'🔐',wiki:'MD5',imgUrl:'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Cryptographic_Hash_Function.svg/500px-Cryptographic_Hash_Function.svg.png',
+  {id:13,ep:'1991',nm:'Le Hash MD5',cv:'Sécurité',ic:'🔒',ansHash:'c9b27cf8124e59a02a3bc0dc488cee4b9a73c80fa2508b2278447007d897779c',fl:'HASH',fm:"Une empreinte unique et irréversible.",hi:"Un hash transforme un texte en empreinte fixe. Impossible à inverser... sauf avec une liste de mots.",clr:'#dc2626',mini:'🔐',wiki:'MD5',imgUrl:'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Cryptographic_Hash_Function.svg/500px-Cryptographic_Hash_Function.svg.png',
     lore:"MD5 (Message-Digest Algorithm 5), créé par Ronald Rivest en 1991, produit une empreinte de 128 bits (32 caractères hexadécimaux) à partir de n'importe quelle donnée. C'est une fonction à sens unique : on ne peut pas retrouver le message original à partir du hash.\n\nMais il existe une faille : les « rainbow tables ». Ce sont d'immenses dictionnaires précalculés qui associent des millions de mots à leur hash MD5. Si votre mot de passe est un mot courant, son hash est probablement dans une rainbow table.\n\nC'est pourquoi MD5 est considéré comme cassé pour la sécurité. Les systèmes modernes utilisent SHA-256 ou bcrypt. Mais pour ce défi, votre mission est de jouer le rôle d'un attaquant : retrouver le mot original à partir de son hash.",
     en:{"nm": "MD5 Hash", "cv": "Security", "fm": "A unique and irreversible fingerprint.", "hi": "A hash transforms text into a fixed fingerprint. Impossible to reverse... except with a word list.", "lore": "MD5 (Message-Digest Algorithm 5), created by Ronald Rivest in 1991, produces a 128-bit fingerprint (32 hexadecimal characters) from any data. It's a one-way function: you can't retrieve the original message from the hash.\n\nBut there's a flaw: rainbow tables. These are huge pre-calculated dictionaries that associate millions of words with their MD5 hash. If your password is a common word, its hash is probably in a rainbow table.\n\nThis is why MD5 is considered broken for security. Modern systems use SHA-256 or bcrypt. But for this challenge, your mission is to play the role of an attacker: find the original word from its hash."}},
-  {id:16,ep:'1994',nm:'Le QR Code',cv:'Japon',ic:'📱',ans:'MATRIX',fl:'DENSO',fm:"Denso Wave inventa le QR Code pour l'industrie automobile.",hi:"Un code 2D qui stocke des données dans un motif de carrés noirs et blancs.",clr:'#14b8a6',mini:'📲',wiki:'Denso',
+  {id:16,ep:'1994',nm:'Le QR Code',cv:'Japon',ic:'📱',ansHash:'0bd9634ad89c32e05ae13463dc47a21123dab32114e876817bb876b61fbff0f2',fl:'DENSO',fm:"Denso Wave inventa le QR Code pour l'industrie automobile.",hi:"Un code 2D qui stocke des données dans un motif de carrés noirs et blancs.",clr:'#14b8a6',mini:'📲',wiki:'Denso',
     lore:"En 1994, Masahiro Hara, ingénieur chez Denso Wave (filiale de Toyota), créa le QR Code (Quick Response Code) pour suivre les pièces automobiles dans les usines japonaises.\n\nContrairement au code-barres classique (1D), le QR Code stocke des données en deux dimensions — horizontalement et verticalement. Il peut contenir jusqu'à 7 089 chiffres ou 4 296 caractères.\n\nLes trois grands carrés dans les coins permettent au scanner de déterminer l'orientation. Le reste du motif encode les données avec correction d'erreur : même endommagé à 30%, un QR Code reste lisible.\n\nAujourd'hui omniprésent (menus, billets, paiements), le QR Code est aussi utilisé en stéganographie : on peut y cacher des messages que seul un scanner révèlera.",
     en:{"nm": "QR Code", "cv": "Japan", "fm": "Denso Wave invented the QR Code for the automotive industry.", "hi": "A 2D code that stores data in a pattern of black and white squares.", "lore": "In 1994, Masahiro Hara, engineer at Denso Wave (Toyota subsidiary), created the QR Code (Quick Response Code) to track automotive parts in Japanese factories.\n\nUnlike the classic barcode (1D), the QR Code stores data in two dimensions — horizontally and vertically. It can contain up to 7,089 digits or 4,296 characters.\n\nThe three large squares in the corners allow the scanner to determine orientation. The rest of the pattern encodes data with error correction: even damaged up to 30%, a QR Code remains readable.\n\nToday ubiquitous (menus, tickets, payments), the QR Code is also used in steganography: messages can be hidden that only a scanner will reveal."}}
 ];
 
-// Wikipedia image component — tries 2 APIs for best coverage
+// Wikipedia image component
 const WikiImg=({title,alt,clr,icon,lang='en',directUrl})=>{
   const[src,setSrc]=useState(directUrl||null);
   const[done,setDone]=useState(!!directUrl);
   useEffect(()=>{
     if(directUrl){setSrc(directUrl);setDone(true);return}
     setDone(false);setSrc(null);
-    // Try MediaWiki API first
     fetch('https://'+lang+'.wikipedia.org/w/api.php?action=query&titles='+title+'&prop=pageimages&format=json&pithumbsize=600&origin=*')
       .then(r=>r.json())
       .then(d=>{
         const p=Object.values(d.query.pages)[0];
         if(p&&p.thumbnail){setSrc(p.thumbnail.source);setDone(true)}
         else{
-          // Fallback: try REST API
           fetch('https://'+lang+'.wikipedia.org/api/rest_v1/page/summary/'+title)
             .then(r=>r.json())
             .then(d2=>{if(d2.thumbnail)setSrc(d2.thumbnail.source);setDone(true)})
@@ -225,26 +242,44 @@ const WikiImg=({title,alt,clr,icon,lang='en',directUrl})=>{
   </div>);
 };
 
-// Answer input component
-const AI=({v,ch,sub,ph,er,ml=20})=>{
+// Answer input component with async validation
+const AI=({v,ch,sub,ph,er,ml=20,loading})=>{
   const lang=useLang();
   return(
   <div className="space-y-3">
-    <input type="text" value={v} onChange={e=>ch(san(e.target.value))} onKeyDown={e=>e.key==='Enter'&&sub()} placeholder={ph} maxLength={ml} autoCorrect="off" autoCapitalize="characters" autoComplete="off" spellCheck={false} inputMode="text" className={`w-full px-4 py-3.5 text-xl fm text-center rounded-lg border-2 bg-black/50 text-cyan-300 tracking-widest placeholder-cyan-800 ${er?'border-red-500 shake':'border-cyan-500/30 focus:border-cyan-400'} focus:outline-none transition-all`}/>
-    <button onClick={sub} className="w-full py-3.5 bg-gradient-to-r from-cyan-600 to-blue-700 text-white rounded-lg ft tracking-widest text-sm uppercase active:scale-[0.98] transition-transform shadow-lg shadow-cyan-500/20 border border-cyan-400/30">▹ {tr(lang,'decipher','DÉCHIFFRER')}</button>
+    <input 
+      type="text" 
+      value={v} 
+      onChange={e=>ch(san(e.target.value))} 
+      onKeyDown={e=>e.key==='Enter'&&!loading&&sub()} 
+      placeholder={ph} 
+      maxLength={ml} 
+      autoCorrect="off" 
+      autoCapitalize="characters" 
+      autoComplete="off" 
+      spellCheck={false} 
+      inputMode="text" 
+      disabled={loading}
+      className={`w-full px-4 py-3.5 text-xl fm text-center rounded-lg border-2 bg-black/50 text-cyan-300 tracking-widest placeholder-cyan-800 ${er?'border-red-500 shake':loading?'border-yellow-500/50':'border-cyan-500/30 focus:border-cyan-400'} focus:outline-none transition-all ${loading?'opacity-60':''}`}
+    />
+    <button 
+      onClick={sub} 
+      disabled={loading}
+      className={`w-full py-3.5 bg-gradient-to-r from-cyan-600 to-blue-700 text-white rounded-lg ft tracking-widest text-sm uppercase transition-transform shadow-lg shadow-cyan-500/20 border border-cyan-400/30 ${loading?'opacity-50 cursor-wait':'active:scale-[0.98]'}`}
+    >
+      {loading?'🔐 VALIDATION...':'▹ '+tr(lang,'decipher','DÉCHIFFRER')}
+    </button>
   </div>
 )};
 
-// History Modal component
+// History Modal
 const Modal=({ch,lang,onClose})=>{
   if(!ch)return null;
   return(
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={onClose}>
       <div className="absolute inset-0 bg-black/160 backdrop-blur-sm"></div>
       <div className="relative max-w-lg w-full max-h-[85vh] rounded-2xl overflow-hidden fi" onClick={e=>e.stopPropagation()} style={{background:'linear-gradient(135deg, rgba(10,10,30,.95), rgba(20,20,50,.95))',border:`2px solid ${ch.clr}50`,boxShadow:`0 0 40px ${ch.clr}20`}}>
-        {/* Close button */}
         <button onClick={onClose} className="absolute top-3 right-3 w-10 h-10 rounded-full bg-white/10 text-white flex items-center justify-center text-xl font-bold z-10 active:scale-95 hover:bg-white/20 border border-white/20">✕</button>
-        {/* Header with miniature */}
         <div className="relative p-6 pb-4 text-center" style={{background:`linear-gradient(180deg, ${ch.clr}20, transparent)`}}>
           <div className="text-6xl mb-3">{ch.mini}</div>
           <h3 className="ft text-xl font-bold text-white tracking-wider">{cn(ch,lang||"fr")}</h3>
@@ -253,7 +288,6 @@ const Modal=({ch,lang,onClose})=>{
             <span className="fm text-xs px-3 py-1 rounded-full border border-gray-600 text-gray-400">{cc(ch,lang||"fr")}</span>
           </div>
         </div>
-        {/* Scrollable content */}
         <div className="px-6 pb-6 overflow-y-auto" style={{maxHeight:'55vh'}}>
           <div className="h-px w-full my-4" style={{background:`linear-gradient(90deg, transparent, ${ch.clr}60, transparent)`}}></div>
           {cl(ch,lang||'fr').split('\n\n').map((p,i)=>(
@@ -268,14 +302,24 @@ const Modal=({ch,lang,onClose})=>{
     </div>
   );
 };
+
+// ===== CHALLENGE COMPONENTS (Modifiés pour validation async) =====
+
 const C1=({onS})=>{
   const lang=useLang();
   const[cols,setC]=useState(2);
   const[a,setA]=useState('');
   const[e,setE]=useState(false);
+  const[loading,setLoading]=useState(false);
   const enc='LIEDOANS';
   const grid=useMemo(()=>{const r=Math.ceil(enc.length/cols);const g=Array.from({length:r},()=>Array(cols).fill(''));let i=0;for(let c=0;c<cols;c++)for(let r2=0;r2<r;r2++)if(i<enc.length)g[r2][c]=enc[i++];return g},[cols]);
-  const sub=()=>{if(norm(a)==='LEONIDAS')onS();else{setE(true);setTimeout(()=>setE(false),500)}};
+  const sub=async()=>{
+    setLoading(true);
+    const isValid = await validateAnswer(a, CH[1].ansHash);
+    setLoading(false);
+    if(isValid)onS();
+    else{setE(true);setTimeout(()=>setE(false),500)}
+  };
   return(<div className="space-y-5">
     <div className="glass rounded-lg p-4"><p className="text-cyan-100 leading-relaxed">{lang==='en'?<>Find the right <strong className="text-cyan-300">number of columns</strong>. The grid reorganizes: read <strong className="text-cyan-300">line by line</strong> to find the word.</>:<>Trouvez le bon <strong className="text-cyan-300">nombre de colonnes</strong>. La grille se réorganise : lisez <strong className="text-cyan-300">ligne par ligne</strong> pour trouver le mot.</>}</p></div>
     <div className="glass2 rounded-lg p-5 border-glow-cyan">
@@ -296,15 +340,22 @@ const C1=({onS})=>{
       </div>
       <p className="text-xs text-center text-cyan-600 mt-3 fm">{lang==='en'?"→ read line by line":"→ lecture ligne par ligne"}</p>
     </div>
-    <AI v={a} ch={setA} sub={sub} ph={lang==='en'?"The revealed word...":"Le mot révélé..."} er={e}/>
+    <AI v={a} ch={setA} sub={sub} ph={lang==='en'?"The revealed word...":"Le mot révélé..."} er={e} loading={loading}/>
   </div>);
 };
 
-// ===== CHALLENGE 2: CÉSAR =====
 const C2=({onS})=>{
   const lang=useLang();
-  const[a,setA]=useState('');const[e,setE]=useState(false);
-  const sub=()=>{if(norm(a)==='VENIVIDIVICI')onS();else{setE(true);setTimeout(()=>setE(false),500)}};
+  const[a,setA]=useState('');
+  const[e,setE]=useState(false);
+  const[loading,setLoading]=useState(false);
+  const sub=async()=>{
+    setLoading(true);
+    const isValid = await validateAnswer(a, CH[3].ansHash);
+    setLoading(false);
+    if(isValid)onS();
+    else{setE(true);setTimeout(()=>setE(false),500)}
+  };
   return(<div className="space-y-5">
     <div className="glass rounded-lg p-4"><p className="text-pink-100 leading-relaxed"><strong className="text-pink-300">{lang==='en'?"Puzzle:":"Énigme :"}</strong> {lang==='en'?"The shift is in Roman numerals: ":"Le décalage est en chiffres romains : "}<span className="text-3xl ft font-bold text-pink-300 glow-pink">III</span>{lang==='en'?". Decipher the message.":". Déchiffrez le message."}</p></div>
     <div className="glass2 rounded-lg p-6 border-glow-pink">
@@ -312,17 +363,24 @@ const C2=({onS})=>{
       <p className="text-2xl sm:text-3xl fm font-bold text-center tracking-widest text-pink-200">YHQL YLGL YLFL</p>
     </div>
     <div className="glass rounded-lg p-4"><p className="text-sm text-pink-200/70 text-center fm">{lang==='en'?"Hint: famous Latin phrase by Julius Caesar":"Indice : célèbre phrase latine de Jules César"}</p></div>
-    <AI v={a} ch={setA} sub={sub} ph={lang==='en'?"The Latin message (no spaces)...":"Le message latin (sans espace)..."} er={e}/>
+    <AI v={a} ch={setA} sub={sub} ph={lang==='en'?"The Latin message (no spaces)...":"Le message latin (sans espace)..."} er={e} loading={loading}/>
   </div>);
 };
 
-// ===== CHALLENGE 3: POLYBE =====
 const C3=({onS})=>{
   const lang=useLang();
-  const[a,setA]=useState('');const[e,setE]=useState(false);
+  const[a,setA]=useState('');
+  const[e,setE]=useState(false);
+  const[loading,setLoading]=useState(false);
   const co=[[4,3],[1,5],[1,3],[4,2],[1,5],[4,4]];
   const gr=[['A','B','C','D','E'],['F','G','H','I','K'],['L','M','N','O','P'],['Q','R','S','T','U'],['V','W','X','Y','Z']];
-  const sub=()=>{if(norm(a)==='SECRET')onS();else{setE(true);setTimeout(()=>setE(false),500)}};
+  const sub=async()=>{
+    setLoading(true);
+    const isValid = await validateAnswer(a, CH[2].ansHash);
+    setLoading(false);
+    if(isValid)onS();
+    else{setE(true);setTimeout(()=>setE(false),500)}
+  };
   return(<div className="space-y-5">
     <div className="glass rounded-lg p-4"><p className="text-green-100 leading-relaxed">{lang==='en'?<>Each pair <strong className="text-green-300">(row, column)</strong> designates a letter. Indices from 1 to 5.</>:<>Chaque paire <strong className="text-green-300">(ligne, colonne)</strong> désigne une lettre. Indices de 1 à 5.</>}</p></div>
     <div className="glass rounded-lg p-4">
@@ -333,15 +391,22 @@ const C3=({onS})=>{
       <p className="ft text-xs uppercase tracking-[0.3em] text-green-400 mb-3 text-center glow-green">{lang==='en'?"Coordinates":"Coordonnées"}</p>
       <div className="flex flex-wrap justify-center gap-2">{co.map((c,i)=>(<div key={i} className="bg-green-950/60 rounded px-3 py-1.5 fm text-green-300 text-lg border border-green-500/30">{c[0]},{c[1]}</div>))}</div>
     </div>
-    <AI v={a} ch={setA} sub={sub} ph={lang==='en'?"The revealed word...":"Le mot révélé..."} er={e}/>
+    <AI v={a} ch={setA} sub={sub} ph={lang==='en'?"The revealed word...":"Le mot révélé..."} er={e} loading={loading}/>
   </div>);
 };
 
-// ===== CHALLENGE 4: VIGENÈRE =====
 const C4=({onS})=>{
   const lang=useLang();
-  const[a,setA]=useState('');const[e,setE]=useState(false);
-  const sub=()=>{if(norm(a)==='TROIS')onS();else{setE(true);setTimeout(()=>setE(false),500)}};
+  const[a,setA]=useState('');
+  const[e,setE]=useState(false);
+  const[loading,setLoading]=useState(false);
+  const sub=async()=>{
+    setLoading(true);
+    const isValid = await validateAnswer(a, CH[4].ansHash);
+    setLoading(false);
+    if(isValid)onS();
+    else{setE(true);setTimeout(()=>setE(false),500)}
+  };
   return(<div className="space-y-5">
     <div className="glass rounded-lg p-4"><p className="text-yellow-100 leading-relaxed"><strong className="text-yellow-300">{lang==='en'?"Puzzle:":"Énigme :"}</strong> {lang==='en'?<>The secret key is <em className="text-yellow-200">the king of animals</em>. Subtract the key from the message.</>:<>La clé secrète est <em className="text-yellow-200">le roi des animaux</em>. Soustrayez la clé au message.</>}</p></div>
     <div className="glass2 rounded-lg p-4 border-glow-gold">
@@ -367,17 +432,24 @@ const C4=({onS})=>{
         </div>
       </div>
     </div>
-    <AI v={a} ch={setA} sub={sub} ph={lang==='en'?"The deciphered word...":"Le mot déchiffré..."} er={e}/>
+    <AI v={a} ch={setA} sub={sub} ph={lang==='en'?"The deciphered word...":"Le mot déchiffré..."} er={e} loading={loading}/>
     <a href="https://www.dcode.fr/chiffre-vigenere" target="_blank" rel="noopener" className="block text-center text-xs text-yellow-500 underline">🔗 {lang==='en'?"Vigenère Decoder (dcode.fr)":"Décodeur Vigenère (dcode.fr)"}</a>
   </div>);
 };
 
-// ===== CHALLENGE 5: RAIL FENCE + MORSE =====
 const C5=({onS})=>{
   const lang=useLang();
-  const[a,setA]=useState('');const[e,setE]=useState(false);
+  const[a,setA]=useState('');
+  const[e,setE]=useState(false);
+  const[loading,setLoading]=useState(false);
   const morseAlpha=[['A','.-'],['B','-...'],['C','-.-.'],['D','-..'],['E','.'],['F','..-.'],['G','--.'],['H','....'],['I','..'],['J','.---'],['K','-.-'],['L','.-..'],['M','--'],['N','-.'],['O','---'],['P','.--.'],['Q','--.-'],['R','.-.'],['S','...'],['T','-'],['U','..-'],['V','...-'],['W','.--'],['X','-..-'],['Y','-.--'],['Z','--..']];
-  const sub=()=>{if(norm(a)==='TELEGRAPH')onS();else{setE(true);setTimeout(()=>setE(false),500)}};
+  const sub=async()=>{
+    setLoading(true);
+    const isValid = await validateAnswer(a, CH[5].ansHash);
+    setLoading(false);
+    if(isValid)onS();
+    else{setE(true);setTimeout(()=>setE(false),500)}
+  };
   return(<div className="space-y-5">
     <div className="glass rounded-lg p-4"><p className="text-orange-100 leading-relaxed"><strong className="text-orange-300">Rail Fence:</strong> {lang==='en'?"Letters are written in zigzag on several rails, then transmitted line by line.":"Les lettres sont écrites en zigzag sur plusieurs rails, puis transmises ligne par ligne."}</p></div>
     <div className="glass rounded-lg p-4">
@@ -412,18 +484,25 @@ const C5=({onS})=>{
       <p className="ft text-xs uppercase tracking-[0.3em] text-orange-400 mb-3 text-center">{lang==='en'?"Encrypted message":"Message chiffré"}</p>
       <p className="text-2xl sm:text-3xl fm font-bold text-center tracking-widest text-orange-100">TGHEERPLA</p>
     </div>
-    <AI v={a} ch={setA} sub={sub} ph={lang==='en'?"The deciphered word...":"Le mot déchiffré..."} er={e} ml={15}/>
+    <AI v={a} ch={setA} sub={sub} ph={lang==='en'?"The deciphered word...":"Le mot déchiffré..."} er={e} ml={15} loading={loading}/>
     <a href="https://www.dcode.fr/chiffre-rail-fence" target="_blank" rel="noopener" className="block text-center text-xs text-orange-500 underline">🔗 {lang==='en'?"Rail Fence Decoder (dcode.fr)":"Décodeur Rail Fence (dcode.fr)"}</a>
   </div>);
 };
 
-// ===== CHALLENGE 6: PLAYFAIR + GREC =====
 const C6=({onS})=>{
   const lang=useLang();
-  const[a,setA]=useState('');const[e,setE]=useState(false);
+  const[a,setA]=useState('');
+  const[e,setE]=useState(false);
+  const[loading,setLoading]=useState(false);
   const gr=[['P','L','A','Y','F'],['I','R','E','X','M'],['B','C','D','G','H'],['K','N','O','Q','S'],['T','U','V','W','Z']];
   const pairs=[['γ','β'],['δ','γ'],['γ','γ'],['β','γ']];
-  const sub=()=>{if(norm(a)==='CODE')onS();else{setE(true);setTimeout(()=>setE(false),500)}};
+  const sub=async()=>{
+    setLoading(true);
+    const isValid = await validateAnswer(a, CH[6].ansHash);
+    setLoading(false);
+    if(isValid)onS();
+    else{setE(true);setTimeout(()=>setE(false),500)}
+  };
   return(<div className="space-y-5">
     <div className="glass rounded-lg p-4"><p className="text-purple-100 leading-relaxed"><strong className="text-purple-300">{lang==='en'?"Puzzle:":"Énigme :"}</strong> {lang==='en'?<>The positions (row, column) are in <em className="text-purple-200">Greek letters</em>. Convert using the table.</>:<>Les positions (ligne, colonne) sont en <em className="text-purple-200">lettres grecques</em>. Convertissez avec le tableau.</>}</p></div>
     <div className="glass rounded-lg p-4" style={{boxShadow:'0 0 12px rgba(168,85,247,.3)'}}>
@@ -438,19 +517,27 @@ const C6=({onS})=>{
       <p className="ft text-xs uppercase tracking-[0.3em] text-purple-400 mb-3 text-center">{lang==='en'?"Greek positions":"Positions en Grec"}</p>
       <div className="flex flex-wrap justify-center gap-3">{pairs.map((p,i)=>(<div key={i} className="bg-purple-950/60 rounded-lg px-4 py-3 border border-purple-500/40 text-center"><div className="text-xs text-purple-500">{lang==='en'?"Letter ":"Lettre "}{i+1}</div><div className="text-2xl font-bold text-purple-200">({p[0]}, {p[1]})</div></div>))}</div>
     </div>
-    <AI v={a} ch={setA} sub={sub} ph={lang==='en'?"The revealed word...":"Le mot révélé..."} er={e}/>
+    <AI v={a} ch={setA} sub={sub} ph={lang==='en'?"The revealed word...":"Le mot révélé..."} er={e} loading={loading}/>
     <a href="https://fr.wikipedia.org/wiki/Alphabet_grec" target="_blank" rel="noopener" className="block text-center text-xs text-purple-500 underline">🔗 {lang==='en'?"Greek alphabet (Wikipedia)":"Alphabet grec (Wikipédia)"}</a>
   </div>);
 };
 
-// ===== CHALLENGE 7: ENIGMA =====
 const C7=({onS})=>{
   const lang=useLang();
-  const[rot,setR]=useState([0,0,0]);const[a,setA]=useState('');const[e,setE]=useState(false);
+  const[rot,setR]=useState([0,0,0]);
+  const[a,setA]=useState('');
+  const[e,setE]=useState(false);
+  const[loading,setLoading]=useState(false);
   const enc='DLV';
   const dec=useMemo(()=>enc.split('').map((c,i)=>{const v=c.charCodeAt(0)-65;return String.fromCharCode(((v-rot[i])%26+26)%26+65)}).join(''),[rot]);
   const upd=(i,d)=>{const n=[...rot];n[i]=(n[i]+d+26)%26;setR(n)};
-  const sub=()=>{if(norm(a)==='WAR')onS();else{setE(true);setTimeout(()=>setE(false),500)}};
+  const sub=async()=>{
+    setLoading(true);
+    const isValid = await validateAnswer(a, CH[8].ansHash);
+    setLoading(false);
+    if(isValid)onS();
+    else{setE(true);setTimeout(()=>setE(false),500)}
+  };
   return(<div className="space-y-5">
     <div className="glass rounded-lg p-4"><p className="text-red-100 leading-relaxed"><strong className="text-red-300">{lang==='en'?"Break the code!":"Cassez le code !"}</strong> {lang==='en'?<>Each rotor shifts its own letter. Find the combination that reveals an <em className="text-red-200">English word related to war</em>.</>:<>Chaque rotor décale sa propre lettre. Trouvez la combinaison qui révèle un <em className="text-red-200">mot anglais lié à la guerre</em>.</>}</p></div>
     <div className="glass2 rounded-lg p-5" style={{boxShadow:'0 0 15px rgba(239,68,68,.3)'}}>
@@ -470,14 +557,15 @@ const C7=({onS})=>{
       <div className="flex justify-center gap-3 mb-4">{rot.map((r,i)=>(<div key={i} className="bg-gray-900 rounded-lg p-3 border-2 border-red-700/50"><p className="text-xs text-red-400 text-center mb-2 ft">R{i+1}</p><div className="flex flex-col items-center gap-1"><button onClick={()=>upd(i,1)} className="w-10 h-7 bg-gray-800 text-red-300 rounded active:bg-gray-700 text-lg flex items-center justify-center border border-red-700/40">▲</button><div className="w-12 h-14 bg-gradient-to-b from-red-800 to-red-950 rounded-md flex items-center justify-center text-2xl font-mono font-bold text-red-100 border-2 border-red-600">{r.toString().padStart(2,'0')}</div><button onClick={()=>upd(i,-1)} className="w-10 h-7 bg-gray-800 text-red-300 rounded active:bg-gray-700 text-lg flex items-center justify-center border border-red-700/40">▼</button></div></div>))}</div>
       <div className="rounded-md p-3 border-2 bg-black/60 border-red-600/40"><p className="ft text-xs uppercase tracking-[0.3em] text-red-400 mb-1 text-center">{lang==='en'?"Output":"Sortie"}</p><p className="text-3xl fm font-bold text-center text-red-100 tracking-[0.3em]">{dec}</p></div>
     </div>
-    <AI v={a} ch={setA} sub={sub} ph={lang==='en'?"The revealed word...":"Le mot révélé..."} er={e}/>
+    <AI v={a} ch={setA} sub={sub} ph={lang==='en'?"The revealed word...":"Le mot révélé..."} er={e} loading={loading}/>
   </div>);
 };
 
-// ===== CHALLENGE 8: STÉGANOGRAPHIE =====
 const C8=({onS})=>{
   const lang=useLang();
-  const[a,setA]=useState('');const[e,setE]=useState(false);
+  const[a,setA]=useState('');
+  const[e,setE]=useState(false);
+  const[loading,setLoading]=useState(false);
   const cRef=React.useRef(null);
   useEffect(()=>{
     const cv=cRef.current;if(!cv)return;const ctx=cv.getContext('2d');const w=320,h=213;cv.width=w;cv.height=h;
@@ -490,7 +578,13 @@ const C8=({onS})=>{
     for(let i=0;i<4;i++)drawErmine(gx*(i+0.8),gy*3.0,es*0.4);
   },[]);
   const download=()=>{const cv=cRef.current;if(!cv)return;cv.toBlob(blob=>{blob.arrayBuffer().then(buf=>{const orig=new Uint8Array(buf);const fb=new TextEncoder().encode('\n\n flag=INVISIBLE \n\n');const c=new Uint8Array(orig.length+fb.length);c.set(orig);c.set(fb,orig.length);const nb=new Blob([c],{type:'image/png'});const u=URL.createObjectURL(nb);const lk=document.createElement('a');lk.href=u;lk.download='drapeau_secret.png';lk.click();URL.revokeObjectURL(u)})},'image/png')};
-  const sub=()=>{if(norm(a)==='INVISIBLE')onS();else{setE(true);setTimeout(()=>setE(false),500)}};
+  const sub=async()=>{
+    setLoading(true);
+    const isValid = await validateAnswer(a, CH[12].ansHash);
+    setLoading(false);
+    if(isValid)onS();
+    else{setE(true);setTimeout(()=>setE(false),500)}
+  };
   return(<div className="space-y-5">
     <div className="glass rounded-lg p-4"><p className="text-cyan-100 leading-relaxed"><strong className="text-cyan-300">{lang==='en'?"Steganography:":"Stéganographie :"}</strong> {lang==='en'?<>A secret is hidden in the raw data of this image. Download it, inspect its bytes with a <strong className="text-cyan-200">hexadecimal editor</strong>.</>:<>Un secret est caché dans les données brutes de cette image. Téléchargez-la, inspectez ses octets avec un <strong className="text-cyan-200">éditeur hexadécimal</strong>.</>}</p></div>
     <div className="glass rounded-lg p-4 border-glow-cyan">
@@ -503,17 +597,24 @@ const C8=({onS})=>{
       <a href="https://www.rapidtables.com/convert/number/hex-to-ascii.html" target="_blank" rel="noopener" className="block text-center text-sm text-cyan-400 underline font-bold">🔗 {lang==='en'?"Step 2: Hex → ASCII Converter":"Étape 2 : Convertisseur Hex → ASCII"}</a>
     </div>
     <div className="glass rounded-lg p-3"><p className="text-xs text-cyan-500 text-center fm">{lang==='en'?"Tip: in hexed.it, search (Ctrl+F) for text at the end of the file":"Astuce : dans hexed.it, cherchez (Ctrl+F) du texte à la fin du fichier"}</p></div>
-    <AI v={a} ch={setA} sub={sub} ph={lang==='en'?"The hidden word (after flag=)...":"Le mot caché (après flag=)..."} er={e}/>
+    <AI v={a} ch={setA} sub={sub} ph={lang==='en'?"The hidden word (after flag=)...":"Le mot caché (après flag=)..."} er={e} loading={loading}/>
   </div>);
 };
 
-// ===== C9: ATBASH =====
 const C9=({onS})=>{
   const lang=useLang();
-  const[a,setA]=useState('');const[e,setE]=useState(false);
+  const[a,setA]=useState('');
+  const[e,setE]=useState(false);
+  const[loading,setLoading]=useState(false);
   const alpha='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   const rev='ZYXWVUTSRQPONMLKJIHGFEDCBA';
-  const sub=()=>{if(norm(a)==='CRYPTO')onS();else{setE(true);setTimeout(()=>setE(false),500)}};
+  const sub=async()=>{
+    setLoading(true);
+    const isValid = await validateAnswer(a, CH[0].ansHash);
+    setLoading(false);
+    if(isValid)onS();
+    else{setE(true);setTimeout(()=>setE(false),500)}
+  };
   return(<div className="space-y-5">
     <div className="glass rounded-lg p-4"><p className="text-indigo-100 leading-relaxed"><strong className="text-indigo-300">Atbash:</strong> {lang==='en'?<>The alphabet is <em>reversed</em>. A↔Z, B↔Y, C↔X... Decode the message below.</>:<>L'alphabet est <em>inversé</em>. A↔Z, B↔Y, C↔X... Décodez le message ci-dessous.</>}</p></div>
     <div className="glass2 rounded-lg p-6" style={{boxShadow:'0 0 15px rgba(99,102,241,.3)'}}>
@@ -526,16 +627,23 @@ const C9=({onS})=>{
       <div className="flex gap-px min-w-fit">{rev.split('').map((l,i)=>(<div key={i} className="w-6 h-7 flex items-center justify-center bg-indigo-900/40 text-indigo-200 fm text-xs border border-indigo-500/20">{l}</div>))}</div></div>
       <p className="text-xs text-center text-indigo-400/60 mt-2">{lang==='en'?"↑ clear · ↓ encrypted":"↑ clair · ↓ chiffré"}</p>
     </div>
-    <AI v={a} ch={setA} sub={sub} ph={lang==='en'?"The deciphered word...":"Le mot déchiffré..."} er={e}/>
+    <AI v={a} ch={setA} sub={sub} ph={lang==='en'?"The deciphered word...":"Le mot déchiffré..."} er={e} loading={loading}/>
   </div>);
 };
 
-// ===== C10: BINAIRE =====
 const C10=({onS})=>{
   const lang=useLang();
-  const[a,setA]=useState('');const[e,setE]=useState(false);
+  const[a,setA]=useState('');
+  const[e,setE]=useState(false);
+  const[loading,setLoading]=useState(false);
   const bins=['01001000','01000001','01000011','01001011'];
-  const sub=()=>{if(norm(a)==='HACK')onS();else{setE(true);setTimeout(()=>setE(false),500)}};
+  const sub=async()=>{
+    setLoading(true);
+    const isValid = await validateAnswer(a, CH[10].ansHash);
+    setLoading(false);
+    if(isValid)onS();
+    else{setE(true);setTimeout(()=>setE(false),500)}
+  };
   return(<div className="space-y-5">
     <div className="glass rounded-lg p-4"><p className="text-emerald-100 leading-relaxed"><strong className="text-emerald-300">{lang==='en'?"Binary:":"Binaire :"}</strong> {lang==='en'?"Each group of 8 bits represents an ASCII character. Convert to find the word.":"Chaque groupe de 8 bits représente un caractère ASCII. Convertissez pour trouver le mot."}</p></div>
     <div className="glass2 rounded-lg p-6" style={{boxShadow:'0 0 15px rgba(16,185,129,.3)'}}>
@@ -547,16 +655,23 @@ const C10=({onS})=>{
       <div className="grid grid-cols-4 sm:grid-cols-7 gap-1 text-xs text-center">{[['A','65'],['B','66'],['C','67'],['D','68'],['E','69'],['F','70'],['G','71'],['H','72'],['I','73'],['J','74'],['K','75'],['L','76'],['M','77'],['N','78'],['O','79'],['P','80']].map(([l,v])=>(<div key={l} className="bg-emerald-950/40 rounded px-1 py-1 border border-emerald-500/20"><span className="text-emerald-300 font-bold">{l}</span><span className="text-emerald-500 ml-1">{v}</span></div>))}</div>
       <p className="text-xs text-center text-emerald-400/60 mt-2">{lang==='en'?"Convert binary to decimal, then find the letter":"Convertissez le binaire en décimal, puis trouvez la lettre"}</p>
     </div>
-    <AI v={a} ch={setA} sub={sub} ph={lang==='en'?"The deciphered word...":"Le mot déchiffré..."} er={e}/>
+    <AI v={a} ch={setA} sub={sub} ph={lang==='en'?"The deciphered word...":"Le mot déchiffré..."} er={e} loading={loading}/>
     <a href="https://www.rapidtables.com/convert/number/binary-to-ascii.html" target="_blank" rel="noopener" className="block text-center text-xs text-emerald-500 underline">🔗 {lang==='en'?"Binary → ASCII Converter":"Convertisseur Binaire → ASCII"}</a>
   </div>);
 };
 
-// ===== C11: ROT13 =====
 const C11=({onS})=>{
   const lang=useLang();
-  const[a,setA]=useState('');const[e,setE]=useState(false);
-  const sub=()=>{if(norm(a)==='INTERNET')onS();else{setE(true);setTimeout(()=>setE(false),500)}};
+  const[a,setA]=useState('');
+  const[e,setE]=useState(false);
+  const[loading,setLoading]=useState(false);
+  const sub=async()=>{
+    setLoading(true);
+    const isValid = await validateAnswer(a, CH[11].ansHash);
+    setLoading(false);
+    if(isValid)onS();
+    else{setE(true);setTimeout(()=>setE(false),500)}
+  };
   return(<div className="space-y-5">
     <div className="glass rounded-lg p-4"><p className="text-amber-100 leading-relaxed"><strong className="text-amber-300">ROT13:</strong> {lang==='en'?<>Like the Caesar cipher, but with a fixed shift of <strong className="text-amber-200">13</strong>. Each letter advances 13 positions. Its peculiarity: applying ROT13 <em>twice</em> gives back the original text!</>:<>Comme le chiffre de César, mais avec un décalage fixe de <strong className="text-amber-200">13</strong>. Chaque lettre avance de 13 positions. Sa particularité : appliquer ROT13 <em>deux fois</em> redonne le texte original !</>}</p></div>
     <div className="glass2 rounded-lg p-6" style={{boxShadow:'0 0 15px rgba(245,158,11,.3)'}}>
@@ -564,16 +679,23 @@ const C11=({onS})=>{
       <p className="text-3xl fm font-bold text-center tracking-[0.2em] text-amber-200">VAGREARG</p>
     </div>
     <div className="glass rounded-lg p-4"><p className="text-sm text-amber-200/70 text-center fm">{lang==='en'?"Hint: it is the global network you are using right now.":"Indice : c'est le réseau mondial que vous utilisez en ce moment."}</p></div>
-    <AI v={a} ch={setA} sub={sub} ph={lang==='en'?"The deciphered word...":"Le mot déchiffré..."} er={e}/>
+    <AI v={a} ch={setA} sub={sub} ph={lang==='en'?"The deciphered word...":"Le mot déchiffré..."} er={e} loading={loading}/>
     <a href="https://rot13.com/" target="_blank" rel="noopener" className="block text-center text-xs text-amber-500 underline">🔗 {lang==='en'?"ROT13 Decoder online":"Décodeur ROT13 en ligne"}</a>
   </div>);
 };
 
-// ===== C12: BASE64 =====
 const C12=({onS})=>{
   const lang=useLang();
-  const[a,setA]=useState('');const[e,setE]=useState(false);
-  const sub=()=>{if(norm(a)==='ENCODE')onS();else{setE(true);setTimeout(()=>setE(false),500)}};
+  const[a,setA]=useState('');
+  const[e,setE]=useState(false);
+  const[loading,setLoading]=useState(false);
+  const sub=async()=>{
+    setLoading(true);
+    const isValid = await validateAnswer(a, CH[13].ansHash);
+    setLoading(false);
+    if(isValid)onS();
+    else{setE(true);setTimeout(()=>setE(false),500)}
+  };
   return(<div className="space-y-5">
     <div className="glass rounded-lg p-4"><p className="text-pink-100 leading-relaxed"><strong className="text-pink-300">Base64:</strong> {lang==='en'?"An encoding that transforms binary data into readable text (A-Z, a-z, 0-9, +, /). Use an online decoder to find the original word.":"Un encodage qui transforme des données binaires en texte lisible (A-Z, a-z, 0-9, +, /). Utilisez un décodeur en ligne pour retrouver le mot original."}</p></div>
     <div className="glass2 rounded-lg p-6" style={{boxShadow:'0 0 15px rgba(236,72,153,.3)'}}>
@@ -581,18 +703,25 @@ const C12=({onS})=>{
       <p className="text-3xl fm font-bold text-center tracking-wider text-pink-200">RU5DT0RF</p>
     </div>
     <div className="glass rounded-lg p-4"><p className="text-sm text-pink-200/70 text-center fm">{lang==='en'?"Base64 is recognized: mix of uppercase/lowercase letters and numbers, sometimes ending with =":"On reconnaît le Base64 : mélange de lettres majuscules/minuscules et de chiffres, parfois terminé par des ="}</p></div>
-    <AI v={a} ch={setA} sub={sub} ph={lang==='en'?"The decoded word...":"Le mot décodé..."} er={e}/>
+    <AI v={a} ch={setA} sub={sub} ph={lang==='en'?"The decoded word...":"Le mot décodé..."} er={e} loading={loading}/>
     <a href="https://www.base64decode.org/" target="_blank" rel="noopener" className="block text-center text-xs text-pink-500 underline">🔗 {lang==='en'?"Base64 Decoder online":"Décodeur Base64 en ligne"}</a>
   </div>);
 };
 
-// ===== C13: MD5 =====
 const C13=({onS})=>{
   const lang=useLang();
-  const[a,setA]=useState('');const[e,setE]=useState(false);
+  const[a,setA]=useState('');
+  const[e,setE]=useState(false);
+  const[loading,setLoading]=useState(false);
   const hash='3bd4df00b166e32e17d47f4ed5bf83d3';
   const words=['ADMIN','CYBER','FIREWALL','HACKER','LOGIN','MALWARE','PHISHING','TROJAN'];
-  const sub=()=>{if(norm(a)==='CYBER')onS();else{setE(true);setTimeout(()=>setE(false),500)}};
+  const sub=async()=>{
+    setLoading(true);
+    const isValid = await validateAnswer(a, CH[14].ansHash);
+    setLoading(false);
+    if(isValid)onS();
+    else{setE(true);setTimeout(()=>setE(false),500)}
+  };
   return(<div className="space-y-5">
     <div className="glass rounded-lg p-4"><p className="text-red-100 leading-relaxed"><strong className="text-red-300">MD5:</strong> {lang==='en'?<>A hash is an irreversible fingerprint. But with a <em>list of candidate words</em>, you can test each one and find which produces this hash.</>:<>Un hash est une empreinte irréversible. Mais avec une <em>liste de mots candidats</em>, vous pouvez tester chacun et trouver lequel produit ce hash.</>}</p></div>
     <div className="glass2 rounded-lg p-6" style={{boxShadow:'0 0 15px rgba(239,68,68,.3)'}}>
@@ -604,17 +733,23 @@ const C13=({onS})=>{
       <div className="flex flex-wrap justify-center gap-2">{words.map(w=>(<span key={w} className="bg-red-950/50 rounded px-3 py-1.5 fm text-red-300 text-sm border border-red-500/30">{w}</span>))}</div>
       <p className="text-xs text-center text-red-400/60 mt-3">{lang==='en'?"Test each word on an online MD5 generator. Only one matches!":"Testez chaque mot sur un générateur MD5 en ligne. Un seul correspond !"}</p>
     </div>
-    <AI v={a} ch={setA} sub={sub} ph={lang==='en'?"The original word...":"Le mot original..."} er={e}/>
+    <AI v={a} ch={setA} sub={sub} ph={lang==='en'?"The original word...":"Le mot original..."} er={e} loading={loading}/>
     <a href="https://www.md5hashgenerator.com/" target="_blank" rel="noopener" className="block text-center text-xs text-red-500 underline">🔗 {lang==='en'?"MD5 Generator online":"Générateur MD5 en ligne"}</a>
   </div>);
 };
 
-// ===== C14: XOR =====
 const C14=({onS})=>{
   const lang=useLang();
-  const[a,setA]=useState('');const[e,setE]=useState(false);
-  // K(75)⊕3=72=H, E(69)⊕3=70=F, Y(89)⊕3=90=Z → HFZ
-  const sub=()=>{if(norm(a)==='KEY')onS();else{setE(true);setTimeout(()=>setE(false),500)}};
+  const[a,setA]=useState('');
+  const[e,setE]=useState(false);
+  const[loading,setLoading]=useState(false);
+  const sub=async()=>{
+    setLoading(true);
+    const isValid = await validateAnswer(a, CH[7].ansHash);
+    setLoading(false);
+    if(isValid)onS();
+    else{setE(true);setTimeout(()=>setE(false),500)}
+  };
   return(<div className="space-y-5">
     <div className="glass rounded-lg p-4"><p className="text-blue-100 leading-relaxed"><strong className="text-blue-300">XOR:</strong> {lang==='en'?"Each letter is transformed by an ⊕ (XOR) operation with a numeric key. To decipher, apply the same operation.":"Chaque lettre est transformée par une opération ⊕ (XOR) avec une clé numérique. Pour déchiffrer, appliquez la même opération."}</p></div>
     <div className="glass2 rounded-lg p-6" style={{boxShadow:'0 0 15px rgba(59,130,246,.3)'}}>
@@ -634,17 +769,24 @@ const C14=({onS})=>{
         <p className="text-blue-400/60">{lang==='en'?"XOR bit by bit: if same → 0, if different → 1":"XOR bit à bit : si même → 0, si différent → 1"}</p>
       </div>
     </div>
-    <AI v={a} ch={setA} sub={sub} ph={lang==='en'?"The deciphered word...":"Le mot déchiffré..."} er={e}/>
+    <AI v={a} ch={setA} sub={sub} ph={lang==='en'?"The deciphered word...":"Le mot déchiffré..."} er={e} loading={loading}/>
     <a href="https://xor.pw/" target="_blank" rel="noopener" className="block text-center text-xs text-blue-500 underline">🔗 {lang==='en'?"XOR Calculator online":"Calculateur XOR en ligne"}</a>
   </div>);
 };
 
-// ===== C15: HEXADÉCIMAL =====
 const C15=({onS})=>{
   const lang=useLang();
-  const[a,setA]=useState('');const[e,setE]=useState(false);
+  const[a,setA]=useState('');
+  const[e,setE]=useState(false);
+  const[loading,setLoading]=useState(false);
   const hexVals=['53','45','43','55','52','45'];
-  const sub=()=>{if(norm(a)==='SECURE')onS();else{setE(true);setTimeout(()=>setE(false),500)}};
+  const sub=async()=>{
+    setLoading(true);
+    const isValid = await validateAnswer(a, CH[9].ansHash);
+    setLoading(false);
+    if(isValid)onS();
+    else{setE(true);setTimeout(()=>setE(false),500)}
+  };
   return(<div className="space-y-5">
     <div className="glass rounded-lg p-4"><p className="text-violet-100 leading-relaxed"><strong className="text-violet-300">{lang==='en'?"Hexadecimal:":"Hexadécimal :"}</strong> {lang==='en'?"Each pair of hex characters represents an ASCII character. Convert to find the word.":"Chaque paire de caractères hex représente un caractère ASCII. Convertissez pour trouver le mot."}</p></div>
     <div className="glass2 rounded-lg p-6" style={{boxShadow:'0 0 15px rgba(139,92,246,.3)'}}>
@@ -655,23 +797,30 @@ const C15=({onS})=>{
       <p className="ft text-xs uppercase tracking-[0.2em] text-violet-400 mb-2 text-center">{lang==='en'?"Conversion table":"Table de conversion"}</p>
       <div className="grid grid-cols-4 sm:grid-cols-7 gap-1 text-xs text-center">{[['A','41'],['B','42'],['C','43'],['D','44'],['E','45'],['F','46'],['G','47'],['H','48'],['I','49'],['J','4A'],['K','4B'],['L','4C'],['M','4D'],['N','4E'],['O','4F'],['P','50'],['Q','51'],['R','52'],['S','53'],['T','54'],['U','55'],['V','56'],['W','57'],['X','58'],['Y','59'],['Z','5A']].map(([l,v])=>(<div key={l} className="bg-violet-950/40 rounded px-1 py-1 border border-violet-500/20"><span className="text-violet-300 font-bold">{l}</span><span className="text-violet-500 ml-1">{v}</span></div>))}</div>
     </div>
-    <AI v={a} ch={setA} sub={sub} ph={lang==='en'?"The deciphered word...":"Le mot déchiffré..."} er={e}/>
+    <AI v={a} ch={setA} sub={sub} ph={lang==='en'?"The deciphered word...":"Le mot déchiffré..."} er={e} loading={loading}/>
     <a href="https://www.rapidtables.com/convert/number/hex-to-ascii.html" target="_blank" rel="noopener" className="block text-center text-xs text-violet-500 underline">🔗 {lang==='en'?"Hex → ASCII Converter":"Convertisseur Hex → ASCII"}</a>
   </div>);
 };
 
-// ===== C16: QR CODE =====
 const C16=({onS})=>{
   const lang=useLang();
-  const[a,setA]=useState('');const[e,setE]=useState(false);
-  const sub=()=>{if(norm(a)==='MATRIX')onS();else{setE(true);setTimeout(()=>setE(false),500)}};
+  const[a,setA]=useState('');
+  const[e,setE]=useState(false);
+  const[loading,setLoading]=useState(false);
+  const sub=async()=>{
+    setLoading(true);
+    const isValid = await validateAnswer(a, CH[15].ansHash);
+    setLoading(false);
+    if(isValid)onS();
+    else{setE(true);setTimeout(()=>setE(false),500)}
+  };
   return(<div className="space-y-5">
     <div className="glass rounded-lg p-4"><p className="text-teal-100 leading-relaxed"><strong className="text-teal-300">QR Code:</strong> {lang==='en'?"This 2D code contains a hidden message. Scan it with your phone's camera or an online QR reader.":"Ce code 2D contient un message caché. Scannez-le avec l'appareil photo de votre téléphone ou un lecteur QR en ligne."}</p></div>
     <div className="glass rounded-lg p-4 flex justify-center" style={{boxShadow:'0 0 15px rgba(20,184,166,.3)'}}>
       <div className="bg-white p-4 rounded-xl border-2 border-teal-400/50" style={{boxShadow:'0 0 20px rgba(20,184,166,.3)'}}><img src={'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=flag%3DMATRIX&color=0f766e&bgcolor=ffffff'} alt="QR Code" className="w-48 h-48 rounded" onError={e=>{e.target.alt='QR Code - utilisez le lien ci-dessous'}}/></div>
     </div>
     <div className="glass rounded-lg p-4"><p className="text-sm text-teal-200/70 text-center fm">{lang==='en'?"Scan with your phone or upload the image to an online QR reader. The message contains a flag=...":"Scannez avec votre téléphone ou uploadez l'image sur un lecteur QR en ligne. Le message contient un flag=..."}</p></div>
-    <AI v={a} ch={setA} sub={sub} ph={lang==='en'?"The word after flag=...":"Le mot après flag=..."} er={e}/>
+    <AI v={a} ch={setA} sub={sub} ph={lang==='en'?"The word after flag=...":"Le mot après flag=..."} er={e} loading={loading}/>
     <a href="https://webqr.com/" target="_blank" rel="noopener" className="block text-center text-xs text-teal-500 underline">🔗 {lang==='en'?"QR Code Reader online":"Lecteur QR Code en ligne"}</a>
   </div>);
 };
@@ -706,7 +855,11 @@ const App=()=>{
         <div className="text-6xl sm:text-7xl mb-4 ns pulse">𓂀</div>
         <h1 className="ft text-2xl sm:text-3xl font-bold text-white mb-1 tracking-[0.2em] uppercase neon-shimmer">CRYPTOGRAPHIA</h1>
         <p className="text-cyan-400/60 fm text-sm tracking-widest">{tr(lang,"subtitle","// 2500 ANS DE SECRETS //")}</p>
-        <a href="https://boneflag.com/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 mt-2 text-xs fm tracking-widest" style={{color:'#ff2d95',textDecoration:'none',textShadow:'0 0 8px rgba(255,45,149,.4)',transition:'all .3s'}}><span>🦴</span> Bone Flag</a>
+        <div className="mt-3 flex items-center justify-center gap-2">
+          <div className="text-xs fm tracking-widest text-green-400" style={{textShadow:'0 0 8px rgba(0,255,65,.6)'}}>🔐 SECURED</div>
+          <span className="text-gray-700">·</span>
+          <a href="https://boneflag.com/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-xs fm tracking-widest" style={{color:'#ff2d95',textDecoration:'none',textShadow:'0 0 8px rgba(255,45,149,.4)',transition:'all .3s'}}><span>🦴</span> Bone Flag</a>
+        </div>
       </div>
 
       <div className="glass rounded-xl p-5 mb-6 border-glow-cyan">
@@ -728,7 +881,7 @@ const App=()=>{
       {cnt===16&&(<button onClick={()=>setV('win')} className="mt-6 w-full py-4 bg-gradient-to-r from-cyan-600 to-blue-700 text-white rounded-xl ft font-bold tracking-widest uppercase active:scale-[0.98] flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/30 border border-cyan-400/30"><Ic n="tp" s={22}/> {tr(lang,"epilogue","Épilogue")}</button>)}
       {cnt>0&&cnt<16&&(<button onClick={()=>setV('win')} className="mt-6 w-full py-3 glass text-cyan-400 rounded-xl border-2 border-cyan-500/30 ft text-xs uppercase tracking-widest active:scale-[0.98] flex items-center justify-center gap-2">🏆 {tr(lang,"viewTreasures","Voir mes trésors")} ({cnt}/16)</button>)}
 
-      <p className="text-center text-xs text-gray-700 mt-10 fm">CRYPTOGRAPHIA.v2 // MMXXVI</p>
+      <p className="text-center text-xs text-gray-700 mt-10 fm">CRYPTOGRAPHIA.v2 // SECURED // MMXXVI</p>
     </div></div></LangContext.Provider>
   );
 
@@ -797,6 +950,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
       <svg style="display:inline-block;vertical-align:middle;margin-right:.25rem;" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4M12 2a10 10 0 100 20 10 10 0 000-20z"/></svg>
       Apache 2.0
     </span>
+    <span style="color:#334155;">&middot;</span>
+    <span style="color:#00ff41;text-shadow:0 0 8px rgba(0,255,65,.6);">🔐 SHA-256 Secured</span>
     <span style="color:#334155;">&middot;</span>
     <span style="color:#94a3b8;">
       crafted by
