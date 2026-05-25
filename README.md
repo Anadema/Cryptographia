@@ -1,6 +1,6 @@
 # 🔐 Cryptographia — Web Edition
 
-> **An interactive journey through 3,500 years of cryptography history.**
+> **An interactive journey through 3,500 years of cryptography history.**<bR>
 
 Cryptographia is an educational web game featuring **16 progressive cryptographic puzzles**, spanning from ancient Hebrew traditions to the digital age. Each challenge immerses the player in a real historical era and encryption system, with an immersive cyberpunk design and full **bilingual support (🇫🇷 French / 🇺🇸 English)**.
 
@@ -15,7 +15,7 @@ Cryptographia is an educational web game featuring **16 progressive cryptographi
 5. Solve the puzzle to obtain a secret **flag**
 6. Collect all 16 flags to become **Code Master**
 
-## Hard mode
+## 🎮 Hard mode
 
 See **[Hacker Guide](https://github.com/Anadema/Cryptographia/blob/main/Hacker_guide.md)**
 
