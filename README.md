@@ -18,6 +18,8 @@ Cryptographia is an educational web game featuring **16 progressive cryptographi
 
 ## 🎮 Hard mode
 
+You want to break the SHA-256 hashes, why not!
+
 See **[Hacker Guide](https://github.com/Anadema/Cryptographia/blob/main/Hacker_guide.md)**
 
 ## 🏛️ The 16 Challenges
