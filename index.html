@@ -104,9 +104,44 @@ for(let i=0;i<25;i++){
 const{useState,useMemo,useEffect}=React;
 
 // ===== 🔐 SECURITY: SHA-256 HASHING SYSTEM =====
-// Les réponses ne sont JAMAIS stockées en clair dans ce code.
-// Elles sont protégées par des empreintes cryptographiques SHA-256.
-// Pour valider une réponse, on compare son hash avec le hash attendu.
+/*
+ * HACKER'S CHALLENGE 🎯
+ * 
+ * Answers are NOT stored in plaintext - only their SHA-256 hashes.
+ * Think you can crack them? Here's what you need to know:
+ * 
+ * 🔓 HOW TO BREAK THIS PROTECTION:
+ * 
+ * Method 1: BRUTE FORCE DICTIONARY ATTACK
+ * ----------------------------------------
+ * 1. Extract all hashes from CH array (look for ansHash properties)
+ * 2. Build a wordlist (common words, mythological names, crypto terms...)
+ * 3. Hash each word with SHA-256 and compare:
+ * 
+ *    const wordlist = ['SPARTA', 'LEONIDAS', 'CAESAR', ...];
+ *    for(let word of wordlist) {
+ *      const hash = await sha256(word);
+ *      if(hash === targetHash) console.log('FOUND:', word);
+ *    }
+ * 
+ * Method 2: JAVASCRIPT MANIPULATION
+ * ----------------------------------
+ * Override the validation function in browser console:
+ *    validateAnswer = async () => true;
+ * 
+ * Method 3: REACT STATE MANIPULATION
+ * -----------------------------------
+ * Use React DevTools to modify the 'done' state array directly
+ * 
+ * 📚 LEARNING RESOURCES:
+ * - SHA-256 implementation: crypto.subtle.digest()
+ * - Rainbow tables & hash cracking
+ * - Web Crypto API
+ * - Browser DevTools & JavaScript manipulation
+ * 
+ * If you crack this, congrats! You've learned real pentesting skills.
+ * Share your technique on GitHub - we love creative solutions! 🚀
+ */
 
 const sha256 = async (message) => {
   const msgBuffer = new TextEncoder().encode(message);
