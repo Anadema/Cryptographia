@@ -15,6 +15,10 @@ Cryptographia is an educational web game featuring **16 progressive cryptographi
 5. Solve the puzzle to obtain a secret **flag**
 6. Collect all 16 flags to become **Code Master**
 
+## Hard mode
+
+See **[Hacker Guide](https://github.com/Anadema/Cryptographia/blob/main/Hacker_guide.md)**
+
 ## 🏛️ The 16 Challenges
 
 | # | Era | Cipher | Concept 
