@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <meta name="theme-color" content="#1e1535">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <title>Cryptographia ▸ Web Edition [Secured]</title>
+  <title>Cryptographia ▸ Cyberpunk Edition [Secured]</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
@@ -1194,11 +1194,11 @@ const G5=({onS})=>{
 };
 
 const GCH=[
-  {id:40,nm:'Proof of Work',nmf:'Preuve de Travail',cv:'SHA256 Mining',cvf:'Minage SHA256',ic:'⛏️',fl:'POW',clr:'#f59e0b',ep:'2009',monument:'eiffel',sclr:'#f59e0b'},
-  {id:41,nm:'RSA Large',nmf:'Super RSA',cv:'Factorization',cvf:'Factorisation',ic:'🔢',fl:'RSAGOD',clr:'#f59e0b',ep:'1977',monument:'pyramids',sclr:'#eab308'},
-  {id:42,nm:'Custom Cipher',nmf:'Chiffre Inconnu',cv:'Reverse Engineering',cvf:'Rétro-ingénierie',ic:'🔬',fl:'CUSTOM',clr:'#f59e0b',ep:'???',monument:'moai',sclr:'#22d3ee'},
-  {id:43,nm:'Ciphertext Only',nmf:'Texte Chiffré Seul',cv:'Kasiski / Friedman',cvf:'Kasiski / Friedman',ic:'👁️',fl:'KASISKI',clr:'#f59e0b',ep:'1863',monument:'notredame',sclr:'#a855f7'},
-  {id:44,nm:'Famous Hash',nmf:'Hash Célèbre',cv:'SHA256 Preimage',cvf:'SHA256 Préimage',ic:'🌑',fl:'GENESIS',clr:'#f59e0b',ep:'2008',monument:'liberty',sclr:'#22c55e'},
+  {id:40,nm:'Proof of Work',nmf:'Preuve de Travail',cv:'SHA256 Mining',cvf:'Minage SHA256',ic:'⛏️',fl:'POW',fd:'Preuve de Travail (PoW) — mécanisme de consensus de Bitcoin : trouver un nonce tel que SHA256(data+nonce) commence par des zéros.',fd_en:'Proof of Work (PoW) — Bitcoin consensus mechanism requiring finding a nonce such that SHA256(data+nonce) starts with zeros.',clr:'#f59e0b',ep:'2009',monument:'eiffel',sclr:'#f59e0b'},
+  {id:41,nm:'RSA Large',nmf:'Super RSA',cv:'Factorization',cvf:'Factorisation',ic:'🔢',fl:'RSAGOD',fd:'RSA grand format — même principe que RSA standard mais avec des nombres premiers de centaines de chiffres, impossibles à factoriser rapidement.',fd_en:'Large RSA — same principle as standard RSA but with prime numbers hundreds of digits long, impossible to factor quickly.',clr:'#f59e0b',ep:'1977',monument:'pyramids',sclr:'#eab308'},
+  {id:42,nm:'Custom Cipher',nmf:'Chiffre Inconnu',cv:'Reverse Engineering',cvf:'Rétro-ingénierie',ic:'🔬',fl:'CUSTOM',fd:'Rétro-ingénierie crypto — analyser les E/S d\'un algo inconnu pour déduire sa logique.',fd_en:'Cryptographic Reverse Engineering — analyzing I/O of an unknown algorithm to deduce its internal logic.',clr:'#f59e0b',ep:'???',monument:'moai',sclr:'#22d3ee'},
+  {id:43,nm:'Ciphertext Only',nmf:'Texte Chiffré Seul',cv:'Kasiski / Friedman',cvf:'Kasiski / Friedman',ic:'👁️',fl:'KASISKI',fd:'Methode de Friedman — attaque sur Vigenère via l\'indice de coïncidence pour trouver la longueur de clé.',fd_en:'Friedman Method — statistical attack on Vigenère using the coincidence index to find key length.',clr:'#f59e0b',ep:'1863',monument:'notredame',sclr:'#a855f7'},
+  {id:44,nm:'Famous Hash',nmf:'Hash Célèbre',cv:'SHA256 Preimage',cvf:'SHA256 Préimage',ic:'🌑',fl:'GENESIS',fd:'Bloc Genesis — premier bloc de la blockchain Bitcoin miné par Satoshi Nakamoto le 3 janvier 2009, contenant le hash célèbre 000000000019d6...',fd_en:'Genesis Block — first Bitcoin blockchain block mined by Satoshi Nakamoto on January 3, 2009, containing the famous hash 000000000019d6...',clr:'#f59e0b',ep:'2008',monument:'liberty',sclr:'#22c55e'},
 ];
 const GComps=[G1,G2,G3,G4,G5];
 
@@ -1372,13 +1372,13 @@ const NH7=({onS})=>{
 };
 
 const NCH=[
-  {id:50,nm:'Vigenère Kasiski',nmf:'Vigenère Kasiski',cv:'No key length given',cvf:'Longueur de clé inconnue',ic:'🔓',fl:'KASISKI2',clr:'#ef4444',ep:'1586',solid:'hexagram',sclr:'#ef4444'},
-  {id:51,nm:'Hash Identification',nmf:'Identification de Hash',cv:'Unknown algorithm',cvf:'Algorithme inconnu',ic:'#️⃣',fl:'HASHID',clr:'#ef4444',ep:'???',solid:'ouroboros',sclr:'#f87171'},
-  {id:52,nm:'Whitespace Stego',nmf:'Stéga Invisible',cv:'Zero-width chars',cvf:'Caractères invisibles',ic:'👻',fl:'ZWSTEGO',clr:'#ef4444',ep:'???',solid:'triskel',sclr:'#fca5a5'},
-  {id:53,nm:'Composite Cipher',nmf:'Chiffrement Composé',cv:'3 layers, find order',cvf:'3 couches, trouver l\'ordre',ic:'🧩',fl:'COMPOUND',clr:'#ef4444',ep:'???',solid:'triquetra',sclr:'#fb923c'},
-  {id:54,nm:'Base58',nmf:'Base58',cv:'Bitcoin encoding',cvf:'Encodage Bitcoin',ic:'₿',fl:'B58CRACK',clr:'#ef4444',ep:'2009',monument:'bitcoin',sclr:'#f97316'},
-  {id:55,nm:'Rail Fence Unknown',nmf:'Rail Fence Inconnu',cv:'Find the rails',cvf:'Trouver les rails',ic:'🚧',fl:'RAILGUN',clr:'#ef4444',ep:'1800s',solid:'ankh',sclr:'#dc2626'},
-  {id:56,nm:'Two-Time Pad',nmf:'Double Masque Jetable',cv:'OTP reuse attack',cvf:'Réutilisation OTP',ic:'⚡',fl:'TTPAD',clr:'#ef4444',ep:'???',solid:'sealsol',sclr:'#b91c1c'},
+  {id:50,nm:'Vigenère Kasiski',nmf:'Vigenère Kasiski',cv:'No key length given',cvf:'Longueur de clé inconnue',ic:'🔓',fl:'KASISKI2',fd:'Analyse de Kasiski — cassage du Vigenère : trouver la longueur de clé via les répétitions dans le texte chiffré.',fd_en:'Kasiski Analysis — Vigenère cracking method: find key length by searching for repeated sequences in ciphertext.',clr:'#ef4444',ep:'1586',solid:'hexagram',sclr:'#ef4444'},
+  {id:51,nm:'Hash Identification',nmf:'Identification de Hash',cv:'Unknown algorithm',cvf:'Algorithme inconnu',ic:'#️⃣',fl:'HASHID',fd:'Identification de hash — technique pour reconnaître l\'algorithme de hachage (MD5, SHA-1, SHA-256...) à partir de sa longueur et sa structure.',fd_en:'Hash Identification — technique to recognize the hashing algorithm (MD5, SHA-1, SHA-256...) from its length and structure.',clr:'#ef4444',ep:'???',solid:'ouroboros',sclr:'#f87171'},
+  {id:52,nm:'Whitespace Stego',nmf:'Stéga Invisible',cv:'Zero-width chars',cvf:'Caractères invisibles',ic:'👻',fl:'ZWSTEGO',fd:'Stéganographie à largeur nulle — dissimulation de bits dans du texte normal via des caractères Unicode invisibles (U+200B, U+200C).',fd_en:'Zero-Width Steganography — hiding bits in plain text using invisible Unicode characters (U+200B, U+200C).',clr:'#ef4444',ep:'???',solid:'triskel',sclr:'#fca5a5'},
+  {id:53,nm:'Composite Cipher',nmf:'Chiffrement Composé',cv:'3 layers, find order',cvf:'3 couches, trouver l\'ordre',ic:'🧩',fl:'COMPOUND',fd:'Chiffrement composé — application successive de plusieurs chiffrements dont l\\\'ordre est la véritable clé secrète.',fd_en:'Compound Cipher — successive application of multiple ciphers where the order is the true secret key.',clr:'#ef4444',ep:'???',solid:'triquetra',sclr:'#fb923c'},
+  {id:54,nm:'Base58',nmf:'Base58',cv:'Bitcoin encoding',cvf:'Encodage Bitcoin',ic:'₿',fl:'B58CRACK',fd:'Base58 — encodage Bitcoin éliminant les caractères ambigus (0, O, I, l) pour les adresses de portefeuilles.',fd_en:'Base58 — Bitcoin encoding eliminating ambiguous characters (0, O, I, l) for wallet addresses.',clr:'#ef4444',ep:'2009',monument:'bitcoin',sclr:'#f97316'},
+  {id:55,nm:'Rail Fence Unknown',nmf:'Rail Fence Inconnu',cv:'Find the rails',cvf:'Trouver les rails',ic:'🚧',fl:'RAILGUN',fd:'Rail Fence avancé — transposition en zigzag sur N rails, où N est inconnu et doit être découvert par force brute.',fd_en:'Advanced Rail Fence — zigzag transposition on N rails, where N is unknown and must be found by brute force.',clr:'#ef4444',ep:'1800s',solid:'ankh',sclr:'#dc2626'},
+  {id:56,nm:'Two-Time Pad',nmf:'Double Masque Jetable',cv:'OTP reuse attack',cvf:'Réutilisation OTP',ic:'⚡',fl:'TTPAD',fd:'Double Masque Jetable — réutiliser la même clé OTP deux fois permet de retrouver M1⊕M2, annulant la sécurité du masque jetable.',fd_en:'Two-Time Pad — reusing the same OTP key twice allows recovery of M1⊕M2, breaking the one-time pad\'s security.',clr:'#ef4444',ep:'???',solid:'sealsol',sclr:'#b91c1c'},
 ];
 const NComps=[NH1,NH2,NH3,NH4,NH5,NH6,NH7];
 const NROM=['I','II','III','IV','V','VI','VII'];
@@ -1657,7 +1657,7 @@ const H6=({onS})=>{
   const jwt='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW4iLCJyb2xlIjoiZ3Vlc3QifQ.v7mMRVCZC01kLNISNbOZp3tGty5o37Kzcx0f1nW20hE';
   const sub=async()=>{
     setLoading(true);
-    const isValid=await validateAnswer(a,'5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8');
+    const isValid=await validateAnswer(a,'0be64ae89ddd24e225434de95d501711339baeee18f009ba9b4369af27d30d60');
     setLoading(false);
     if(isValid)onS();else{setE(true);setTimeout(()=>setE(false),500)}
   };
@@ -1678,7 +1678,7 @@ const H6=({onS})=>{
     <div className="glass rounded-lg p-4">
       <p className="ft text-xs uppercase tracking-[0.2em] text-cyan-400 mb-3 text-center">💡 {lang==='en'?"Hints":"Indices"}</p>
       <div className="space-y-2 text-sm">
-        <div className="bg-cyan-950/40 rounded p-3 border border-cyan-500/20 text-cyan-200"><strong className="text-cyan-300">🔑 {lang==='en'?"Key type:":"Type de clé :"}</strong> {lang==='en'?"Common weak password, 8 characters":"Mot de passe faible courant, 8 caractères"}</div>
+        <div className="bg-cyan-950/40 rounded p-3 border border-cyan-500/20 text-cyan-200"><strong className="text-cyan-300">🔑 {lang==='en'?"Key type:":"Type de clé :"}</strong> {lang==='en'?'Common weak password (8 chars) — enter in any case, it will be normalized':'Mot de passe faible courant (8 lettres) — la casse est ignorée, tout sera mis en majuscules'}</div>
         <div className="bg-cyan-950/40 rounded p-3 border border-cyan-500/20 text-cyan-200"><strong className="text-cyan-300">🛠️ {lang==='en'?'Tool:':'Outil :'}</strong> <a href="https://jwt.io" target="_blank" rel="noopener" className="underline text-cyan-400">jwt.io</a> {lang==='en'?"to verify your key, bruteforce script":"pour vérifier votre clé, script bruteforce"}</div>
         <div className="bg-cyan-950/40 rounded p-3 border border-cyan-500/20 text-cyan-200"><strong className="text-cyan-300">📋 {lang==='en'?"HMAC verify:":"Vérif HMAC :"}</strong> <code className="text-cyan-300 fm text-xs">HMAC-SHA256(key, "header.payload")</code></div>
       </div>
@@ -1933,9 +1933,9 @@ const App=()=>{
   const RAINBOW=['#ef4444','#8b5cf6','#f97316','#06b6d4','#eab308','#3b82f6','#22c55e','#ec4899','#f43f5e','#a855f7','#fb923c','#38bdf8','#84cc16','#818cf8','#34d399','#c084fc'];
   useEffect(()=>{window.scrollTo(0,0);setLore(false)},[v,ci]);
   const solve=()=>{const n=[...done];n[ci]=true;setD(n);updURL(n);if(!flags.includes(ci))setF([...flags,ci]);setV('hist')};
-  const solveHard=()=>{const n=[...hardDone];n[hardCI]=true;setHD(n);if(!hardFlags.includes(hardCI))setHF([...hardFlags,hardCI]);setV('home')};
-  const solveGod=()=>{const n=[...godDone];n[godCI]=true;setGD(n);if(!godFlags.includes(godCI))setGF([...godFlags,godCI]);setV('home')};
-  const solveNew=()=>{const n=[...newDone];n[newCI]=true;setND(n);if(!newFlags.includes(newCI))setNF([...newFlags,newCI]);setV('home')};
+  const solveHard=()=>{const n=[...hardDone];n[hardCI]=true;setHD(n);if(!hardFlags.includes(hardCI))setHF([...hardFlags,hardCI]);setV('hardHist')};
+  const solveGod=()=>{const n=[...godDone];n[godCI]=true;setGD(n);if(!godFlags.includes(godCI))setGF([...godFlags,godCI]);setV('godHist')};
+  const solveNew=()=>{const n=[...newDone];n[newCI]=true;setND(n);if(!newFlags.includes(newCI))setNF([...newFlags,newCI]);setV('newHist')};
   const go=i=>{lastChRef.current=`ch-b-${i}`;setCI(i);setV('ch')};
   const goHard=i=>{lastChRef.current=`ch-h-${i}`;setHCI(i);setV('hardCh')};
   const goGod=i=>{lastChRef.current=`ch-g-${i}`;setGCI(i);setV('godCh')};
@@ -2029,18 +2029,18 @@ const H12=({onS})=>{
 
 
   const HCH=[
-    {id:17,nm:'Salt Discovery',nmf:'Découverte de Salt',cv:'Hash Cracking',cvf:'Craquage de Hash',ic:'🧂',fl:'SALTCRACK',clr:'#a855f7',solid:'tetra',sclr:'#c084fc'},
-    {id:18,nm:'Vigenère Cipher',nmf:'Chiffre de Vigenère',cv:'Polyalphabetic',cvf:'Polyalphabétique',ic:'🔐',fl:'VIGENERE',clr:'#f97316',solid:'cube',sclr:'#f97316'},
-    {id:19,nm:'Triple Layer',nmf:'Triple Couche',cv:'Multi-Cipher',cvf:'Multi-Chiffrement',ic:'🔥',fl:'TRIPLELAYER',clr:'#ef4444',solid:'octa',sclr:'#f87171'},
-    {id:20,nm:'RSA Mini',nmf:'RSA Mini',cv:'Asymmetric Crypto',cvf:'Crypto Asymétrique',ic:'🔑',fl:'RSACRACK',clr:'#eab308',solid:'dodeca',sclr:'#fbbf24'},
-    {id:21,nm:'Frequency Analysis',nmf:'Analyse de Fréquences',cv:'Cryptanalysis',cvf:'Cryptanalyse',ic:'📊',fl:'FREQATTACK',clr:'#22c55e',solid:'icosa',sclr:'#4ade80'},
-    {id:22,nm:'JWT Cracking',nmf:'Craquage JWT',cv:'Web Security',cvf:'Sécurité Web',ic:'🪙',fl:'JWTPWNED',clr:'#06b6d4',solid:'cuboct',sclr:'#22d3ee'},
-    {id:23,nm:'XOR Key Recovery',nmf:'Récupération Clé XOR',cv:'Two-Time Pad',cvf:'Two-Time Pad',ic:'⚡',fl:'XORKEY',clr:'#ec4899',solid:'trocta',sclr:'#f472b6'},
-    {id:24,nm:'LSB Steganography',nmf:'Stéganographie LSB',cv:'Digital Forensics',cvf:'Forensics Numérique',ic:'🖼️',fl:'LSBHIDDEN',clr:'#6366f1',solid:'stella',sclr:'#818cf8'},
-    {id:25,nm:'Padding Oracle',nmf:'Oracle de Padding',cv:'CBC Attack',cvf:'Attaque CBC',ic:'🔮',fl:'PADORACLE',clr:'#f97316',solid:'antiprism',sclr:'#60a5fa'},
-    {id:26,nm:'Enigma Brute-Force',nmf:'Force Brute Enigma',cv:'WWII Crypto',cvf:'Crypto WWII',ic:'⚙️',fl:'BOMBEMACH',clr:'#f59e0b',solid:'rhombi',sclr:'#fcd34d'},
-    {id:27,nm:'DNS Exfiltration',nmf:'Exfiltration DNS',cv:'Network Forensics',cvf:'Forensics Réseau',ic:'🌐',fl:'DNSEXFIL',clr:'#14b8a6',solid:'pentagram',sclr:'#2dd4bf'},
-    {id:28,nm:'Progressive Caesar',nmf:'César Progressif',cv:'Variable shift cipher',cvf:'Décalage variable',ic:'📈',fl:'PROGRESSIVE',clr:'#a855f7',solid:'yinyang',sclr:'#c084fc'},
+    {id:17,nm:'Salt Discovery',nmf:'Découverte de Salt',cv:'Hash Cracking',cvf:'Craquage de Hash',ic:'🧂',fl:'SALTCRACK',fd:'Salage de hash — ajout de données aléatoires au mot de passe avant hachage, rendant les rainbow tables inefficaces.',fd_en:'Hash Salting — adding random data to a password before hashing, making rainbow tables ineffective.',clr:'#a855f7',solid:'tetra',sclr:'#c084fc'},
+    {id:18,nm:'Vigenère Cipher',nmf:'Chiffre de Vigenère',cv:'Polyalphabetic',cvf:'Polyalphabétique',ic:'🔐',fl:'VIGENERE',fd:'Chiffre de Vigenère — chiffrement polyalphabétique du XVIe siècle utilisant un mot-clé répété pour varier le décalage.',fd_en:'Vigenère Cipher — 16th-century polyalphabetic cipher using a repeated keyword to vary the shift.',clr:'#f97316',solid:'cube',sclr:'#f97316'},
+    {id:19,nm:'Triple Layer',nmf:'Triple Couche',cv:'Multi-Cipher',cvf:'Multi-Chiffrement',ic:'🔥',fl:'TRIPLELAYER',fd:'Chiffrement multicouche — combinaison successive de plusieurs algorithmes pour renforcer la sécurité.',fd_en:'Multi-layer encryption — successive combination of several algorithms to strengthen security.',clr:'#ef4444',solid:'octa',sclr:'#f87171'},
+    {id:20,nm:'RSA Mini',nmf:'RSA Mini',cv:'Asymmetric Crypto',cvf:'Crypto Asymétrique',ic:'🔑',fl:'RSACRACK',fd:'Factorisation RSA — vulnérabilité du chiffrement RSA : si n est factorisable, la clé privée est compromise.',fd_en:'RSA Factorization — RSA vulnerability: if n can be factored, the private key is compromised.',clr:'#eab308',solid:'dodeca',sclr:'#fbbf24'},
+    {id:21,nm:'Frequency Analysis',nmf:'Analyse de Fréquences',cv:'Cryptanalysis',cvf:'Cryptanalyse',ic:'📊',fl:'FREQATTACK',fd:'Analyse fréquentielle — cryptanalyse basée sur la fréquence des lettres dans une langue naturelle.',fd_en:'Frequency Analysis — cryptanalysis based on letter frequency in natural language.',clr:'#22c55e',solid:'icosa',sclr:'#4ade80'},
+    {id:22,nm:'JWT Cracking',nmf:'Craquage JWT',cv:'Web Security',cvf:'Sécurité Web',ic:'🪙',fl:'JWTPWNED',fd:'JWT (JSON Web Token) — standard d\'authentification web signé. Une clé faible permet de le forger.',fd_en:'JWT (JSON Web Token) — signed web authentication standard. A weak key allows forging it.',clr:'#06b6d4',solid:'cuboct',sclr:'#22d3ee'},
+    {id:23,nm:'XOR Key Recovery',nmf:'Récupération Clé XOR',cv:'Two-Time Pad',cvf:'Two-Time Pad',ic:'⚡',fl:'XORKEY',fd:'Récupération de clé XOR — attaque Two-Time Pad : réutiliser une même clé OTP annule le chiffrement.',fd_en:'XOR Key Recovery — Two-Time Pad attack: reusing an OTP key cancels the encryption.',clr:'#ec4899',solid:'trocta',sclr:'#f472b6'},
+    {id:24,nm:'LSB Steganography',nmf:'Stéganographie LSB',cv:'Digital Forensics',cvf:'Forensics Numérique',ic:'🖼️',fl:'LSBHIDDEN',fd:'Stéganographie LSB — dissimulation de données dans les bits de poids faible des pixels d\'une image.',fd_en:'LSB Steganography — hiding data in the least significant bits of image pixels.',clr:'#6366f1',solid:'stella',sclr:'#818cf8'},
+    {id:25,nm:'Padding Oracle',nmf:'Oracle de Padding',cv:'CBC Attack',cvf:'Attaque CBC',ic:'🔮',fl:'PADORACLE',fd:'Oracle de Padding — attaque sur CBC-AES exploitant les messages d\'erreur de padding pour déchiffrer octet par octet.',fd_en:'Padding Oracle — attack on CBC-AES exploiting padding error messages to decrypt byte by byte.',clr:'#f97316',solid:'antiprism',sclr:'#60a5fa'},
+    {id:26,nm:'Enigma Brute-Force',nmf:'Force Brute Enigma',cv:'WWII Crypto',cvf:'Crypto WWII',ic:'⚙️',fl:'BOMBEMACH',fd:'Machine Bombe — déchiffreur électromécanique inventé par Alan Turing pour casser Enigma pendant la Seconde Guerre mondiale.',fd_en:'Bombe Machine — electromechanical decryption device invented by Alan Turing to break Enigma in WWII.',clr:'#f59e0b',solid:'rhombi',sclr:'#fcd34d'},
+    {id:27,nm:'DNS Exfiltration',nmf:'Exfiltration DNS',cv:'Network Forensics',cvf:'Forensics Réseau',ic:'🌐',fl:'DNSEXFIL',fd:'Exfiltration DNS — technique d\'attaque consistant à cacher des données volées dans les sous-domaines de requêtes DNS.',fd_en:'DNS Exfiltration — attack technique of hiding stolen data in DNS query subdomains.',clr:'#14b8a6',solid:'pentagram',sclr:'#2dd4bf'},
+    {id:28,nm:'Progressive Caesar',nmf:'César Progressif',cv:'Variable shift cipher',cvf:'Décalage variable',ic:'📈',fl:'PROGRESSIVE',fd:'César Progressif — variante du chiffrement de César où le décalage augmente selon la position de chaque lettre.',fd_en:'Progressive Caesar — Caesar cipher variant where the shift increases with each letter\'s position.',clr:'#a855f7',solid:'yinyang',sclr:'#c084fc'},
   ];
   const HComps=[H1,H2,H3,H4,H5,H6,H7,H8,H9,H10,H11,H12];
 
@@ -2048,7 +2048,7 @@ const H12=({onS})=>{
     const c=HCH[hardCI];
     const Comp=HComps[hardCI];
     
-    return(<LangContext.Provider value={lang}><LangSelector lang={lang} setLang={setLang}/>
+    return(<LangContext.Provider value={lang}>
       <div className="min-h-screen px-4 py-6"><div className="max-w-md lg:max-w-2xl mx-auto fi">
         <div className="flex items-center justify-between mb-4">
           <button onClick={()=>setV('home')} className="glass px-3 py-2 rounded-lg flex items-center gap-2 text-sm hover:bg-white/10 transition-colors"><Ic n="ba" s={18} c={c.clr}/><span style={{color:c.clr}} className="ft tracking-wider">{tr(lang,"back","Retour")}</span></button>
@@ -2070,7 +2070,7 @@ const H12=({onS})=>{
   }
 
   if(v==='hardWin'){
-    return(<LangContext.Provider value={lang}><LangSelector lang={lang} setLang={setLang}/>
+    return(<LangContext.Provider value={lang}>
       <div className="min-h-screen px-4 py-8 flex items-center justify-center"><div className="max-w-md mx-auto fi text-center">
         <div className="text-8xl mb-6 pulse">🏆</div>
         <h1 className="ft text-3xl font-bold bg-gradient-to-r from-purple-400 via-red-400 to-orange-400 bg-clip-text text-transparent mb-4 tracking-wider uppercase">{tr(lang,"hardMaster",lang==='en'?"HARD MODE MASTERED!":"MODE DIFFICILE MAÎTRISÉ !")}</h1>
@@ -2227,9 +2227,99 @@ const H12=({onS})=>{
       </button>)}
     </div></div></LangContext.Provider>
   );
+  if(v==='hardHist'){
+    const c=HCH[hardCI];
+    return(<LangContext.Provider value={lang}>
+    <div className="min-h-screen px-4 py-8"><div className="max-w-md lg:max-w-2xl mx-auto fi">
+      <div className="text-center mb-6">
+        <div className="inline-flex items-center justify-center w-24 h-24 rounded-full mb-4 sr border-4" style={{borderColor:c.clr,backgroundColor:c.clr+'20',boxShadow:`0 0 30px ${c.clr}60`}}><Ic n="ul" s={40} c="text-white"/></div>
+        <p className="ft text-xs uppercase tracking-[0.3em] mb-1" style={{color:c.clr}}>🎓 {lang==='en'?'Challenge solved!':'Challenge résolu !'}</p>
+        <h2 className="ft text-2xl font-bold text-white tracking-wide">{lang==='en'?c.nm:c.nmf}</h2>
+      </div>
+      <div className="rounded-xl p-6 mb-5 border-2" style={{background:`linear-gradient(135deg, ${c.clr}10, #050510, ${c.clr}05)`,borderColor:c.clr+'60',boxShadow:`0 0 25px ${c.clr}30`}}>
+        <div className="text-center mb-4">
+          <p className="ft text-xs uppercase tracking-[0.3em] mb-3" style={{color:c.clr}}>🏴 {lang==='en'?'Flag Discovered':'Flag Découvert'}</p>
+          <div className="bg-black/50 rounded-lg py-4 px-3 border mb-4" style={{borderColor:c.clr+'40'}}>
+            <p className="fm text-xs uppercase tracking-widest mb-2" style={{color:c.clr+'99'}}>FLAG</p>
+            <p className="text-2xl sm:text-3xl ft font-bold neon-shimmer tracking-[0.15em]">{c.fl}</p>
+          </div>
+          <div className="glass rounded-lg p-4 text-left border" style={{borderColor:c.clr+'30'}}>
+            <p className="ft text-xs uppercase tracking-widest mb-2" style={{color:c.clr}}>📖 {lang==='en'?'What does it mean?':'Que signifie ce terme ?'}</p>
+            <p className="text-gray-300 text-sm leading-relaxed italic">{lang==='en'?c.fd_en:c.fd}</p>
+          </div>
+        </div>
+      </div>
+      <div className="space-y-3">
+        {hardCI<11&&(<button onClick={()=>{setHCI(hardCI+1);setV('hardCh')}} className="w-full py-4 text-white rounded-xl ft font-bold tracking-widest uppercase active:scale-[0.98] flex items-center justify-center gap-2 shadow-lg border" style={{background:`linear-gradient(to right, ${c.clr}cc, ${HCH[Math.min(hardCI+1,11)].clr}cc)`,borderColor:c.clr+'50',boxShadow:`0 4px 20px ${c.clr}30`}}>{lang==='en'?'Next Challenge':'Challenge Suivant'} <Ic n="cr" s={18}/></button>)}
+        {hardCI===11&&(<button onClick={()=>setV('hardWin')} className="w-full py-4 text-white rounded-xl ft font-bold tracking-widest uppercase active:scale-[0.98] flex items-center justify-center gap-2 shadow-lg border" style={{background:`linear-gradient(to right, #a855f7cc, #ef4444cc)`,borderColor:'#a855f750'}}><Ic n="tp" s={22}/> {lang==='en'?'Advanced Mode Complete!':'Mode Avancé Complet !'}</button>)}
+        <button onClick={()=>setV('home')} className="w-full py-3 glass text-gray-400 rounded-xl border border-gray-700 ft text-xs uppercase tracking-widest active:scale-[0.98]">{lang==='en'?'← Back to Menu':'← Retour au Menu'}</button>
+      </div>
+    </div></div></LangContext.Provider>);
+  }
+
+  if(v==='newHist'){
+    const c=NCH[newCI];
+    return(<LangContext.Provider value={lang}>
+    <div className="min-h-screen px-4 py-8"><div className="max-w-md lg:max-w-2xl mx-auto fi">
+      <div className="text-center mb-6">
+        <div className="inline-flex items-center justify-center w-24 h-24 rounded-full mb-4 sr border-4" style={{borderColor:'#ef4444',backgroundColor:'#ef444420',boxShadow:'0 0 30px #ef444460'}}><Ic n="ul" s={40} c="text-white"/></div>
+        <p className="ft text-xs uppercase tracking-[0.3em] text-red-400 mb-1">🔥 {lang==='en'?'Challenge solved!':'Challenge résolu !'}</p>
+        <h2 className="ft text-2xl font-bold text-white tracking-wide">{lang==='en'?c.nm:c.nmf}</h2>
+      </div>
+      <div className="rounded-xl p-6 mb-5 border-2" style={{background:'linear-gradient(135deg,rgba(239,68,68,.08),#050510,rgba(239,68,68,.04))',borderColor:'#ef444460',boxShadow:'0 0 25px #ef444430'}}>
+        <div className="text-center mb-4">
+          <p className="ft text-xs uppercase tracking-[0.3em] text-red-400 mb-3">🏴 {lang==='en'?'Flag Discovered':'Flag Découvert'}</p>
+          <div className="bg-black/50 rounded-lg py-4 px-3 border border-red-500/40 mb-4">
+            <p className="fm text-xs uppercase tracking-widest text-red-600 mb-2">FLAG</p>
+            <p className="text-2xl sm:text-3xl ft font-bold neon-shimmer tracking-[0.15em]">{c.fl}</p>
+          </div>
+          <div className="glass rounded-lg p-4 text-left border border-red-500/30">
+            <p className="ft text-xs uppercase tracking-widest text-red-400 mb-2">📖 {lang==='en'?'What does it mean?':'Que signifie ce terme ?'}</p>
+            <p className="text-gray-300 text-sm leading-relaxed italic">{lang==='en'?c.fd_en:c.fd}</p>
+          </div>
+        </div>
+      </div>
+      <div className="space-y-3">
+        {newCI<6&&(<button onClick={()=>{setNCI(newCI+1);setV('newCh')}} className="w-full py-4 bg-gradient-to-r from-red-600 to-orange-600 text-white rounded-xl ft font-bold tracking-widest uppercase active:scale-[0.98] flex items-center justify-center gap-2 shadow-lg shadow-red-500/20 border border-red-400/30">{lang==='en'?'Next Challenge':'Challenge Suivant'} <Ic n="cr" s={18}/></button>)}
+        <button onClick={()=>setV('home')} className="w-full py-3 glass text-gray-400 rounded-xl border border-gray-700 ft text-xs uppercase tracking-widest active:scale-[0.98]">{lang==='en'?'← Back to Menu':'← Retour au Menu'}</button>
+      </div>
+    </div></div></LangContext.Provider>);
+  }
+
+  if(v==='godHist'){
+    const c=GCH[godCI];
+    return(<LangContext.Provider value={lang}>
+    <div className="min-h-screen px-4 py-8"><div className="max-w-md lg:max-w-2xl mx-auto fi">
+      <div className="text-center mb-6">
+        <div className="inline-flex items-center justify-center w-24 h-24 rounded-full mb-4 sr border-4" style={{borderColor:'#f59e0b',backgroundColor:'#f59e0b20',boxShadow:'0 0 40px #f59e0b80'}}><span className="text-5xl">👑</span></div>
+        <p className="ft text-xs uppercase tracking-[0.3em] text-yellow-400 mb-1">☠️ {lang==='en'?'God Mode Challenge Solved!':'Challenge Mode Dieu Résolu !'}</p>
+        <h2 className="ft text-2xl font-bold text-white tracking-wide">{lang==='en'?c.nm:c.nmf}</h2>
+      </div>
+      <div className="rounded-xl p-6 mb-5 border-2" style={{background:'linear-gradient(135deg,rgba(234,179,8,.10),#050510,rgba(234,179,8,.05))',borderColor:'#f59e0b60',boxShadow:'0 0 35px #f59e0b40'}}>
+        <div className="text-center mb-4">
+          <p className="ft text-xs uppercase tracking-[0.3em] text-yellow-400 mb-3">🏴 {lang==='en'?'Flag Discovered':'Flag Découvert'}</p>
+          <div className="bg-black/50 rounded-lg py-4 px-3 border border-yellow-500/40 mb-4">
+            <p className="fm text-xs uppercase tracking-widest text-yellow-700 mb-2">FLAG</p>
+            <p className="text-2xl sm:text-3xl ft font-bold neon-shimmer tracking-[0.15em]">{c.fl}</p>
+          </div>
+          <div className="glass rounded-lg p-4 text-left border border-yellow-500/30">
+            <p className="ft text-xs uppercase tracking-widest text-yellow-500 mb-2">📖 {lang==='en'?'What does it mean?':'Que signifie ce terme ?'}</p>
+            <p className="text-gray-300 text-sm leading-relaxed italic">{lang==='en'?c.fd_en:c.fd}</p>
+          </div>
+        </div>
+      </div>
+      <div className="space-y-3">
+        {godCI<4&&(<button onClick={()=>{setGCI(godCI+1);setV('godCh')}} className="w-full py-4 text-white rounded-xl ft font-bold tracking-widest uppercase active:scale-[0.98] flex items-center justify-center gap-2 shadow-lg border" style={{background:'linear-gradient(to right,#d97706cc,#f59e0bcc)',borderColor:'#f59e0b50',boxShadow:'0 4px 20px #f59e0b30'}}>{lang==='en'?'Next Challenge':'Challenge Suivant'} <Ic n="cr" s={18}/></button>)}
+        {godCI===4&&(<button onClick={()=>setV('home')} className="w-full py-4 text-white rounded-xl ft font-bold tracking-widest uppercase active:scale-[0.98] flex items-center justify-center gap-2 shadow-lg border" style={{background:'linear-gradient(to right,#d97706,#f59e0b)',borderColor:'#f59e0b50',boxShadow:'0 4px 30px #f59e0b50'}}><span>👑</span> {lang==='en'?'God Mode Complete!':'Mode Dieu Complété !'}</button>)}
+        <button onClick={()=>setV('home')} className="w-full py-3 glass text-gray-400 rounded-xl border border-gray-700 ft text-xs uppercase tracking-widest active:scale-[0.98]">{lang==='en'?'← Back to Menu':'← Retour au Menu'}</button>
+      </div>
+    </div></div></LangContext.Provider>);
+  }
+
+
   if(v==='godCh'){
     const c=GCH[godCI];const Comp=GComps[godCI];
-    return(<LangContext.Provider value={lang}><LangSelector lang={lang} setLang={setLang}/>
+    return(<LangContext.Provider value={lang}>
       <div className="min-h-screen px-4 py-6"><div className="max-w-md lg:max-w-2xl mx-auto fi">
         <div className="flex items-center justify-between mb-4">
           <button onClick={()=>setV('home')} className="glass px-3 py-2 rounded-lg flex items-center gap-2 text-sm" style={{color:'#f59e0b'}}><Ic n="ba" s={18}/><span className="ft tracking-wider">Retour</span></button>
@@ -2250,7 +2340,7 @@ const H12=({onS})=>{
 
   if(v==='newCh'){
     const c=NCH[newCI];const Comp=NComps[newCI];
-    return(<LangContext.Provider value={lang}><LangSelector lang={lang} setLang={setLang}/>
+    return(<LangContext.Provider value={lang}>
       <div className="min-h-screen px-4 py-6"><div className="max-w-md lg:max-w-2xl mx-auto fi">
         <div className="flex items-center justify-between mb-4">
           <button onClick={()=>setV('home')} className="glass px-3 py-2 rounded-lg flex items-center gap-2 text-sm" style={{color:'#ef4444'}}><Ic n="ba" s={18}/><span className="ft tracking-wider" style={{color:'#ef4444'}}>{lang==='en'?'Back':'Retour'}</span></button>
@@ -2270,7 +2360,7 @@ const H12=({onS})=>{
   }
 
   if(v==='ch'){const c=CH[ci];const Comp=CC[ci];return(
-    <LangContext.Provider value={lang}><LangSelector lang={lang} setLang={setLang}/>
+    <LangContext.Provider value={lang}>
     <div className="min-h-screen px-4 py-6"><div className="max-w-md lg:max-w-2xl mx-auto fi">
       <div className="flex items-center justify-between mb-4">
         <button onClick={()=>setV('home')} className="text-cyan-500 flex items-center gap-1 text-sm ft uppercase tracking-widest active:text-cyan-300"><Ic n="cl" s={16}/> {tr(lang,"back","Retour")}</button>
@@ -2289,7 +2379,7 @@ const H12=({onS})=>{
   );}
 
   if(v==='hist'){const c=CH[ci];return(
-    <LangContext.Provider value={lang}><LangSelector lang={lang} setLang={setLang}/>
+    <LangContext.Provider value={lang}>
     <div className="min-h-screen px-4 py-8"><div className="max-w-md lg:max-w-2xl mx-auto fi">
       <div className="text-center mb-6"><div className="inline-flex items-center justify-center w-24 h-24 rounded-full mb-4 sr border-4" style={{borderColor:c.clr,backgroundColor:c.clr+'20',boxShadow:`0 0 30px ${c.clr}60`}}><Ic n="ul" s={40} c="text-white"/></div><p className="ft text-xs uppercase tracking-[0.3em] glow-green text-green-400">{tr(lang,"puzzleSolved","Énigme résolue")}</p></div>
       <div className="glass rounded-xl p-6 mb-5" style={{borderColor:c.clr+'40'}}>
@@ -2311,7 +2401,7 @@ const H12=({onS})=>{
   );}
 
   if(v==='win')return(
-    <LangContext.Provider value={lang}><LangSelector lang={lang} setLang={setLang}/>
+    <LangContext.Provider value={lang}>
     <div className="min-h-screen px-4 py-10 flex items-center"><div className="max-w-md lg:max-w-2xl mx-auto text-center fi">
       <div className="text-7xl mb-6 ns pulse">🏆</div>
       <h1 className="ft text-3xl sm:text-4xl font-bold mb-3 tracking-[0.1em] neon-shimmer">{cnt===16?tr(lang,'codemaster','MAÎTRE DES CODES'):tr(lang,'progress','PROGRESSION')}</h1>
